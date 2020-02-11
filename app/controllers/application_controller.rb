@@ -2,6 +2,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def welcome
-    render text: 'Welcome Home'
+    render html: 'Welcome Home'
   end
 end
