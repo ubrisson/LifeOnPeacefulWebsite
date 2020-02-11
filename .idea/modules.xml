@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/myBlog.iml" filepath="$PROJECT_DIR$/.idea/myBlog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/railsTutorialSampleApp.iml" filepath="$PROJECT_DIR$/.idea/railsTutorialSampleApp.iml" />
     </modules>
   </component>
 </project>
