@@ -1,0 +1,146 @@
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+
+@import "tailwindcss/utilities";
+
+html {
+    @apply text-gray-800 text-center bg-gray-200;
+    font-family: "Droid Sans", Roboto, sans-serif;
+    background-color: #e2e8f0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%23cbd5e0' fill-opacity='0.29' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+article {
+    @apply mx-4 border-t border-gray-400 py-6 px-4 text-left max-w-2xl flex flex-col ;
+}
+
+main {
+    @apply min-h-screen mx-auto bg-gray-100 flex flex-wrap justify-center max-w-4xl border rounded-lg shadow-xl my-6;
+}
+
+header {
+    @apply fixed inset-0 h-screen w-24 flex flex-col justify-center ;
+}
+
+nav {
+    @apply leading-loose shadow-md pr-2 py-4 bg-gray-800 rounded-r-lg z-10 text-left;
+}
+
+body > footer {
+    @apply bottom-0 text-center bg-gray-800 z-10 p-4 shadow-lg rounded-t-lg
+}
+
+footer {
+    @apply pb-2 px-2
+}
+
+nav > ul {
+    @apply p-0;
+}
+
+nav > ul > li {
+    @apply p-0 hover-underline-animation;
+}
+
+nav > ul > li > a {
+    @apply text-gray-100 font-semibold no-underline ml-2;
+}
+
+body > footer > a, body > footer > h3 {
+    @apply text-gray-300 font-semibold my-0 leading-loose
+}
+
+hgroup {
+    @apply w-full max-w-5xl py-6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold leading-loose text-blue-900;
+}
+
+section {
+    @apply my-4
+}
+
+h1 {
+    @apply text-4xl
+}
+
+h2 {
+    @apply text-2xl font-medium
+}
+
+h3 {
+    @apply text-2xl;
+    font-family: fantasy;
+}
+
+h4 {
+    @apply text-xl
+}
+
+h5 {
+    @apply text-base
+}
+
+h6 {
+    @apply font-bold
+}
+
+a {
+    @apply font-medium text-gray-900 underline
+}
+
+details {
+    @apply border rounded px-2;
+}
+
+summary {
+    @apply font-semibold p-2;
+}
+
+details[open] {
+    @apply pb-2 px-2
+}
+
+li {
+    @apply list-disc
+}
+
+ul {
+    @apply px-4
+}
+
+blockquote {
+    @apply bg-indigo-100 text-blue-900 rounded shadow-md text-center font-serif p-2 w-3 / 4 my-2 self-center
+}
+
+p {
+    @apply text-lg font-medium m-2 max-w-lg;
+    font-family: Arial, sans-serif;
+}
+
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+    color: #cecece;
+}
+
+.hover-underline-animation::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #cecece;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
