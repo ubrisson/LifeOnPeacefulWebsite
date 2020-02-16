@@ -1,15 +1,22 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>MyBlog</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<html lang="en">
+<head>
+  <title><%= yield(:title) %> | Life on Peaceful </title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+<%= yield %>
+
+<footer>
+  <h3>Contact Info</h3>
+  <a href="mailto:ulysse.brisson@gmail.com">ulysse.brisson@gmail.com</a>
+  <a href="https://github.com/ubrisson">Github</a>
+  <a href="https://www.linkedin.com/in/ulysse-brisson/">Linkedin</a>
+</footer>
+</body>
 </html>
