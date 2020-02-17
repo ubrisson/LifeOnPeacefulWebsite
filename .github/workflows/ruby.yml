@@ -1,4 +1,4 @@
-name: Run rails tests
+name: Rails Tests
 
 on: [push, pull_request]
 
@@ -15,9 +15,16 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.6.x
+    - uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gems-
     - name: Build gems
       run: |
         gem install bundler
+        bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
     - name: Setop Node 12.x
       uses: actions/setup-node@v1
