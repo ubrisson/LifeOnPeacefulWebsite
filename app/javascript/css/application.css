@@ -111,7 +111,7 @@ ul {
 }
 
 blockquote {
-    @apply bg-indigo-100 text-blue-900 rounded shadow-md text-center font-serif p-2 w-3 / 4 my-2 self-center
+    @apply bg-indigo-100 text-blue-900 rounded shadow-md text-center font-serif p-2 w-3/4 my-2 self-center
 }
 
 p {
