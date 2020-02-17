@@ -1,6 +1,6 @@
-name: Ruby
+name: Run rails tests
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
@@ -9,9 +9,9 @@ jobs:
 
     steps:
     - name: Install sqlite3
-      run: sudo apt install -y sqlite3 & sudo apt install -y libsqlite3-dev
+      run: sudo apt install -y sqlite3 libsqlite3-dev
     - uses: actions/checkout@v2
-    - name: Set up Ruby 2.6
+    - name: Set up Ruby 2.6.x
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.6.x
@@ -19,7 +19,11 @@ jobs:
       run: |
         gem install bundler
         bundle install --jobs 4 --retry 3
-    - name: Install js dependencies
-      run: yarn install
-    - name: Run tests
-      run: rails test
+    - name: Setop Node 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+    - name: Install JS dependencies
+      run: yarn
+    - name: Run rails tests
+      run: bundle exec rails test
