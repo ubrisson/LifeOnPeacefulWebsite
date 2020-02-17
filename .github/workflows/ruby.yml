@@ -9,14 +9,17 @@ jobs:
 
     steps:
     - name: Install sqlite3
-      run: sudo apt install -y sqlite3 & sudo apt-get install libsqlite3-dev
+      run: sudo apt install -y sqlite3 & sudo apt install -y libsqlite3-dev
     - uses: actions/checkout@v2
     - name: Set up Ruby 2.6
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.6.x
-    - name: Build and test with Rake
+    - name: Build gems
       run: |
         gem install bundler
         bundle install --jobs 4 --retry 3
-        bundle exec rake
+    - name: Execute webpacker
+      run: bundle exec rails webpacker:compile
+    - name: Run tests
+      run: rails test
