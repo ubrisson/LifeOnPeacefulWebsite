@@ -18,4 +18,10 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select 'title', "About | #{@base_title}"
   end
+
+  test 'should get resources' do
+    get resources_path
+    assert_response :success
+    assert_select 'title', "Resources | #{@base_title}"
+  end
 end
