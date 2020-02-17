@@ -1,26 +1,21 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   def setup
-    @base_title = "Life on Peaceful"
+    @base_title = 'Life on Peaceful'
   end
 
-  test "should get home" do
-    get static_pages_home_url
+  test 'should get home' do
+    get root_path
     assert_response :success
-    assert_select "title", "#{@base_title}"
+    assert_select 'title', @base_title.to_s
   end
 
-  test "should get about" do
-    get static_pages_about_url
+  test 'should get about' do
+    get about_path
     assert_response :success
-    assert_select "title", "About | #{@base_title}"
+    assert_select 'title', "About | #{@base_title}"
   end
-
-  test "should get root home" do
-    get root_url
-    assert_response :success
-    assert_select "title", "#{@base_title}"
-  end
-
 end
