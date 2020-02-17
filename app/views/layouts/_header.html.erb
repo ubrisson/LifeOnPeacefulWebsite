@@ -1,15 +1,23 @@
-<header>
-  <nav>
-    <ul>
-      <li class="list-none hover-underline-animation">
-        <%= link_to "Home", root_path %>
+<header class="fixed inset-y-0 flex flex-col justify-center">
+  <nav class="shadow-lg bg-gray-800 rounded-r-lg z-10 text-left">
+    <ul class="p-0">
+      <li class="list-none hover:bg-gray-700 rounded-tr-lg">
+        <%= link_to "Home", root_path,
+                    class: "text-gray-100 font-semibold no-underline block px-4 pt-4 pb-2" %>
+
       </li>
-      <li class="list-none hover-underline-animation">
-        <%= link_to "About", about_path %>
+
+      <li class="list-none hover:bg-gray-700 ">
+        <%= link_to "About", about_path,
+                    class: "text-gray-100 font-semibold no-underline block px-4 py-2" %>
+
       </li>
-      <li class="list-none hover-underline-animation">
-        <%= link_to "Resources", resources_path %>
+
+      <li class="list-none hover:bg-gray-700 rounded-br-lg">
+        <%= link_to "Resources", resources_path,
+                    class: "text-gray-100 font-semibold no-underline block px-4 pb-4 pt-2" %>
       </li>
+
     </ul>
   </nav>
 </header>

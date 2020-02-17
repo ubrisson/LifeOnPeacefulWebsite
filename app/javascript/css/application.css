@@ -17,36 +17,8 @@ main {
     @apply min-h-screen mx-auto bg-gray-100 flex flex-wrap justify-center max-w-4xl border rounded-lg shadow-xl my-6;
 }
 
-header {
-    @apply fixed inset-0 h-screen w-24 flex flex-col justify-center ;
-}
-
-nav {
-    @apply leading-loose shadow-md pr-2 py-4 bg-gray-800 rounded-r-lg z-10 text-left;
-}
-
-body > footer {
-    @apply bottom-0 text-center bg-gray-800 z-10 p-4 shadow-lg rounded-t-lg
-}
-
 footer {
     @apply pb-2 px-2
-}
-
-nav > ul {
-    @apply p-0;
-}
-
-nav > ul > li {
-    @apply p-0 hover-underline-animation;
-}
-
-nav > ul > li > a {
-    @apply text-gray-100 font-semibold no-underline ml-2;
-}
-
-body > footer > a, body > footer > h3 {
-    @apply text-gray-300 font-semibold my-0 leading-loose
 }
 
 hgroup {
@@ -117,28 +89,4 @@ blockquote {
 p {
     @apply text-lg font-medium m-2 max-w-lg;
     font-family: Arial, sans-serif;
-}
-
-.hover-underline-animation {
-    display: inline-block;
-    position: relative;
-    color: #cecece;
-}
-
-.hover-underline-animation::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: #cecece;
-    transform-origin: bottom right;
-    transition: transform 0.25s ease-out;
-}
-
-.hover-underline-animation:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
 }
