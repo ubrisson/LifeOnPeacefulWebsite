@@ -53,7 +53,7 @@ group :test do
   gem 'minitest-reporters'
   gem 'rails-controller-testing'
   gem 'webdrivers'
-  gem 'win32console'
+  gem 'win32console', platforms: %i[mingw mswin x64_mingw]
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
