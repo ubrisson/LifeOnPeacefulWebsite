@@ -14,7 +14,7 @@ article {
 }
 
 main {
-    @apply min-h-screen mx-auto bg-gray-100 flex flex-wrap justify-center max-w-4xl border rounded-lg shadow-xl my-6;
+    @apply min-h-3/4 mx-auto bg-gray-100 flex flex-wrap justify-center max-w-4xl border rounded-lg shadow-xl my-6;
 }
 
 footer {
