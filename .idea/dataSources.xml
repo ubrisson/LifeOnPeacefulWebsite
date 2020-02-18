@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="development" uuid="566336f2-09a5-44e6-80ef-da4098be808a">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\Ulysse\RubymineProjects\myBlog\db\development.sqlite3</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="test" uuid="494529c7-3bb4-471b-919b-392b579f4e48">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\Ulysse\RubymineProjects\myBlog\db\test.sqlite3</jdbc-url>
+    </data-source>
+  </component>
+</project>
