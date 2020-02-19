@@ -32,5 +32,7 @@ jobs:
         node-version: '12.x'
     - name: Install JS dependencies
       run: yarn
+    - name: Migrate database
+      run: rails db:migrate RAILS_ENV=test
     - name: Run rails tests
       run: bundle exec rails test
