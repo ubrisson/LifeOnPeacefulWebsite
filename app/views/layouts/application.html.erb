@@ -11,6 +11,10 @@
 <body>
 <%= render 'layouts/header' %>
 
+<% flash.each do |message_type, message| %>
+  <%= content_tag(:div, message, class: "text-red-700 border border-red-300 rounded bg-red-100 mx-auto w-2/5 opacity-75") %>
+<% end %>
+
 <%= yield %>
 
 <%= render 'layouts/footer' %>
