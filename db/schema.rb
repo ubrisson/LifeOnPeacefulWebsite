@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_19_172240) do
+ActiveRecord::Schema.define(version: 2020_02_19_211738) do
+
+  create_table "contents", force: :cascade do |t|
+    t.string "type"
+    t.string "title"
+    t.text "body"
+    t.string "author"
+    t.string "source"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["created_at"], name: "index_contents_on_created_at"
+  end
 
   create_table "taggings", force: :cascade do |t|
     t.integer "tag_id"
