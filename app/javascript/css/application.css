@@ -10,11 +10,11 @@ html {
 }
 
 article {
-    @apply mx-4 border-t border-gray-400 py-6 px-4 text-left max-w-2xl flex flex-col ;
+    @apply mx-auto border-t border-gray-400 py-6 px-4 text-left max-w-2xl w-full flex flex-col ;
 }
 
 main {
-    @apply min-h-3/4 mx-auto bg-gray-100 flex flex-wrap justify-center max-w-4xl border rounded-lg shadow-xl my-6;
+    @apply min-h-3/4 mx-auto bg-gray-100 max-w-4xl border rounded-lg shadow-xl my-6;
 }
 
 footer {

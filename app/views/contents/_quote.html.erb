@@ -1,9 +1,12 @@
 <li id="<%= quote.id %>" class="list-none">
-  <article class="mx-auto max-w-2xl w-full">
+  <article>
     <h4><%= quote.title %></h4>
     <blockquote>
       <p><%= quote.body %></p>
       <footer>-<%= quote.author %>, in <cite> <%= quote.source %></cite></footer>
     </blockquote>
+    <span class="timestamp text-right text-sm">
+      Posted on <%= time_tag(quote.created_at) %>.
+    </span>
   </article>
 </li>
