@@ -1,0 +1,16 @@
+<% provide(:title, 'All Quotes') %>
+
+<main>
+  <hgroup>
+    <h1>Quotes</h1>
+    <h2 class="text-gray-700">Meaningless extracts</h2>
+  </hgroup>
+
+  <%= will_paginate %>
+  <ul class="quotes">
+    <% @quotes.each do |quote| %>
+      <%= render quote %>
+    <% end %>
+  </ul>
+  <%= will_paginate %>
+</main>
