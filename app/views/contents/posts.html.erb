@@ -9,7 +9,7 @@
   <%= will_paginate @posts %>
   <ul class="posts">
     <% @posts.each do |post| %>
-      <%= render post %>
+      <%= render 'post', post: post %>
     <% end %>
   </ul>
   <%= will_paginate @posts %>

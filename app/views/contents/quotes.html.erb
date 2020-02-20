@@ -9,7 +9,7 @@
   <%= will_paginate @quotes %>
   <ul class="quotes">
     <% @quotes.each do |quote| %>
-      <%= render quote %>
+      <%= render 'quote', quote: quote %>
     <% end %>
   </ul>
   <%= will_paginate @quotes %>
