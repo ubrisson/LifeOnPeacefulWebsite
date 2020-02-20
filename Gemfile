@@ -22,8 +22,11 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-# Use gem for tagging posts
+# Use Acts-as-taggable-on for tagging contents
 gem 'acts-as-taggable-on', '~> 6.0'
+
+# Use will-paginate for pagination of contents
+gem 'will_paginate', '~> 3.1.0'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
