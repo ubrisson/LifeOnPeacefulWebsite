@@ -6,11 +6,11 @@
     <h2 class="text-gray-700">Posts and notes on anything and everything</h2>
   </hgroup>
 
-  <%= will_paginate %>
+  <%= will_paginate @posts %>
   <ul class="posts">
     <% @posts.each do |post| %>
       <%= render post %>
     <% end %>
   </ul>
-  <%= will_paginate %>
+  <%= will_paginate @posts %>
 </main>
