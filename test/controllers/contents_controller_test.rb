@@ -7,12 +7,12 @@ class ContentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get posts" do
-    get contents_posts_url
+    get posts_path
     assert_response :success
   end
 
   test "should get quotes" do
-    get contents_quotes_url
+    get quotes_path
     assert_response :success
   end
 
