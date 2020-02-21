@@ -2,6 +2,25 @@
 
 <main>
   <hgroup><h1>Resources</h1></hgroup>
+
+  <section>
+  <%= form_with model: Resource.new do |form| %>
+
+    <%= form.label(:title) %>
+    <%= form.text_field :title %>
+
+    <%= form.label(:author) %>
+    <%= form.text_field :author %>
+
+    <%= form.label(:publication) %>
+    <%= form.date_field :publication %>
+
+    <%= form.label(:link) %>
+    <%= form.url_field :link%>
+    <%= form.submit "Create" %>
+  <% end %>
+  </section>
+
   <%= will_paginate %>
   <ul class="resources">
     <%= render @resources %>

@@ -5,6 +5,13 @@ class ResourcesController < ApplicationController
   end
 
   def create
+    @resource = Resource.new(resource_params)
+    if @resource.save
+      flash[:success] = "Resource created."
+    else
+      flash[:danger] = "Unable to create resource."
+    end
+    redirect_to resources_path
   end
 
   def update
@@ -13,4 +20,8 @@ class ResourcesController < ApplicationController
   def destroy
   end
 
+  private
+  def resource_params
+    params.require(:resource).permit(:title,:author,:description,:link,:publication)
+  end
 end
