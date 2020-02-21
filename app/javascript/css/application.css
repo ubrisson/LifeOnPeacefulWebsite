@@ -63,7 +63,7 @@ a {
 }
 
 details {
-    @apply border rounded px-2;
+    @apply rounded px-2;
 }
 
 summary {
