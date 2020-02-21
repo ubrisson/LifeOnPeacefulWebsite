@@ -1,7 +1,11 @@
 <li id="<%= resource.id %>" class="list-none">
   <article>
     <%= link_to resource.title, resource.link %>
-    <cite> by <%= resource.author %>, on <%= time_tag(resource.publication) %>. </cite>
-<!--    <p> <%#= resource.description %> </p>-->
+    <cite> by <%= resource.author %>
+      <% unless resource.publication.nil? %>
+        on <%= time_tag(resource.publication) %>
+      <% end %>
+    </cite>
+    <!--    <p> <%#= resource.description %> </p>-->
   </article>
 </li>
