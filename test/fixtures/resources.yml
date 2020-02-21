@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+orange:
+  title: "orange"
+  description: "I just ate an orange!"
+  created_at: <%= 10.minutes.ago %>
+  author: "exampleAuthor"
+tau_manifesto:
+  title: "tau_manifesto"
+  description: "Check out the @tauday site by @mhartl: http://tauday.com"
+  created_at: <%= 3.years.ago %>
+  author: "exampleAuthor"
+cat_video:
+  title: "cat_video"
+  description: "Sad cats are sad: http://youtu.be/PKffm2uI4dk"
+  created_at: <%= 2.hours.ago %>
+  author: "exampleAuthor"
+most_recent:
+  title: "recent"
+  description: "Writing a short test"
+  created_at: <%= Time.zone.now %>
+  author: "exampleAuthor"
+
