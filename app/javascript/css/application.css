@@ -14,7 +14,7 @@ article {
 }
 
 main {
-    @apply min-h-3/4 mx-auto bg-gray-100 max-w-4xl border rounded-lg shadow-xl my-6;
+    @apply min-h-3/4 mx-auto bg-gray-100 max-w-4xl border rounded-lg shadow-xl my-6 pb-8;
 }
 
 footer {
@@ -89,4 +89,32 @@ blockquote {
 p {
     @apply text-lg font-medium m-2 max-w-lg;
     font-family: Arial, sans-serif;
+}
+
+.pagination {
+ @apply flex pl-0 list-none rounded my-2 mx-auto justify-center;
+}
+
+.previous_page, .next_page, .current, .pagination > a {
+    @apply relative block py-2 px-3 leading-tight text-blue-900 ml-0 no-underline border border-gray-500;
+}
+
+.pagination>a:not(:first-child)  {
+    @apply border-l-0;
+}
+
+.previous_page {
+    @apply rounded-l;
+}
+
+.next_page {
+    @apply rounded-r;
+}
+
+.current {
+    @apply bg-gray-500 text-gray-100 font-bold not-italic;
+}
+
+.disabled {
+    @apply bg-gray-200 text-gray-500;
 }
