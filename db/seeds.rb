@@ -19,3 +19,12 @@ end
   source = Faker::Book.title
   Content.create(title: title, body: body, type: 'quote', author: author, source: source)
 end
+
+50.times do |_|
+  title = Faker::Book.title
+  body = Faker::Book.genre
+  author = Faker::Book.author
+  source = Faker::Address.full_address
+  publication = Faker::Date.backward
+  Resource.create(title: title, description: body, author: author, link: source, publication: publication)
+end

@@ -5,7 +5,6 @@ class Resource < ApplicationRecord
   validates :author, presence: true, length: { maximum: 120 }
   validates :description, presence: true, allow_blank: true
   validates :link, presence: true, allow_blank: true, length: { maximum: 120 }
-  validates :publication
 
   # TODO Validate and test publication date ?
   # TODO Validate and test link url

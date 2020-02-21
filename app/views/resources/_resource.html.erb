@@ -1,0 +1,7 @@
+<li id="<%= resource.id %>" class="list-none">
+  <article>
+    <%= link_to resource.title, resource.link %>
+    <cite> by <%= resource.author %>, on <%= time_tag(resource.publication) %>. </cite>
+<!--    <p> <%#= resource.description %> </p>-->
+  </article>
+</li>

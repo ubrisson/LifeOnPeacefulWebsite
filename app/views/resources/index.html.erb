@@ -1,0 +1,10 @@
+<% provide(:title, 'Resources') %>
+
+<main>
+  <hgroup><h1>Resources</h1></hgroup>
+  <%= will_paginate %>
+  <ul class="resources">
+    <%= render @resources %>
+  </ul>
+  <%= will_paginate %>
+</main>
