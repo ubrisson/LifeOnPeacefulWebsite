@@ -22,6 +22,7 @@ class ResourcesController < ApplicationController
 
   private
   def resource_params
-    params.require(:resource).permit(:title,:author,:description,:link,:publication)
+    params.require(:resource).permit(:title, :author, :description, :link,
+                                     :publication, :tag_list)
   end
 end

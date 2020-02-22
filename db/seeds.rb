@@ -26,5 +26,10 @@ end
   author = Faker::Book.author
   source = Faker::Address.full_address
   publication = Faker::Date.backward
-  Resource.create(title: title, description: body, author: author, link: source, publication: publication)
+  Resource.create(title: title,
+                  description: body,
+                  author: author,
+                  link: source,
+                  publication: publication,
+                  tag_list: 'resource, untagged')
 end
