@@ -1,6 +1,6 @@
 <li id="<%= resource.id %>" class="list-none">
   <article>
-    <%= link_to resource.title, resource.link %>
+    <%= link_to resource.title, resource.link, class: "font-semibold mr-auto" %>
     <cite> by <%= resource.author %>
       <% unless resource.publication.nil? %>
         on <%= time_tag(resource.publication) %>

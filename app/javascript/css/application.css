@@ -10,7 +10,11 @@ html {
 }
 
 article {
-    @apply mx-auto border-t border-gray-400 py-6 px-4 text-left max-w-2xl w-full flex flex-col ;
+    @apply max-w-xl w-full flex flex-col;
+    @apply bg-white shadow rounded;
+    @apply px-4 py-4;
+    @apply mx-auto my-3;
+    @apply text-left;
 }
 
 main {
@@ -59,19 +63,7 @@ h6 {
 }
 
 a {
-    @apply font-medium text-gray-900 underline
-}
-
-details {
-    @apply rounded px-2;
-}
-
-summary {
-    @apply font-semibold p-2;
-}
-
-details[open] {
-    @apply pb-2 px-2
+    @apply font-medium text-gray-900 underline inline-block;
 }
 
 li {
@@ -92,23 +84,25 @@ p {
 }
 
 .pagination {
- @apply flex pl-0 list-none rounded my-2 mx-auto justify-center;
+    @apply flex rounded-lg my-4 mx-auto justify-center shadow;
+    width: max-content;
 }
 
 .previous_page, .next_page, .current, .pagination > a {
-    @apply relative block py-2 px-3 leading-tight text-blue-900 ml-0 no-underline border border-gray-500;
+    @apply relative block py-2 px-3 leading-tight ml-0 no-underline;
+    @apply bg-white font-semibold text-gray-500 text-lg;
 }
 
-.pagination>a:not(:first-child)  {
-    @apply border-l-0;
+.pagination > a:hover {
+    @apply bg-gray-300 text-blue-900;
 }
 
 .previous_page {
-    @apply rounded-l;
+    @apply rounded-l-lg;
 }
 
 .next_page {
-    @apply rounded-r;
+    @apply rounded-r-lg;
 }
 
 .current {

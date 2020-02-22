@@ -1,22 +1,23 @@
 <% provide(:title, 'Resources') %>
 
 <main>
-  <hgroup><h1>Resources</h1></hgroup>
+  <hgroup class="pb-0"><h1>Resources</h1></hgroup>
 
   <%= will_paginate %>
   <ul class="resources">
-  <details class="mx-auto max-w-2xl text-left my-3">
-    <summary> New Resource </summary>
-    <%= form_with model: Resource.new, class: "bg-white mx-auto max-w-2xl rounded-lg shadow-lg px-8 pt-6 pb-8" do |form| %>
+  <details class="mx-auto max-w-xl text -left my-4 rounded bg-white shadow">
+    <summary class ="uppercase tracking-wide text-sm text-gray-500 font-semibold px-3 py-3
+    hover:bg-gray-300 hover:text-blue-900 cursor-pointer rounded-t"> New Resource </summary>
+    <%= form_with model: Resource.new, class: "px-8 pt-3 pb-8" do |form| %>
 
       <%= form.label(:title, class: "block uppercase tracking-wide  text-sm text-left text-gray-700 font-bold ") %>
       <%= form.text_field :title, class: "w-full bg-gray-200 text-blue-900 focus:bg-white py-1 px-2 rounded mb-4 mt-2 border-gray-200 border-2", required: "required" %>
       <div class="flex justify-between">
-      <div class="w-2/5">
+      <div class="w-6/12">
         <%= form.label(:author, class: "block uppercase tracking-wide text-sm  text-left text-gray-700 font-bold") %>
         <%= form.text_field :author, required: "required", class: "w-full bg-gray-200 text-blue-900 focus:bg-white py-1 px-2 rounded mb-4 mt-2 border-gray-200 border-2" %>
       </div>
-      <div class="w-2/5">
+      <div class="w-5/12">
         <%= form.label(:publication, class: "block uppercase tracking-wide  text-sm text-left text-gray-700 font-bold ") %>
         <%= form.date_field :publication, class: "w-full bg-gray-200 text-blue-900 focus:bg-white py-1 px-2 rounded mb-4 mt-2 border-gray-200 border-2" %>
       </div>
