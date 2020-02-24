@@ -5,7 +5,9 @@ class ResourcesController < ApplicationController
   end
 
   def index
-    @resources = Resource.paginate(page: params[:page])
+    @resources = params[:tag] ?
+                     Resource.tagged_with(params[:tag]).paginate(page: params[:page]) :
+                     Resource.paginate(page: params[:page])
     @resource = Resource.new
   end
 
@@ -44,7 +46,7 @@ class ResourcesController < ApplicationController
   private
 
   def resource_params
-    params.require(:resource).permit(:title, :author, :description, :link,
-                                     :publication, :tag_list)
+    # params.require(:resource).permit(:title, :author, :description, :link,
+    #                                  :publication, :tag_list)
   end
 end
