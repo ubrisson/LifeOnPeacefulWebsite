@@ -1,0 +1,23 @@
+<%= form_with(model: @resource, class: "px-8 pt-3 pb-8") do |form| %>
+
+  <%= form.label(:title, class: "block uppercase tracking-wide  text-sm text-left text-gray-700 font-bold ") %>
+  <%= form.text_field :title, class: "w-full bg-gray-200 text-blue-900 focus:bg-white py-1 px-2 rounded mb-4 mt-2 border-gray-200 border-2", required: "required" %>
+  <div class="flex justify-between">
+    <div class="w-6/12">
+      <%= form.label(:author, class: "block uppercase tracking-wide text-sm  text-left text-gray-700 font-bold") %>
+      <%= form.text_field :author, required: "required", class: "w-full bg-gray-200 text-blue-900 focus:bg-white py-1 px-2 rounded mb-4 mt-2 border-gray-200 border-2" %>
+    </div>
+    <div class="w-5/12">
+      <%= form.label(:publication, class: "block uppercase tracking-wide  text-sm text-left text-gray-700 font-bold ") %>
+      <%= form.date_field :publication, class: "w-full bg-gray-200 text-blue-900 focus:bg-white py-1 px-2 rounded mb-4 mt-2 border-gray-200 border-2" %>
+    </div>
+  </div>
+
+  <%= form.label(:link, class: "block uppercase tracking-wide text-sm  text-left text-gray-700 font-bold") %>
+  <%= form.url_field :link, class: " w-full bg-gray-200 text-blue-900 focus:bg-white py-1 px-2 rounded mb-4 mt-2 border-gray-200 border-2" %>
+
+  <%= form.label(:tag_list,"Tags", class: "block uppercase tracking-wide text-sm  text-left text-gray-700 font-bold") %>
+  <%= form.text_field :tag_list, class: " w-full bg-gray-200 text-blue-900 focus:bg-white py-1 px-2 rounded mb-4 mt-2 border-gray-200 border-2" %>
+
+  <%= form.submit yield(:button_text), class: 'bg-gray-600 text-white cursor-pointer hover:bg-blue-900  font-bold mt-2 py-2 px-4 rounded focus:outline-none focus:shadow-outline' %>
+<% end %>
