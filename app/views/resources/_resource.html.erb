@@ -1,6 +1,14 @@
 <li id="<%= resource.id %>" class="list-none">
   <article>
-    <%= link_to resource.title, resource.link, class: "font-semibold mr-auto" %>
+    <div class="flex" >
+      <%= link_to resource.title, resource.link, class: "font-semibold mr-auto inline-block" %>
+      <%= link_to "\u{270E}", edit_resource_path(resource),
+                  class: "no-underline px-1 mx-1 bg-gray-100 rounded shadow opacity-50
+         hover:opacity-100"  %>
+      <%= link_to "\u{274C}",  resource,  method: :delete, data: { confirm: 'Are you sure?' },
+                  class: "no-underline px-1 mx-1 bg-gray-100 rounded shadow opacity-50
+         hover:opacity-100"  %>
+    </div>
     <cite> by <%= resource.author %>
       <% unless resource.publication.nil? %>
         on <%= time_tag(resource.publication) %>
@@ -11,7 +19,7 @@
     <div class="mt-1">
       <% resource.tag_list.each do |tag| %>
         <%= link_to "##{tag}", "#", class: "no-underline text-xs uppercase px-2 py-1 m-1 bg-gray-100
-         border-gray-500 text-gray-500 rounded shadow font-semibold
+         text-gray-500 rounded shadow font-semibold
          hover:bg-gray-300 hover:text-blue-900" %>
       <% end %>
     </div>
