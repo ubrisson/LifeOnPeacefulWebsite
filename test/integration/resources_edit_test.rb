@@ -20,14 +20,10 @@ class ResourcesEditTest < ActionDispatch::IntegrationTest
     author = 'ExampleAuthor'
     link = 'example.org'
     patch resource_path(@resource), params:
-        {
-          resource:
-            {
-              title: 'ExampleTitle',
-              author: 'ExampleAuthor',
-              link: 'example.org'
-            }
-        }
+        { resource:
+            { title: title,
+              author: author,
+              link: link } }
     assert_not flash.empty?
     assert_redirected_to @resource
     @resource.reload

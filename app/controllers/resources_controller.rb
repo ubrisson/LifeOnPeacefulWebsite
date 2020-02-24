@@ -6,6 +6,7 @@ class ResourcesController < ApplicationController
 
   def index
     @resources = Resource.paginate(page: params[:page])
+    @resource = Resource.new
   end
 
   def create
