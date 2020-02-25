@@ -9,15 +9,15 @@ module ApplicationHelper
     end
   end
 
-  # Redirects to stored location (or to the default).
+  # Redirects to stored referrer (or to the default).
   def redirect_back_or(default)
-    redirect_to(session[:forwarding_url] || default)
-    session.delete(:forwarding_url)
+    controller.redirect_to(session[:referrer] || default)
+    session.delete(:referrer)
   end
 
   # Stores the URL trying to be accessed.
-  def store_location
-    session[:forwarding_url] = request.original_url if request.get?
+  def store_referrer
+    session[:referrer] = request.referrer if request.get?
   end
 
 end

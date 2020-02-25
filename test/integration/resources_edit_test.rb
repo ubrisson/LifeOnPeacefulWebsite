@@ -8,9 +8,10 @@ class ResourcesEditTest < ActionDispatch::IntegrationTest
   test 'unsuccessful edit' do
     get edit_resource_path(@resource)
     assert_template 'resources/edit'
-    patch resource_path(@resource), params: { resource: { title: 'test' } }
+    patch resource_path(@resource), params: { resource: { title: '' } }
     assert_template 'resources/edit'
     assert_not flash.empty?
+    assert_select 'div', text: 'Failed edition.'
   end
 
   test 'successful edit' do
@@ -30,5 +31,15 @@ class ResourcesEditTest < ActionDispatch::IntegrationTest
     assert_equal title, @resource.title
     assert_equal author, @resource.author
     assert_equal link, @resource.link
+  end
+
+  test 'successful redirection to last page' do
+    get edit_resource_path(@resource), headers: { 'HTTP_REFERER' => resources_path }
+    patch resource_path(@resource), params:
+        { resource:
+              { title: 'ExampleTitle',
+                author: 'ExampleAuthor',
+                link: 'example.org' } }
+    assert_redirected_to resources_path
   end
 end

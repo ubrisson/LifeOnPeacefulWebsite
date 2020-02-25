@@ -22,7 +22,7 @@ class ResourcesController < ApplicationController
   end
 
   def edit
-    store_location
+    helpers.store_referrer
     @resource = Resource.find(params[:id])
   end
 
@@ -30,7 +30,7 @@ class ResourcesController < ApplicationController
     @resource = Resource.find(params[:id])
     if @resource.update(resource_params)
       flash[:success] = 'Resource edited'
-      redirect_back_or @resource
+      helpers.redirect_back_or @resource
     else
       flash[:danger] = 'Failed edition.'
       render 'resources/edit'
@@ -46,7 +46,7 @@ class ResourcesController < ApplicationController
   private
 
   def resource_params
-    # params.require(:resource).permit(:title, :author, :description, :link,
-    #                                  :publication, :tag_list)
+    params.require(:resource).permit(:title, :author, :description, :link,
+                                     :publication, :tag_list)
   end
 end
