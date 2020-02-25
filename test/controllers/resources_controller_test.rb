@@ -30,4 +30,12 @@ class ResourcesControllerTest < ActionDispatch::IntegrationTest
       assert_select 'a', text: title, href: link, count: 0
     end
   end
+
+  test 'should get tagged resource' do
+    @resource = resources(:orange)
+    @resource.tag_list = 'example_tag'
+    @resource.save
+    get resources_path, params: { tag: 'example_tag' }
+    assert_select 'a', text: '#example_tag'
+  end
 end
