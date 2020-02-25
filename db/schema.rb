@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_21_095704) do
+ActiveRecord::Schema.define(version: 2020_02_25_194210) do
 
   create_table "contents", force: :cascade do |t|
     t.string "type"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2020_02_21_095704) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.date "publication"
+    t.boolean "public"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -66,6 +67,7 @@ ActiveRecord::Schema.define(version: 2020_02_21_095704) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
+    t.boolean "admin"
     t.index ["name"], name: "index_users_on_name", unique: true
   end
 
