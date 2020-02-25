@@ -17,7 +17,7 @@
   <%= form.url_field :link, class: " w-full bg-gray-200 text-blue-900 focus:bg-white py-1 px-2 rounded mb-4 mt-2 border-gray-200 border-2" %>
 
   <%= form.label(:tag_list,"Tags", class: "block uppercase tracking-wide text-sm  text-left text-gray-700 font-bold") %>
-  <%= form.text_field :tag_list, class: " w-full bg-gray-200 text-blue-900 focus:bg-white py-1 px-2 rounded mb-4 mt-2 border-gray-200 border-2" %>
+  <%= form.text_field :tag_list, value: @resource.form_tags , class: " w-full bg-gray-200 text-blue-900 focus:bg-white py-1 px-2 rounded mb-4 mt-2 border-gray-200 border-2" %>
 
   <%= form.submit yield(:button_text), class: 'bg-gray-600 text-white cursor-pointer hover:bg-blue-900  font-bold mt-2 py-2 px-4 rounded focus:outline-none focus:shadow-outline' %>
 <% end %>
