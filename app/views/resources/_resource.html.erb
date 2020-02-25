@@ -2,19 +2,23 @@
   <article>
     <div class="flex" >
       <%= link_to resource.title, resource.link, title:resource.link,
-                  class: "font-semibold no-underline mr-auto inline-block hover:underline" %>
+                  class: "font-semibold text-lg no-underline mr-auto inline-block hover:underline" %>
       <%= link_to "\u{270E}", edit_resource_path(resource), title: 'Edit',
                   class: "no-underline px-1 mx-1 bg-gray-100 rounded shadow opacity-50
-         hover:opacity-100"  %>
+         hover:opacity-100 hover:bg-gray-300"  %>
       <%= link_to "\u{274C}",  resource, title: 'Delete', method: :delete, data: { confirm: 'Are you sure?' },
                   class: "no-underline px-1 mx-1 bg-gray-100 rounded shadow opacity-50
-         hover:opacity-100"  %>
+         hover:opacity-100 hover:bg-gray-300"  %>
     </div>
     <cite class="leading-none text-sm not-italic"> by <%= resource.author %>
       <% unless resource.publication.nil? %>
         on <%= time_tag(resource.publication) %>
       <% end %>
     </cite>
+
+    <% unless resource.description.blank? %>
+      <p class="text-base m-0 mt-2 font-normal text-gray-700"> <%= resource.description %> </p>
+    <% end %>
 
     <% unless resource.tag_list.nil? %>
     <div class="mt-1 text-right">
