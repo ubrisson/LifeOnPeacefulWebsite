@@ -1,14 +1,19 @@
-class ResourcesController < ApplicationController
+# frozen_string_literal: true
 
+class ResourcesController < ApplicationController
   def show
     @resource = Resource.find(params[:id])
   end
 
   def index
-    @resources = params[:tag] ?
-                     Resource.tagged_with(params[:tag]).paginate(page: params[:page]) :
-                     Resource.paginate(page: params[:page])
     @resource = Resource.new
+    @resources = if params[:q]
+                   Resource.search_for(params[:q]).paginate(page: params[:page])
+                 elsif params[:tag]
+                   Resource.tagged_with(params[:tag]).paginate(page: params[:page])
+                 else
+                   Resource.paginate(page: params[:page])
+                 end
   end
 
   def create

@@ -38,4 +38,9 @@ class ResourcesControllerTest < ActionDispatch::IntegrationTest
     get resources_path, params: { tag: 'example_tag' }
     assert_select 'a', text: '#example_tag'
   end
+
+  test 'should get searchable resource' do
+    get resources_path, params: { q: 'orange' }
+    assert_select 'article', count: 1
+  end
 end

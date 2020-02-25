@@ -1,5 +1,6 @@
 class Resource < ApplicationRecord
   acts_as_taggable
+  scoped_search on: %i[title author description]
   default_scope -> { order(created_at: :desc) }
   validates :title, presence: true, length: {maximum: 144}
   validates :author, presence: true, length: {maximum: 120}
