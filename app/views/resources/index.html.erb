@@ -4,9 +4,14 @@
 <main>
   <hgroup class="pb-0"><h1>Resources</h1></hgroup>
 
-  <%= form_with url: resources_path, method: "get" do |form| %>
-    <%= form.search_field :q, placeholder: 'Search...', class: "max-w-xs w-full bg-white text-blue-900 focus:bg-white py-1 px-2 rounded mb-4 mt-2 border-gray-200 border-2" %>
-    <%= form.submit "search", name:nil, class: 'bg-gray-600 uppercase text-sm text-white cursor-pointer hover:bg-blue-900  font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline'  %>
+  <%= form_with url: resources_path, method: "get", local: true do |form| %>
+    <%= form.search_field :q, placeholder: 'Search...',
+                          class: "max-w-xs w-full bg-white text-blue-900 focus:bg-white
+                          py-1 px-2 rounded mb-4 mt-2 border-gray-200 border-2" %>
+    <%= form.submit "search", name:nil,
+                    class: 'bg-gray-600 uppercase text-sm text-white cursor-pointer
+                    hover:bg-blue-900  font-bold py-1 px-2 rounded focus:outline-none
+                    focus:shadow-outline'  %>
   <% end %>
 
   <%= will_paginate %>
