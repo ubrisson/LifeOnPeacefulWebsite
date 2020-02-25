@@ -190,6 +190,8 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    scoped_search (4.1.7)
+      activerecord (>= 4.2.0)
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
@@ -257,6 +259,7 @@ DEPENDENCIES
   rails (~> 6.0.2, >= 6.0.2.1)
   rails-controller-testing
   sass-rails (>= 6)
+  scoped_search (~> 4.1.7)
   selenium-webdriver
   spring
   spring-watcher-listen

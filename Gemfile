@@ -28,6 +28,9 @@ gem 'acts-as-taggable-on', '~> 6.0'
 # Use will-paginate for pagination of contents
 gem 'will_paginate', '~> 3.1.0'
 
+# Use scope_search for the search engine
+gem 'scoped_search', '~> 4.1.7'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
