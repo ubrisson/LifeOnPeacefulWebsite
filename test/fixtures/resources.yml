@@ -22,10 +22,10 @@ cat_video:
   public: true
 
 most_recent:
-  title: "recent"
-  description: "Writing a short test"
+  title: recent
+  description: Writing a short test
   created_at: <%= Time.zone.now %>
-  author: "exampleAuthor"
-  public: "true"
+  author: exampleAuthor
+  public: true
 
 

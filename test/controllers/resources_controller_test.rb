@@ -51,4 +51,12 @@ class ResourcesControllerTest < ActionDispatch::IntegrationTest
     get resources_path, params: { q: 'orange' }
     assert_select 'article', count: 1
   end
+
+  test 'should get tagged and searchable resource' do
+    @resource = resources(:most_recent)
+    @resource.tag_list = 'orange'
+    @resource.save
+    get resources_path, params: { q: 'orange' }
+    assert_select 'article', count: 2
+  end
 end

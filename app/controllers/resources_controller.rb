@@ -10,12 +10,10 @@ class ResourcesController < ApplicationController
   def index
     @resource = Resource.new
     @resources = if params[:q]
-                   tagged = correct_resources.tagged_with(params[:q])
-                   searched = correct_resources.search_for(params[:q])
-                   # [0..-40] substracts the "Order by" clause within the queries
-                   # This clause was causing a SQLite order before union exception
+                   tagged = correct_resources.tagged_with(params[:q]).unscope(:order)
+                   searched = correct_resources.search_for(params[:q]).unscope(:order)
                    correct_resources
-                     .from("(#{tagged.to_sql[0..-40]} UNION #{searched.to_sql[0..-40]}) as Resources")
+                     .from("(#{tagged.to_sql} UNION #{searched.to_sql}) as Resources")
                      .paginate(page: params[:page])
                  elsif params[:tag]
                    correct_resources.tagged_with(params[:tag]).paginate(page: params[:page])
