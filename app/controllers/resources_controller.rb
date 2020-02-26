@@ -59,7 +59,7 @@ class ResourcesController < ApplicationController
   end
 
   def correct_resources
-    admin? ? Resource : Resource.only_public
+    logged_in? ? Resource.all : Resource.only_public
   end
 
   def search_and_tagged_resources(params)

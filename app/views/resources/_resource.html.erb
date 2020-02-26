@@ -5,11 +5,11 @@
                   class: "font-semibold text-blue-900 text-lg no-underline mr-auto
                   inline-block hover:underline hover:text-black" %>
 
-      <% if controller.admin? %>
+      <% if admin? %>
 
         <%= form_with model: resource do |form| %>
           <%= form.hidden_field :public, value: !resource.public? ? 1 : 0 %>
-          <%= form.submit "#{resource.public? ? "\u{1F441}" : "\u{1F311}" }" , locale: true,
+          <%= form.submit "#{resource.public? ? "\u{1F441}" : "\u{1F311}" }",
                           title: "Make '#{resource.title}' #{!resource.public? ? 'public' : 'private'}",
                           class: "no-underline px-1 mx-1 bg-gray-100 rounded shadow opacity-50
          hover:opacity-100 hover:bg-gray-300 cursor-pointer " %>
@@ -44,6 +44,5 @@
         <% end %>
       </div>
     <% end %>
-    <!--    <p> <%#= resource.description %> </p>-->
   </article>
 </li>
