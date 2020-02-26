@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ResourcesController < ApplicationController
-  before_action :admin_user, only: [:create, :edit, :update, :destroy]
+  before_action :admin_user, only: [:create, :edit, :update, :destroy, :import]
 
   def show
     @resource = correct_resources.find(params[:id])
