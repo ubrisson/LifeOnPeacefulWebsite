@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     user = User.find_by(name: params[:session][:name].downcase)
     if user&.authenticate(params[:session][:password])
       log_in user
-      redirect_to root_path
+      redirect_to root_url
     elsif user
       flash.now[:danger] = 'Invalid password'
       render 'new'

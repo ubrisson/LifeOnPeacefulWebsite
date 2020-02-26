@@ -3,9 +3,11 @@ require 'test_helper'
 class ResourcesEditTest < ActionDispatch::IntegrationTest
   def setup
     @resource = resources(:orange)
+    @user = users(:michael)
   end
 
   test 'unsuccessful edit' do
+    log_in_as(@user)
     get edit_resource_path(@resource)
     assert_template 'resources/edit'
     patch resource_path(@resource), params: { resource: { title: '' } }
@@ -15,6 +17,8 @@ class ResourcesEditTest < ActionDispatch::IntegrationTest
   end
 
   test 'successful edit' do
+
+    log_in_as(@user)
     get edit_resource_path(@resource)
     assert_template 'resources/edit'
     title = 'ExampleTitle'
@@ -34,6 +38,8 @@ class ResourcesEditTest < ActionDispatch::IntegrationTest
   end
 
   test 'successful redirection to last page' do
+
+    log_in_as(@user)
     get edit_resource_path(@resource), headers: { 'HTTP_REFERER' => resources_path }
     patch resource_path(@resource), params:
         { resource:

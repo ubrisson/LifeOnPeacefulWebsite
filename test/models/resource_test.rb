@@ -4,10 +4,11 @@ require 'test_helper'
 
 class ResourceTest < ActiveSupport::TestCase
   def setup
-    @resource = Resource.new(author: 'exampleAuthor', title: 'exampleTitle')
+    @resource = Resource.new(author: 'exampleAuthor', title: 'exampleTitle', public: 'false')
     @full_resource = Resource.new(author: 'exampleAuthor', title: 'exampleTitle',
                                   description: 'A very interesting article on examples.',
-                                  link: 'http://example.org/exampleArticle')
+                                  link: 'http://example.org/exampleArticle',
+                                  public: 'true')
   end
   test 'resources should be valid' do
     assert @resource.valid?

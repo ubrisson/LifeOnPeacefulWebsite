@@ -2,7 +2,12 @@ require 'test_helper'
 
 class ResourcesControllerTest < ActionDispatch::IntegrationTest
 
+  def setup
+    @user = users(:michael)
+  end
+
   test 'should create new post' do
+    log_in_as(@user)
     assert_difference 'Resource.count', 1 do
       title = 'ExampleTitle'
       author = 'ExampleAuthor'
@@ -11,13 +16,16 @@ class ResourcesControllerTest < ActionDispatch::IntegrationTest
           { resource:
                { title: title,
                  author: author,
-                 link: link } }
+                 link: link,
+                 public: false } }
       assert_not flash.empty?
       assert_redirected_to resources_path
     end
   end
 
   test 'should not create a new post' do
+    log_in_as(@user)
+    assert is_logged_in?
     assert_no_difference 'Resource.count' do
       title = 'ExampleTitle'
       link = 'example.org'
