@@ -4,13 +4,11 @@
       <li class="list-none hover:bg-gray-700 rounded-tr-lg">
         <%= link_to "Home", root_path,
                     class: "text-gray-100 font-semibold no-underline block px-4 pt-4 pb-2" %>
-
       </li>
 
       <li class="list-none hover:bg-gray-700 ">
         <%= link_to "About", about_path,
                     class: "text-gray-100 font-semibold no-underline block px-4 py-2" %>
-
       </li>
 
       <li class="list-none hover:bg-gray-700 ">
@@ -23,16 +21,22 @@
                     class: "text-gray-100 font-semibold no-underline block px-4 py-2" %>
       </li>
 
-      <li class="list-none hover:bg-gray-700 ">
-        <%= link_to "Quotes", quotes_path,
-                    class: "text-gray-100 font-semibold no-underline block px-4 py-2" %>
-      </li>
-
       <li class="list-none hover:bg-gray-700 rounded-br-lg">
-        <%= link_to "Private", login_path,
+        <%= link_to "Quotes", quotes_path,
                     class: "text-gray-100 font-semibold no-underline block px-4 pb-4 pt-2" %>
       </li>
 
+      <li class="fixed top-0 right-0 list-none hover:bg-gray-700 rounded-bl-lg ">
+        <% if logged_in? %>
+          <%= link_to "Log out", logout_path, method: :delete,
+                      class: "text-transparent no-underline
+                    pl-4 pr-3 pt-2 pb-3 hover:text-gray-100 font-semibold" %>
+        <% else %>
+          <%= link_to "Private access", login_path,
+                      class: "text-transparent no-underline
+                    pl-4 pr-3 pt-2 pb-3 hover:text-gray-100 font-semibold" %>
+        <% end %>
+      </li>
     </ul>
   </nav>
 </header>
