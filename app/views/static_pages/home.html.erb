@@ -1,8 +1,14 @@
 <main>
 
-<hgroup>
-  <h1>Life on Peaceful</h1>
-  <h2 class="text-gray-700">A personnal blog | pet-project | life experiment</h2>
-</hgroup>
+  <hgroup>
+    <h1>Life on Peaceful</h1>
+    <h2 class="text-gray-700">A personnal blog | pet-project | life experiment</h2>
+  </hgroup>
+
+  <% if logged_in? %>
+    <body>
+    <h3> Welcome <%= current_user.name %> </h3>
+    </body>
+  <% end %>
 
 </main>
