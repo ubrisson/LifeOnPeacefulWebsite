@@ -28,4 +28,10 @@
   </ul>
   <%= will_paginate %>
   <%= page_entries_info @resources %>
+  <%= link_to "\u{2B07} Download as json \u{2B07}",
+              "resources/export?#{URI(request.original_url).query}",
+              title: "Download as JSON",
+              target: '_blank',
+              class: "block text-sm"
+  %>
 </main>

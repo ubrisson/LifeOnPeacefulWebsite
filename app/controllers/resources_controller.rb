@@ -9,17 +9,7 @@ class ResourcesController < ApplicationController
 
   def index
     @resource = Resource.new
-    @resources = if params[:q]
-                   tagged = correct_resources.tagged_with(params[:q]).unscope(:order)
-                   searched = correct_resources.search_for(params[:q]).unscope(:order)
-                   correct_resources
-                     .from("(#{tagged.to_sql} UNION #{searched.to_sql}) as Resources")
-                     .paginate(page: params[:page])
-                 elsif params[:tag]
-                   correct_resources.tagged_with(params[:tag]).paginate(page: params[:page])
-                 else
-                   correct_resources.paginate(page: params[:page])
-                 end
+    @resources = search_and_tagged_resources(params).paginate(page: params[:page])
   end
 
   def create
@@ -55,6 +45,12 @@ class ResourcesController < ApplicationController
     redirect_to request.referrer || root_url
   end
 
+  def export
+    @resources = search_and_tagged_resources(params)
+    send_data @resources.to_json, filename: "resources_#{params[:q]}.json",
+                                  type: :json
+  end
+
   private
 
   def resource_params
@@ -64,5 +60,18 @@ class ResourcesController < ApplicationController
 
   def correct_resources
     admin? ? Resource : Resource.only_public
+  end
+
+  def search_and_tagged_resources(params)
+    if params[:q]
+      tagged = correct_resources.tagged_with(params[:q]).unscope(:order)
+      searched = correct_resources.search_for(params[:q]).unscope(:order)
+      correct_resources
+        .from("(#{tagged.to_sql} UNION #{searched.to_sql}) as Resources")
+    elsif params[:tag]
+      correct_resources.tagged_with(params[:tag])
+    else
+      correct_resources
+    end
   end
 end
