@@ -1,15 +1,28 @@
 <li id="<%= resource.id %>" class="list-none">
   <article>
-    <div class="flex" >
-      <%= link_to resource.title, resource.link, title:resource.link,
+    <div class="flex">
+      <%= link_to resource.title, resource.link, title: resource.link,
                   class: "font-semibold text-blue-900 text-lg no-underline mr-auto
                   inline-block hover:underline hover:text-black" %>
-      <%= link_to "\u{270E}", edit_resource_path(resource), title: "Edit '#{resource.title}'",
-                  class: "no-underline px-1 mx-1 bg-gray-100 rounded shadow opacity-50
-         hover:opacity-100 hover:bg-gray-300"  %>
-      <%= link_to "\u{274C}",  resource, title: "Delete '#{resource.title}'", method: :delete, data: { confirm: 'Are you sure?' },
-                  class: "no-underline px-1 mx-1 bg-gray-100 rounded shadow opacity-50
-         hover:opacity-100 hover:bg-gray-300"  %>
+
+      <% if controller.admin? %>
+
+        <%= form_with model: resource do |form| %>
+          <%= form.hidden_field :public, value: !resource.public? ? 1 : 0 %>
+          <%= form.submit "#{resource.public? ? "\u{1F441}" : "\u{1F311}" }" , locale: true,
+                          title: "Make '#{resource.title}' #{!resource.public? ? 'public' : 'private'}",
+                          class: "no-underline px-1 mx-1 bg-gray-100 rounded shadow opacity-50
+         hover:opacity-100 hover:bg-gray-300 cursor-pointer " %>
+        <% end %>
+
+        <%= link_to "\u{270E}", edit_resource_path(resource), title: "Edit '#{resource.title}'",
+                    class: "no-underline px-1 mx-1 bg-gray-100 rounded shadow opacity-50
+         hover:opacity-100 hover:bg-gray-300" %>
+        <%= link_to "\u{274C}", resource, title: "Delete '#{resource.title}'", method: :delete, data: {confirm: 'Are you sure?'},
+                    class: "no-underline px-1 mx-1 bg-gray-100 rounded shadow opacity-50
+         hover:opacity-100 hover:bg-gray-300" %>
+      <% end %>
+
     </div>
     <cite class="leading-none not-italic"> by <%= resource.author %>
       <% unless resource.publication.nil? %>
@@ -22,14 +35,14 @@
     <% end %>
 
     <% unless resource.tag_list.nil? %>
-    <div class="mt-1 text-right">
-      <% resource.tag_list.each do |tag| %>
-        <%= link_to "##{tag}", "/resources?tag=#{tag}", title: "All #{tag.upcase} resources",
-                    class: "no-underline text-xs uppercase px-2 py-1 mt-1 bg-gray-100
+      <div class="mt-1 text-right">
+        <% resource.tag_list.each do |tag| %>
+          <%= link_to "##{tag}", "/resources?tag=#{tag}", title: "All #{tag.upcase} resources",
+                      class: "no-underline text-xs uppercase px-2 py-1 mt-1 bg-gray-100
          text-gray-500 rounded shadow font-semibold
          hover:bg-gray-300 hover:text-blue-900" %>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
     <% end %>
     <!--    <p> <%#= resource.description %> </p>-->
   </article>

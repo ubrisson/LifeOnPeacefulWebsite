@@ -8,19 +8,22 @@
     <%= form.search_field :q, placeholder: 'Search...',
                           class: "max-w-xs w-full bg-white text-blue-900 focus:bg-white
                           py-1 px-2 rounded mb-4 mt-2 border-gray-200 border-2" %>
-    <%= form.submit "search", name:nil,
+    <%= form.submit "search", name: nil,
                     class: 'bg-gray-600 uppercase text-sm text-white cursor-pointer
                     hover:bg-blue-900  font-bold py-1 px-2 rounded focus:outline-none
-                    focus:shadow-outline'  %>
+                    focus:shadow-outline' %>
   <% end %>
 
   <%= will_paginate %>
   <ul class="resources">
-  <details class="mx-auto max-w-xl text -left my-4 rounded bg-white shadow">
-    <summary class ="uppercase tracking-wide text-sm text-gray-500 font-semibold px-3 py-3
-    hover:bg-gray-300 hover:text-blue-900 cursor-pointer rounded-t"> New Resource </summary>
-    <%= render 'form' %>
-  </details>
+    <% if controller.admin? %>
+      <details class="mx-auto max-w-xl text -left my-4 rounded bg-white shadow">
+        <summary class="uppercase tracking-wide text-sm text-gray-500 font-semibold px-3 py-3
+                 hover:bg-gray-300 hover:text-blue-900 cursor-pointer rounded-t"> New Resource
+        </summary>
+        <%= render 'form' %>
+      </details>
+    <% end %>
     <%= render @resources %>
   </ul>
   <%= will_paginate %>
