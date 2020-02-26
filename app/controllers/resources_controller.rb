@@ -1,18 +1,20 @@
 # frozen_string_literal: true
 
 class ResourcesController < ApplicationController
+  before_action :admin_user, only: [:create, :edit, :update, :destroy]
+
   def show
-    @resource = Resource.find(params[:id])
+    @resource = correct_resources.find(params[:id])
   end
 
   def index
     @resource = Resource.new
     @resources = if params[:q]
-                   Resource.search_for(params[:q]).paginate(page: params[:page])
+                   correct_resources.search_for(params[:q]).paginate(page: params[:page])
                  elsif params[:tag]
-                   Resource.tagged_with(params[:tag]).paginate(page: params[:page])
+                   correct_resources.tagged_with(params[:tag]).paginate(page: params[:page])
                  else
-                   Resource.paginate(page: params[:page])
+                   correct_resources.paginate(page: params[:page])
                  end
   end
 
@@ -32,6 +34,7 @@ class ResourcesController < ApplicationController
   end
 
   def update
+    session[:referrer] = request.referer if session[:referrer].nil?
     @resource = Resource.find(params[:id])
     if @resource.update(resource_params)
       flash[:success] = 'Resource edited'
@@ -52,6 +55,10 @@ class ResourcesController < ApplicationController
 
   def resource_params
     params.require(:resource).permit(:title, :author, :description, :link,
-                                     :publication, :tag_list)
+                                     :publication, :tag_list, :public)
+  end
+
+  def correct_resources
+    admin? ? Resource : Resource.only_public
   end
 end
