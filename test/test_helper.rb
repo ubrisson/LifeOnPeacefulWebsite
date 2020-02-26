@@ -6,10 +6,25 @@ Minitest::Reporters.use!
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
-  parallelize(workers: :number_of_processors, with: :threads)
+  # parallelize(workers: :number_of_processors, with: :threads)
 
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
+  # Returns true if a test user is logged in.
+  def is_logged_in?
+    !session[:user_id].nil?
+  end
 
-  # Add more helper methods to be used by all tests here...
+  # Log in as a particular user.
+  def log_in_as(user)
+    session[:user_id] = user.id
+  end
+
+  class ActionDispatch:: IntegrationTest
+    # Log in as a particular user.
+    def log_in_as(user, password: 'password')
+      post '/login', params: { session: { name: user.name,
+                                          password: password } }
+    end
+  end
 end

@@ -1,0 +1,7 @@
+michael:
+  name: michael
+  password_digest: <%= User.digest('password') %>
+  admin: true
+archer:
+  name: sterling
+  password_digest: <%= User.digest('password') %>

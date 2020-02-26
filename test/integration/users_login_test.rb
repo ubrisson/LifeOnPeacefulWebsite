@@ -12,4 +12,18 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert flash.empty?
   end
 
+  test 'login with valid information' do
+    # get the login page
+    get '/login'
+    assert_equal 200, status
+    @user = users(:michael)
+    post '/login', params: { session: { name: @user.name,
+                                        password: 'password' } }
+    assert_redirected_to root_url
+    follow_redirect!
+    assert_equal 200, status
+    assert_select 'h3', text: "Welcome #{@user.name}"
+    assert is_logged_in?
+  end
+
 end
