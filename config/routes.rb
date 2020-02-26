@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   get '/resources/export'
+  post '/resources/import'
   resources :resources, except: [:new]
 end

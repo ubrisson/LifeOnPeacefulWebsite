@@ -4,7 +4,7 @@
 <main>
   <hgroup class="pb-0"><h1>Resources</h1></hgroup>
 
-  <%= form_with url: resources_path, method: "get", local: true do |form| %>
+  <%= form_with url: resources_path, method: :get, local: true do |form| %>
     <%= form.search_field :q, placeholder: 'Search...',
                           class: "max-w-xs w-full bg-white text-blue-900 focus:bg-white
                           py-1 px-2 rounded mb-4 mt-2 border-gray-200 border-2" %>
@@ -28,10 +28,23 @@
   </ul>
   <%= will_paginate %>
   <%= page_entries_info @resources %>
-  <%= link_to "\u{2B07} Download as json \u{2B07}",
+  <%= link_to "\u{2B07} Export resources \u{2B07}",
               "resources/export?#{URI(request.original_url).query}",
               title: "Download as JSON",
               target: '_blank',
               class: "block text-sm"
   %>
+  <% if admin? %>
+     <details title = "Upload as JSON" >
+       <summary class="text-sm text-gray-900 underline pr-5"> <%="\u{2B06} Import resources \u{2B06}" %> </summary>
+    <%= form_with url: resources_import_path, method: :post, multipart: true,
+                  class: "bg-white rounded shadow max-w-sm p-2 my-2 mx-auto" do |f| %>
+      <%= f.file_field :json %>
+      <%= f.submit "import", name: nil,
+                      class: 'inline-block bg-gray-600 uppercase text-xs text-white cursor-pointer
+                    hover:bg-blue-900 font-bold py-1 px-2 rounded focus:outline-none
+                    focus:shadow-outline' %>
+    <% end %>
+     </details>
+  <% end %>
 </main>
