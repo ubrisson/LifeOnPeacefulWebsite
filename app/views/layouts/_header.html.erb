@@ -26,14 +26,15 @@
                     class: "text-gray-100 font-semibold no-underline block px-4 pb-4 pt-2" %>
       </li>
 
-      <li class="fixed top-0 right-0 list-none hover:bg-gray-700 rounded-bl-lg ">
+      <li class="fixed top-0 right-0 list-none ">
         <% if logged_in? %>
+
           <%= link_to "Log out", logout_path, method: :delete,
-                      class: "text-transparent no-underline
-                    pl-4 pr-3 pt-2 pb-3 hover:text-gray-100 font-semibold" %>
+                      class: "text-blue-900 opacity-50 no-underline bg-gray-200 rounded-bl-lg
+                    pl-4 pr-3 pt-2 pb-3 font-semibold hover:opacity-100 hover:underline shadow" %>
         <% else %>
           <%= link_to "Private access", login_path,
-                      class: "text-transparent no-underline
+                      class: "text-transparent no-underline hover:bg-gray-700 rounded-bl-lg
                     pl-4 pr-3 pt-2 pb-3 hover:text-gray-100 font-semibold" %>
         <% end %>
       </li>
