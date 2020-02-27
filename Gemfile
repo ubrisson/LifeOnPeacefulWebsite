@@ -64,6 +64,8 @@ group :test do
   gem 'rails-controller-testing'
   gem 'webdrivers'
   gem 'win32console', platforms: %i[mingw mswin x64_mingw]
+  # Code coverage
+  gem 'simplecov', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

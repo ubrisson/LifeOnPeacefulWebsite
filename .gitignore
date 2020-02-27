@@ -131,3 +131,6 @@ fabric.properties
 
 # Ignore Spring files.
 /spring/*.pid
+
+# Ignore SimpleCov coverage files
+/coverage/*
