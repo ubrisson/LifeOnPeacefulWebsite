@@ -62,4 +62,119 @@ class ResourcesControllerTest < ActionDispatch::IntegrationTest
     get resources_path, params: { q: 'orange' }
     assert_select 'article', count: 2
   end
+
+  # region before filter redirection tests
+
+  test 'should redirect create when not logged in' do
+    post resources_path, params:
+        { resource:
+             { title: 'exampleTitle',
+               link: 'example.org',
+               public: false } }
+    assert_not flash.empty?
+    assert_redirected_to root_url
+  end
+
+  test 'should redirect create when logged in as a non-admin' do
+    log_in_as(@not_admin)
+    post resources_path, params:
+        { resource:
+             { title: 'exampleTitle',
+               link: 'example.org',
+               public: false } }
+    assert_not flash.empty?
+    assert_redirected_to root_url
+  end
+
+  test 'should redirect edit when not logged in' do
+    get edit_resource_path(@resource)
+    assert_not flash.empty?
+    assert_redirected_to root_url
+  end
+
+  test 'should redirect edit when logged in as a non-admin' do
+    log_in_as(@not_admin)
+    get edit_resource_path(@resource)
+    assert_not flash.empty?
+    assert_redirected_to root_url
+  end
+
+  test 'should redirect update when not logged in' do
+    patch resource_path(@resource), params: { resource: { title: @resource.title } }
+    assert_not flash.empty?
+    assert_redirected_to root_url
+  end
+
+  test 'should redirect update when logged in as a non-admin' do
+    log_in_as(@not_admin)
+    patch resource_path(@resource), params: { resource: { title: @resource.title } }
+    assert_not flash.empty?
+    assert_redirected_to root_url
+  end
+
+  test 'should redirect destroy when not logged in' do
+    assert_no_difference 'Resource.count' do
+      delete resource_path(@resource)
+    end
+    assert_not flash.empty?
+    assert_redirected_to root_url
+  end
+
+  test 'should redirect destroy when logged in as a non-admin' do
+    log_in_as(@not_admin)
+    assert_no_difference 'Resource.count' do
+      delete resource_path(@resource)
+    end
+    assert_not flash.empty?
+    assert_redirected_to root_url
+  end
+
+  test 'should redirect import when not logged in' do
+    post resources_import_path,
+         params: { json: @resources_to_import }
+    assert_not flash.empty?
+    assert_redirected_to root_url
+  end
+
+  test 'should redirect import when logged in as a non-admin' do
+    log_in_as(@not_admin)
+    post resources_import_path,
+         params: { json: @resources_to_import }
+    assert_not flash.empty?
+    assert_redirected_to root_url
+  end
+  # endregion
+
+  # region admin actions
+  test 'should delete resource' do
+    log_in_as(@admin)
+    assert_difference 'Resource.count', -1 do
+      delete resource_path(@resource), headers: { 'HTTP_REFERER' => resources_path }
+    end
+    assert_redirected_to resources_path
+  end
+
+  test 'should show correct resource' do
+    @resource.tag_list = "example, tag"
+    @resource.save
+    get resource_path(@resource)
+    assert_select 'article', count: 1
+    assert_select 'a', text: @resource.title, href: @resource.link
+    assert_select 'p', text: @resource.description
+    @resource.tag_list.each do |tag|
+      assert_select 'a', text: "##{tag}"
+    end
+    assert_select 'cite', text: "by #{@resource.author}"
+  end
+
+  test 'should import resources' do
+    log_in_as(@admin)
+    assert_difference 'Resource.count', 3 do
+      post resources_import_path,
+           params: { json: @resources_to_import }
+    end
+    assert_not flash.empty?
+    assert_redirected_to resources_path
+  end
+  # endregion
 end
