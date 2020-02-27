@@ -1,15 +1,25 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class UsersLoginTest < ActionDispatch::IntegrationTest
-
-  test 'login with invalid information' do
+  test 'login with invalid name' do
     get login_path
     assert_template 'sessions/new'
-    post login_path, params: { session: { name: '', password: '' } }
+    post login_path, params: { session: { name: '', password: 'password' } }
     assert_template 'sessions/new'
     assert_not flash.empty?
     get root_path
     assert flash.empty?
+  end
+
+  test 'login with invalid password' do
+    post login_path, params: { session: {
+      name: 'michael',
+      password: 'wrongpassword'
+    } }
+    assert_template 'sessions/new'
+    assert_not flash.empty?
   end
 
   test 'login with valid information followed by logout' do
@@ -34,5 +44,4 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?]', login_path
     assert_select 'a[href=?]', logout_path, count: 0
   end
-
 end
