@@ -1,0 +1,28 @@
+[
+  {
+    "title": "exampleTitle",
+    "link": "example.org",
+    "author": "test",
+    "public": false
+  },
+  {
+    "title": "Test",
+    "description": "",
+    "link": "http://example.org",
+    "author": "test",
+    "publication": null,
+    "public": true,
+    "tag_list": [
+      "resource",
+      "untagged",
+      "ruby",
+      "rails"
+    ]
+  },
+  {
+    "title": "exampleTitle2",
+    "link": "example.org",
+    "author": "exampleAuthor",
+    "public": true
+  }
+]
