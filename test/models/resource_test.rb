@@ -8,7 +8,8 @@ class ResourceTest < ActiveSupport::TestCase
     @full_resource = Resource.new(author: 'exampleAuthor', title: 'exampleTitle',
                                   description: 'A very interesting article on examples.',
                                   link: 'http://example.org/exampleArticle',
-                                  public: 'true')
+                                  public: 'true',
+                                  tag_list: 'full, resource, example, tag')
   end
   test 'resources should be valid' do
     assert @resource.valid?
@@ -27,6 +28,10 @@ class ResourceTest < ActiveSupport::TestCase
 
   test 'order should be most recent first' do
     assert_equal resources(:most_recent), Resource.first
+  end
+
+  test 'form_tags should return tags between comas' do
+    assert_equal 'full, resource, example, tag, ', @full_resource.form_tags
   end
 
 end
