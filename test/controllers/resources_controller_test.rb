@@ -155,7 +155,7 @@ class ResourcesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should show correct resource' do
-    @resource.tag_list = "example, tag"
+    @resource.tag_list = 'example, tag'
     @resource.save
     get resource_path(@resource)
     assert_select 'article', count: 1
@@ -177,4 +177,9 @@ class ResourcesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to resources_path
   end
   # endregion
+
+  test 'should export resources' do
+    get resources_export_path
+    assert_response :success
+  end
 end
