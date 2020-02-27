@@ -53,12 +53,11 @@ class ResourcesController < ApplicationController
 
   def import
     resources = JSON.parse(File.read(params[:json]))
-    logger.debug resources
     resources.each do |resource|
       Resource.create(resource.to_h)
     end
     flash[:success] = 'Resources imported'
-    redirect_back(fallback_location: root_path)
+    redirect_back(fallback_location: resources_path)
   end
 
   private
