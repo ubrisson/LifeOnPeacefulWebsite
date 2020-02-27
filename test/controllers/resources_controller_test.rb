@@ -3,11 +3,15 @@ require 'test_helper'
 class ResourcesControllerTest < ActionDispatch::IntegrationTest
 
   def setup
-    @user = users(:michael)
+    @admin = users(:admin)
+    @not_admin = users(:not_admin)
+    @resource = resources(:orange)
+    @resources_to_import = fixture_file_upload('files/resources_to_import.json',
+                                                    'application/json')
   end
 
   test 'should create new post' do
-    log_in_as(@user)
+    log_in_as(@admin)
     assert_difference 'Resource.count', 1 do
       title = 'ExampleTitle'
       author = 'ExampleAuthor'
@@ -23,8 +27,8 @@ class ResourcesControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test 'should not create a new post' do
-    log_in_as(@user)
+  test 'should not create with invalid information' do
+    log_in_as(@admin)
     assert is_logged_in?
     assert_no_difference 'Resource.count' do
       title = 'ExampleTitle'
@@ -40,7 +44,6 @@ class ResourcesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get tagged resource' do
-    @resource = resources(:orange)
     @resource.tag_list = 'example_tag'
     @resource.save
     get resources_path, params: { tag: 'example_tag' }
@@ -53,9 +56,9 @@ class ResourcesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get tagged and searchable resource' do
-    @resource = resources(:most_recent)
-    @resource.tag_list = 'orange'
-    @resource.save
+    @not_orange = resources(:most_recent)
+    @not_orange.tag_list = 'orange'
+    @not_orange.save
     get resources_path, params: { q: 'orange' }
     assert_select 'article', count: 2
   end

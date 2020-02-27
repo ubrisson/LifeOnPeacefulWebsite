@@ -16,7 +16,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     # get the login page
     get '/login'
     assert_equal 200, status
-    @user = users(:michael)
+    @user = users(:admin)
     post '/login', params: { session: { name: @user.name,
                                         password: 'password' } }
     assert_redirected_to root_url
