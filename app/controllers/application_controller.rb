@@ -6,6 +6,9 @@ class ApplicationController < ActionController::Base
 
   # Before filter: Confirms an admin user else redirects
   def admin_user
-    redirect_to(root_url) unless admin?
+    unless admin?
+      flash[:danger] = 'This action requires admin access'
+      redirect_to root_url
+    end
   end
 end
