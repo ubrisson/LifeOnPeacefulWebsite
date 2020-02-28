@@ -1,0 +1,30 @@
+[
+  {
+    "title": "exampleTitle",
+    "body": "lorem ipsum he said",
+    "source": "example.org",
+    "author": "test",
+    "public": false
+  },
+  {
+    "title": "Test",
+    "commentary": "commentary",
+    "body": "lorem ipsum he said",
+    "source": "http://example.org",
+    "author": "test",
+    "public": true,
+    "tag_list": [
+      "resource",
+      "untagged",
+      "ruby",
+      "rails"
+    ]
+  },
+  {
+    "title": "exampleTitle2",
+    "source": "example.org",
+    "author": "exampleAuthor",
+    "body": "lorem ipsum he said",
+    "public": true
+  }
+]
