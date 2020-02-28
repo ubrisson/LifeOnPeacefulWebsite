@@ -1,6 +1,14 @@
-<h1>Editing Quote</h1>
+<% provide(:title, "Edit quote: #{@quote.title}") %>
+<% provide(:button_text, 'Edit') %>
 
-<%= render 'form', quote: @quote %>
-
-<%= link_to 'Show', @quote %> |
-<%= link_to 'Back', quotes_path %>
+<main>
+  <hgroup class="pb-0">
+    <h1>Quotes</h1>
+    <h2>Edit quote: <%= @quote.title %></h2>
+  </hgroup>
+  <section class="mx-auto max-w-2xl rounded bg-white shadow border border-gray-400 pt-6 px-4">
+  <%= render 'form' %>
+  </section>
+  <%= link_to 'Show', @quote %> |
+  <%= link_to 'Back', quotes_path %>
+</main>
