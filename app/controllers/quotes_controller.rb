@@ -1,5 +1,6 @@
 class QuotesController < ApplicationController
   before_action :set_quote, only: [:show, :edit, :update, :destroy]
+  before_action :admin_user, only: [:new, :create, :edit, :update, :destroy, :import]
 
   # GET /quotes
   def index
@@ -8,8 +9,7 @@ class QuotesController < ApplicationController
   end
 
   # GET /quotes/1
-  def show
-  end
+  def show; end
 
   # GET /quotes/new
   def new
@@ -17,27 +17,29 @@ class QuotesController < ApplicationController
   end
 
   # GET /quotes/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /quotes
   def create
+    session[:referrer] = request.referer if session[:referrer].nil?
     @quote = Quote.new(quote_params)
-
     if @quote.save
-      redirect_to @quote, notice: 'Quote was successfully created.'
+      flash[:success] = 'Resource created.'
     else
-      render :new
+      flash[:danger] = 'Unable to create resource.'
     end
+    helpers.redirect_back_or quotes_path
   end
 
   # PATCH/PUT /quotes/1
   def update
+    session[:referrer] = request.referer if session[:referrer].nil?
     if @quote.update(quote_params)
-      redirect_to @quote, notice: 'Quote was successfully updated.'
+      flash[:success] = 'Quote was successfully updated.'
     else
-      render :edit
+      flash[:danger] = 'Failed edition.'
     end
+    helpers.redirect_back_or edit_quote_path(@quote)
   end
 
   # DELETE /quotes/1
@@ -49,7 +51,7 @@ class QuotesController < ApplicationController
   def export
     @quotes = search_and_tagged_quotes(params)
     send_data @quotes.to_json, filename: "quotes_#{params[:q]}.json",
-              type: :json
+                               type: :json
   end
 
   def import
