@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_28_075853) do
+ActiveRecord::Schema.define(version: 2020_02_28_082439) do
 
   create_table "contents", force: :cascade do |t|
     t.string "type"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 2020_02_28_075853) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["created_at"], name: "index_contents_on_created_at"
+  end
+
+  create_table "quotes", force: :cascade do |t|
+    t.string "title"
+    t.string "author"
+    t.string "source"
+    t.text "commentary"
+    t.boolean "public"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "resources", force: :cascade do |t|

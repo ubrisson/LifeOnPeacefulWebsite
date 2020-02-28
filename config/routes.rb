@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :quotes
   get 'contents/new'
   get '/posts', to: 'contents#posts'
   get '/quotes', to: 'contents#quotes'
