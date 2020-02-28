@@ -1,9 +1,10 @@
 <li id="<%= quote.id %>" class="list-none">
   <article>
     <div class="flex">
-      <%= link_to quote.title, quote.link, title: quote.link,
-                  class: "font-semibold text-blue-900 text-lg no-underline mr-auto
-                  inline-block hover:underline hover:text-black" %>
+      <h3 class="font-semibold text-blue-900 text-lg no-underline mr-auto leading-none
+      inline-block my-auto">
+        <%= quote.title %>
+      </h3>
 
       <% if admin? %>
 
@@ -11,27 +12,30 @@
           <%= form.hidden_field :public, value: !quote.public? ? 1 : 0 %>
           <%= form.submit "#{quote.public? ? "\u{1F441}" : "\u{1F311}" }",
                           title: "Make '#{quote.title}' #{!quote.public? ? 'public' : 'private'}",
-                          class: "no-underline px-1 mx-1 bg-gray-100 rounded shadow opacity-50
+                          class: "no-underline px-1 ml-1 bg-gray-100 rounded shadow opacity-50
          hover:opacity-100 hover:bg-gray-300 cursor-pointer " %>
         <% end %>
 
         <%= link_to "\u{270E}", edit_quote_path(quote), title: "Edit '#{quote.title}'",
-                    class: "no-underline px-1 mx-1 bg-gray-100 rounded shadow opacity-50
+                    class: "no-underline px-1 ml-1 bg-gray-100 rounded shadow opacity-50
          hover:opacity-100 hover:bg-gray-300" %>
         <%= link_to "\u{274C}", quote, title: "Delete '#{quote.title}'", method: :delete, data: {confirm: 'Are you sure?'},
-                    class: "no-underline px-1 mx-1 bg-gray-100 rounded shadow opacity-50
+                    class: "no-underline px-1 ml-1 bg-gray-100 rounded shadow opacity-50
          hover:opacity-100 hover:bg-gray-300" %>
       <% end %>
 
     </div>
-    <cite class="leading-none not-italic"> by <%= quote.author %>
-      <% unless quote.publication.nil? %>
-        on <%= time_tag(quote.publication) %>
-      <% end %>
-    </cite>
 
-    <% unless quote.description.blank? %>
-      <p class="text-base m-0 mt-2 font-normal text-gray-700"> <%= quote.description %> </p>
+    <blockquote>
+      <p><%= quote.body %></p>
+      <footer>-<%= quote.author %>, in <cite> <%= quote.source %></cite></footer>
+    </blockquote>
+
+    <% unless quote.commentary.blank? %>
+      <details>
+        <summary>Commentary</summary>
+        <p class="text-base m-0 mt-2 font-normal text-gray-700"> <%= quote.commentary %> </p>
+      </details>
     <% end %>
 
     <% unless quote.tag_list.nil? %>
@@ -44,5 +48,9 @@
         <% end %>
       </div>
     <% end %>
+
+    <span class="timestamp text-right text-sm">
+      Posted on <%= time_tag(quote.created_at) %>.
+    </span>
   </article>
 </li>

@@ -62,15 +62,16 @@ class QuotesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_quote
-      @quote = Quote.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_quote
+    @quote = Quote.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def quote_params
-      params.require(:quote).permit(:title, :author, :source, :commentary, :public)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def quote_params
+    params.require(:quote).permit(:title, :author, :body, :source,
+                                  :tag_list, :commentary, :public)
+  end
 
   def correct_quotes
     logged_in? ? Quote.all : Quote.only_public
