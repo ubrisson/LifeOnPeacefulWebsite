@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_25_194210) do
+ActiveRecord::Schema.define(version: 2020_02_28_075853) do
 
   create_table "contents", force: :cascade do |t|
     t.string "type"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2020_02_25_194210) do
 
   create_table "resources", force: :cascade do |t|
     t.string "title"
-    t.string "description"
+    t.text "description"
     t.string "link"
     t.string "author"
     t.datetime "created_at", precision: 6, null: false
