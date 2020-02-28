@@ -1,15 +1,17 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
+  title: orange
   author: MyString
   source: MyString
   commentary: MyText
-  public: false
+  public: true
+  body: I just ate an orange!
 
 two:
   title: MyString
   author: MyString
   source: MyString
   commentary: MyText
-  public: false
+  public: true
+  body: lorem ipsum body
