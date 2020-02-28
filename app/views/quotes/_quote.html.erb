@@ -1,0 +1,48 @@
+<li id="<%= quote.id %>" class="list-none">
+  <article>
+    <div class="flex">
+      <%= link_to quote.title, quote.link, title: quote.link,
+                  class: "font-semibold text-blue-900 text-lg no-underline mr-auto
+                  inline-block hover:underline hover:text-black" %>
+
+      <% if admin? %>
+
+        <%= form_with model: quote do |form| %>
+          <%= form.hidden_field :public, value: !quote.public? ? 1 : 0 %>
+          <%= form.submit "#{quote.public? ? "\u{1F441}" : "\u{1F311}" }",
+                          title: "Make '#{quote.title}' #{!quote.public? ? 'public' : 'private'}",
+                          class: "no-underline px-1 mx-1 bg-gray-100 rounded shadow opacity-50
+         hover:opacity-100 hover:bg-gray-300 cursor-pointer " %>
+        <% end %>
+
+        <%= link_to "\u{270E}", edit_quote_path(quote), title: "Edit '#{quote.title}'",
+                    class: "no-underline px-1 mx-1 bg-gray-100 rounded shadow opacity-50
+         hover:opacity-100 hover:bg-gray-300" %>
+        <%= link_to "\u{274C}", quote, title: "Delete '#{quote.title}'", method: :delete, data: {confirm: 'Are you sure?'},
+                    class: "no-underline px-1 mx-1 bg-gray-100 rounded shadow opacity-50
+         hover:opacity-100 hover:bg-gray-300" %>
+      <% end %>
+
+    </div>
+    <cite class="leading-none not-italic"> by <%= quote.author %>
+      <% unless quote.publication.nil? %>
+        on <%= time_tag(quote.publication) %>
+      <% end %>
+    </cite>
+
+    <% unless quote.description.blank? %>
+      <p class="text-base m-0 mt-2 font-normal text-gray-700"> <%= quote.description %> </p>
+    <% end %>
+
+    <% unless quote.tag_list.nil? %>
+      <div class="mt-1 text-right">
+        <% quote.tag_list.each do |tag| %>
+          <%= link_to "##{tag}", "/quotes?tag=#{tag}", title: "All #{tag.upcase} quotes",
+                      class: "no-underline text-xs uppercase px-2 py-1 mt-1 bg-gray-100
+         text-gray-500 rounded shadow font-semibold
+         hover:bg-gray-300 hover:text-blue-900" %>
+        <% end %>
+      </div>
+    <% end %>
+  </article>
+</li>
