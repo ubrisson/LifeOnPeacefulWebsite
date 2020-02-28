@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get '/quotes/export'
+  post '/quotes/import'
   resources :quotes
   get 'contents/new'
   get '/posts', to: 'contents#posts'
