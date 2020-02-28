@@ -1,42 +1,41 @@
-<%= form_with(model: quote, local: true) do |form| %>
-  <% if quote.errors.any? %>
+<%= form_with(model: @quote, class: "px-8 pt-3 pb-8") do |form| %>
+
+  <% if @quote.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(quote.errors.count, "error") %> prohibited this quote from being saved:</h2>
 
       <ul>
-        <% quote.errors.full_messages.each do |message| %>
+        <% @quote.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <%= form.label(:title, class: "block uppercase tracking-wide  text-sm text-left text-gray-700 font-bold ") %>
+  <%= form.text_field :title, class: "w-full bg-gray-200 text-blue-900 focus:bg-white py-1 px-2 rounded mb-4 mt-2 border-gray-200 border-2", required: "required" %>
+  <div class="flex justify-between">
+    <div class="w-6/12">
+      <%= form.label(:author, class: "block uppercase tracking-wide text-sm  text-left text-gray-700 font-bold") %>
+      <%= form.text_field :author, required: "required", class: "w-full bg-gray-200 text-blue-900 focus:bg-white py-1 px-2 rounded mb-4 mt-2 border-gray-200 border-2" %>
+    </div>
+    <div class="w-5/12">
+      <%= form.label(:source, class: "block uppercase tracking-wide  text-sm text-left text-gray-700 font-bold ") %>
+      <%= form.text_field :source, class: "w-full bg-gray-200 text-blue-900 focus:bg-white py-1 px-2 rounded mb-4 mt-2 border-gray-200 border-2" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :author %>
-    <%= form.text_field :author %>
-  </div>
+  <%= form.label(:body, class: "block uppercase tracking-wide text-sm  text-left text-gray-700 font-bold") %>
+  <%= form.text_area :body , class: " w-full bg-gray-200 text-blue-900 focus:bg-white py-1 px-2 rounded mb-4 mt-2 border-gray-200 border-2" %>
 
-  <div class="field">
-    <%= form.label :source %>
-    <%= form.text_field :source %>
-  </div>
+  <%= form.label(:tag_list,"Tags", class: "block uppercase tracking-wide text-sm  text-left text-gray-700 font-bold") %>
+  <%= form.text_field :tag_list, value: @quote.form_tags , class: " w-full bg-gray-200 text-blue-900 focus:bg-white py-1 px-2 rounded mb-4 mt-2 border-gray-200 border-2" %>
 
-  <div class="field">
-    <%= form.label :commentary %>
-    <%= form.text_area :commentary %>
-  </div>
+  <%= form.label(:commentary, class: "block uppercase tracking-wide text-sm  text-left text-gray-700 font-bold") %>
+  <%= form.text_area :commentary , class: " w-full bg-gray-200 text-blue-900 focus:bg-white py-1 px-2 rounded mb-4 mt-2 border-gray-200 border-2" %>
 
-  <div class="field">
-    <%= form.label :public %>
-    <%= form.check_box :public %>
-  </div>
+  <%= form.label(:public, class: "block uppercase tracking-wide text-sm  text-left text-gray-700 font-bold pb-2") %>
+  <%= form.check_box :public, class: "block" %>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= form.submit yield(:button_text), class: 'bg-gray-600 text-white cursor-pointer hover:bg-blue-900  font-bold mt-2 py-2 px-4 rounded focus:outline-none focus:shadow-outline' %>
 <% end %>
