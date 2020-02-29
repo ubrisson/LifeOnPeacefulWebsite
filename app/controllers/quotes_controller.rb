@@ -5,7 +5,8 @@ class QuotesController < ApplicationController
   # GET /quotes
   def index
     @quote = Quote.new
-    @quotes = search_and_tagged_quotes(params).paginate(page: params[:page], per_page: 10)
+    @quotes = search_and_tagged_quotes(params)
+                  .paginate(page: params[:page], per_page: 10)
   end
 
   # GET /quotes/1
@@ -24,9 +25,9 @@ class QuotesController < ApplicationController
     session[:referrer] = request.referer if session[:referrer].nil?
     @quote = Quote.new(quote_params)
     if @quote.save
-      flash[:success] = 'Resource created.'
+      flash[:success] = "'#{@quote.title}' successfully created."
     else
-      flash[:danger] = 'Unable to create resource.'
+      flash[:danger] = 'Failed to create new quote.'
     end
     helpers.redirect_back_or quotes_path
   end
@@ -35,9 +36,9 @@ class QuotesController < ApplicationController
   def update
     session[:referrer] = request.referer if session[:referrer].nil?
     if @quote.update(quote_params)
-      flash[:success] = 'Quote was successfully updated.'
+      flash[:success] = "'#{@quote.title}' successfully updated."
     else
-      flash[:danger] = 'Failed edition.'
+      flash[:danger] = "Failed to edit '#{@quote.title}'."
     end
     helpers.redirect_back_or edit_quote_path(@quote)
   end
@@ -45,7 +46,8 @@ class QuotesController < ApplicationController
   # DELETE /quotes/1
   def destroy
     @quote.destroy
-    redirect_to quotes_url, notice: 'Quote was successfully destroyed.'
+    flash[:success] = "'#{@quote.title}' successfully deleted."
+    redirect_to quotes_url
   end
 
   def export
@@ -59,7 +61,7 @@ class QuotesController < ApplicationController
     quotes.each do |quote|
       Quote.create(quote.to_h)
     end
-    flash[:success] = 'Quotes imported'
+    flash[:success] = "#{quotes.size} quotes successfully imported."
     redirect_back(fallback_location: quotes_path)
   end
 
