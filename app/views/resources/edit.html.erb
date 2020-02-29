@@ -1,10 +1,14 @@
-<% provide(:title, 'Resources') %>
+<% provide(:title, "Edit resource: #{@resource.title}") %>
 <% provide(:button_text, 'Edit') %>
 
 <main>
   <hgroup class="pb-0">
     <h1>Resources</h1>
-    <h2>Edit Resource</h2>
+    <h2>Edit resource: <%= @resource.title %></h2>
   </hgroup>
-  <%= render 'form' %>
+  <section class="max-w-xl my-3 mx-auto bg-white border border-gray-400 shadow rounded-lg py-4">
+    <%= render 'form' %>
+  </section>
+  <%= link_to 'Show', @resource %> |
+  <%= link_to 'Back', resources_path %>
 </main>

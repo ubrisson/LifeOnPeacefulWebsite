@@ -9,7 +9,8 @@ class ResourcesController < ApplicationController
 
   def index
     @resource = Resource.new
-    @resources = search_and_tagged_resources(params).paginate(page: params[:page])
+    @resources = search_and_tagged_resources(params)
+                 .paginate(page: params[:page], per_page: 10)
   end
 
   def create
