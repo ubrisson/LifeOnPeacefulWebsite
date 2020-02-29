@@ -1,4 +1,4 @@
-<%= form_with(model: @quote, class: "px-8 pt-3 pb-8") do |form| %>
+<%= form_with(model: @quote, class: "px-8 pt-3 pb-8 text-left text-blue-900 ") do |form| %>
 
   <% if @quote.errors.any? %>
     <div id="error_explanation">
@@ -12,30 +12,54 @@
     </div>
   <% end %>
 
-  <%= form.label(:title, class: "block uppercase tracking-wide  text-sm text-left text-gray-700 font-bold ") %>
-  <%= form.text_field :title, class: "w-full bg-gray-200 text-blue-900 focus:bg-white py-1 px-2 rounded mb-4 mt-2 border-gray-200 border-2", required: "required" %>
-  <div class="flex justify-between">
-    <div class="w-6/12">
-      <%= form.label(:author, class: "block uppercase tracking-wide text-sm  text-left text-gray-700 font-bold") %>
-      <%= form.text_field :author, required: "required", class: "w-full bg-gray-200 text-blue-900 focus:bg-white py-1 px-2 rounded mb-4 mt-2 border-gray-200 border-2" %>
-    </div>
-    <div class="w-5/12">
-      <%= form.label(:source, class: "block uppercase tracking-wide  text-sm text-left text-gray-700 font-bold ") %>
-      <%= form.text_field :source, class: "w-full bg-gray-200 text-blue-900 focus:bg-white py-1 px-2 rounded mb-4 mt-2 border-gray-200 border-2" %>
+  <%= form.text_field :title, placeholder: :title, required: "required",
+                      class: "rounded bg-white
+                      font-semibold text-blue-900 text-2xl w-full
+                       leading-none mt-auto placeholder-gray-500 p-2
+                       " %>
+
+  <div class="mx-auto mt-4 mb-2 text-center">
+    <%= form.text_area :body, placeholder: :quote, required: "required",
+                       class: "w-4/5 mx-auto mb-2 bg-gray-300 text-blue-900
+                       placeholder-gray-600 text-center
+                       rounded shadow font-serif p-6 text-lg h-auto" %>
+
+    <div class="mx-auto flex justify-center leading-none">
+      <span class="my-auto mr-1">-</span>
+        <%= form.text_field :author, placeholder: :author, required: "required",
+                            class: "w-3/12 bg-white text-blue-900
+                           py-1 px-2 rounded " %>
+      <span class="mx-1 my-auto">, in </span>
+        <%= form.text_field :source, placeholder: :source,
+                            class: "w-5/12 bg-white text-blue-900
+                           py-1 px-2 rounded italic" %>
     </div>
   </div>
 
-  <%= form.label(:body, class: "block uppercase tracking-wide text-sm  text-left text-gray-700 font-bold") %>
-  <%= form.text_area :body , class: " w-full bg-gray-200 text-blue-900 focus:bg-white py-1 px-2 rounded mb-4 mt-2 border-gray-200 border-2" %>
+  <%= form.label(:tag_list, "Tags", class: "block text-sm text-blue-900 font-bold") %>
+  <%= form.text_field :tag_list, value: @quote.form_tags, class: " w-full bg-gray-200 text-blue-900 focus:bg-white py-1 px-2 rounded mb-4 border-gray-200 border-2" %>
 
-  <%= form.label(:tag_list,"Tags", class: "block uppercase tracking-wide text-sm  text-left text-gray-700 font-bold") %>
-  <%= form.text_field :tag_list, value: @quote.form_tags , class: " w-full bg-gray-200 text-blue-900 focus:bg-white py-1 px-2 rounded mb-4 mt-2 border-gray-200 border-2" %>
+  <details>
+    <summary class="text-sm text-blue-900 font-bold">
+      Commentary
+    </summary>
+    <%= form.text_area :commentary, class: " w-full bg-gray-200 text-blue-900 focus:bg-white py-1 px-2 rounded border-gray-200 border-2" %>
+  </details>
 
-  <%= form.label(:commentary, class: "block uppercase tracking-wide text-sm  text-left text-gray-700 font-bold") %>
-  <%= form.text_area :commentary , class: " w-full bg-gray-200 text-blue-900 focus:bg-white py-1 px-2 rounded mb-4 mt-2 border-gray-200 border-2" %>
+  <div class="flex mt-2">
+    <%= form.label(:public,
+                   class: "inline-block text-sm text-blue-900 font-bold text-left my-auto
+                  ") %>
+    <%= form.check_box :public, class: "m-2" %>
+  </div>
 
-  <%= form.label(:public, class: "block uppercase tracking-wide text-sm  text-left text-gray-700 font-bold pb-2") %>
-  <%= form.check_box :public, class: "block" %>
-
-  <%= form.submit yield(:button_text), class: 'bg-gray-600 text-white cursor-pointer hover:bg-blue-900  font-bold mt-2 py-2 px-4 rounded focus:outline-none focus:shadow-outline' %>
+  <div class="text-center">
+    <%= form.submit yield(:button_text),
+                    class: 'text-gray-600 cursor-pointer
+                  text-xs uppercase font-semibold
+                  mt-2 py-2 px-4 bg-white
+                  rounded border border-gray-400 shadow
+                  hover:bg-gray-200 hover:text-blue-900
+                  focus:outline-none focus:shadow-outline' %>
+  </div>
 <% end %>
