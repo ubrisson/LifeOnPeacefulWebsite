@@ -8,26 +8,26 @@
       </h3>
 
       <% if admin? %>
-      <div class="border border-gray-400 rounded-lg shadow flex">
-        <%= form_with model: quote do |form| %>
-          <%= form.hidden_field :public, value: !quote.public? ? 1 : 0 %>
-          <%= form.submit "#{quote.public? ? "\u{1F441}" : "\u{1F311}" }",
-                          title: "Make '#{quote.title}' #{!quote.public? ? 'public' : 'private'}",
-                          class: "text-xl leading-none py-2 px-2 bg-white
+        <div class="border border-gray-400 rounded-lg shadow flex">
+          <%= form_with model: quote do |form| %>
+            <%= form.hidden_field :public, value: !quote.public? ? 1 : 0 %>
+            <%= form.submit "#{quote.public? ? "\u{1F441}" : "\u{1F311}" }",
+                            title: "Make '#{quote.title}' #{!quote.public? ? 'public' : 'private'}",
+                            class: "text-xl leading-none py-2 px-2 bg-white
                            rounded-l-lg opacity-50
                            hover:opacity-100 hover:bg-gray-200 cursor-pointer " %>
-        <% end %>
+          <% end %>
 
-        <%= link_to "\u{270E}", edit_quote_path(quote), title: "Edit '#{quote.title}'",
-                    class: "text-xl text-gray-500 leading-none font-bold
+          <%= link_to "\u{270E}", edit_quote_path(quote), title: "Edit '#{quote.title}'",
+                      class: "text-xl text-gray-500 leading-none font-bold
                     no-underline border-r border-l border-gray-400 py-2 px-2
                     bg-white opacity-100
                     hover:opacity-100 hover:bg-gray-200 hover:text-blue-900" %>
-        <%= link_to "\u{1F5D1}", quote, title: "Delete '#{quote.title}'", method: :delete, data: {confirm: 'Are you sure?'},
-                    class: "text-lg leading-none
+          <%= link_to "\u{1F5D1}", quote, title: "Delete '#{quote.title}'", method: :delete, data: {confirm: 'Are you sure?'},
+                      class: "text-lg leading-none
                     no-underline py-2 px-2 bg-white rounded-r-lg opacity-50
                     hover:opacity-100 hover:bg-gray-200" %>
-      </div>
+        </div>
       <% end %>
 
     </div>
@@ -56,13 +56,13 @@
     </span>
 
     <%# unless quote.commentary.blank? %>
-<!--      <details class="border border-gray-400 shadow rounded mt-2 max-w-xs">-->
-<!--        <summary class="text-blue-900 text-xs px-2 py-1-->
-<!--         rounded-lg cursor-pointer hover:bg-gray-200 p-2">-->
-<!--          Thoughts on this quote-->
-<!--        </summary>-->
-<!--        <p class="p-2 text-sm m-0 font-normal text-gray-700"> <%#= quote.commentary %> </p>-->
-<!--      </details>-->
+    <!--      <details class="border border-gray-400 shadow rounded mt-2 max-w-xs">-->
+    <!--        <summary class="text-blue-900 text-xs px-2 py-1-->
+    <!--         rounded-lg cursor-pointer hover:bg-gray-200 p-2">-->
+    <!--          Thoughts on this quote-->
+    <!--        </summary>-->
+    <!--        <p class="p-2 text-sm m-0 font-normal text-gray-700"> <%#= quote.commentary %> </p>-->
+    <!--      </details>-->
     <%# end %>
   </article>
 </li>
