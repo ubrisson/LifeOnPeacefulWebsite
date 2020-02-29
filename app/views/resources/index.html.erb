@@ -4,22 +4,29 @@
 <main>
   <hgroup class="pb-0"><h1>Resources</h1></hgroup>
 
-  <%= form_with url: resources_path, method: :get, local: true do |form| %>
-    <%= form.search_field :q, placeholder: 'Search...',
-                          class: "max-w-xs w-full bg-white text-blue-900 focus:bg-white
-                          py-1 px-2 rounded mb-4 mt-2 border-gray-200 border-2" %>
-    <%= form.submit "search", name: nil,
-                    class: 'bg-gray-600 uppercase text-sm text-white cursor-pointer
-                    hover:bg-blue-900  font-bold py-1 px-2 rounded focus:outline-none
-                    focus:shadow-outline' %>
+  <%= form_with url: resources_path, method: :get, local: true,
+                class: "max-w-xs mx-auto my-4 rounded-lg
+                bg-white shadow flex border border-gray-400" do |form| %>
+    <%= form.search_field :q, placeholder: 'Search resources',
+                          title: 'Input to search resources',
+                          style: "margin-right: 0.15rem;",
+                          class: "text-blue-900 flex-grow rounded-l-lg py-1 px-3
+                           focus:outline-none focus:shadow-outline" %>
+    <%= form.submit "\u{1F50E}", name: nil, title: 'Search resources',
+                    class: 'cursor-pointer bg-white text-lg
+                    border-gray-400 border-l rounded-r-lg py-1 px-3
+                    hover:bg-gray-200 hover:text-blue-900
+                    focus:outline-none focus:shadow-outline ' %>
   <% end %>
 
   <%= will_paginate %>
   <ul class="resources">
     <% if admin? %>
-      <details class="mx-auto max-w-xl text -left my-4 rounded bg-white shadow">
-        <summary class="uppercase tracking-wide text-sm text-gray-500 font-semibold px-3 py-3
-                 hover:bg-gray-300 hover:text-blue-900 cursor-pointer rounded-t"> New Resource
+      <details class="max-w-xl mx-auto my-2 bg-white
+      border border-gray-400 rounded-lg shadow">
+        <summary class="px-3 py-3 text-sm font-bold text-gray-600
+         rounded-t-lg cursor-pointer text-left hover:bg-gray-200 hover:text-blue-900">
+          New Resource
         </summary>
         <%= render 'form' %>
       </details>
@@ -35,16 +42,16 @@
               class: "block text-sm"
   %>
   <% if admin? %>
-     <details title = "Upload as JSON" >
-       <summary class="text-sm text-gray-900 underline pr-5"> <%="\u{2B06} Import resources \u{2B06}" %> </summary>
-    <%= form_with url: resources_import_path, method: :post, multipart: true,
-                  class: "bg-white rounded shadow max-w-sm p-2 my-2 mx-auto" do |f| %>
-      <%= f.file_field :json %>
-      <%= f.submit "import", name: nil,
-                      class: 'inline-block bg-gray-600 uppercase text-xs text-white cursor-pointer
+    <details title="Upload as JSON">
+      <summary class="pr-5 text-sm text-gray-900 underline"> <%= "\u{2B06} Import resources \u{2B06}" %> </summary>
+      <%= form_with url: resources_import_path, method: :post, multipart: true,
+                    class: "bg-white rounded shadow max-w-sm p-2 my-2 mx-auto" do |f| %>
+        <%= f.file_field :json %>
+        <%= f.submit "import", name: nil,
+                     class: 'inline-block bg-gray-600 uppercase text-xs text-white cursor-pointer
                     hover:bg-blue-900 font-bold py-1 px-2 rounded focus:outline-none
                     focus:shadow-outline' %>
-    <% end %>
-     </details>
+      <% end %>
+    </details>
   <% end %>
 </main>
