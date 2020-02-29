@@ -5,7 +5,7 @@ class QuotesController < ApplicationController
   # GET /quotes
   def index
     @quote = Quote.new
-    @quotes = search_and_tagged_quotes(params).paginate(page: params[:page])
+    @quotes = search_and_tagged_quotes(params).paginate(page: params[:page], per_page: 10)
   end
 
   # GET /quotes/1
