@@ -11,10 +11,11 @@ article {
 }
 
 main {
-    @apply min-h-3/4 mx-auto max-w-4xl ;
+    @apply mx-auto max-w-4xl;
     @apply bg-gray-100;
     @apply border border-gray-400 shadow-lg rounded-lg;
     @apply my-6 pb-8;
+    min-height: 95vh;
 }
 
 input:focus {
