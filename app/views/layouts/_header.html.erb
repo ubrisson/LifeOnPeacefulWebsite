@@ -1,29 +1,29 @@
-<header class="fixed inset-y-0 flex flex-col justify-center">
-  <nav class="shadow-lg bg-gray-800 rounded-r-lg z-10 text-left">
-    <ul class="p-0">
-      <li class="list-none hover:bg-gray-700 rounded-tr-lg">
+<header class="fixed w-full lg:w-auto lg:inset-y-0 top-0 lg:flex lg:justify-center flex-col ">
+  <nav class="shadow-lg w-full bg-gray-800 lg:rounded-r-lg z-10 text-left">
+    <ul class="p-0 flex lg:flex-col justify-center flex-row">
+      <li class="list-none hover:bg-gray-700 lg:rounded-tr-lg inline-block">
         <%= link_to "Home", root_path,
-                    class: "text-gray-100 font-semibold no-underline block px-4 pt-4 pb-2" %>
+                    class: "text-gray-100 font-semibold no-underline py-3 px-4 lg:pt-4 lg:pb-2 lg:block" %>
       </li>
 
-      <li class="list-none hover:bg-gray-700 ">
+      <li class="list-none hover:bg-gray-700 inline-block">
         <%= link_to "About", about_path,
-                    class: "text-gray-100 font-semibold no-underline block px-4 py-2" %>
+                    class: "text-gray-100 font-semibold no-underline py-3 px-4 lg:py-2 lg:block" %>
       </li>
 
-      <li class="list-none hover:bg-gray-700 ">
+      <li class="list-none hover:bg-gray-700 inline-block">
         <%= link_to "Resources", resources_path,
-                    class: "text-gray-100 font-semibold no-underline block px-4 py-2" %>
+                    class: "text-gray-100 font-semibold no-underline py-3 px-4 lg:py-2 lg:block" %>
       </li>
 
-      <li class="list-none hover:bg-gray-700 ">
+      <li class="list-none hover:bg-gray-700 inline-block">
         <%= link_to "Posts", posts_path,
-                    class: "text-gray-100 font-semibold no-underline block px-4 py-2" %>
+                    class: "text-gray-100 font-semibold no-underline py-3 px-4 lg:py-2 lg:block" %>
       </li>
 
-      <li class="list-none hover:bg-gray-700 rounded-br-lg">
+      <li class="list-none hover:bg-gray-700 lg:rounded-br-lg inline-block">
         <%= link_to "Quotes", quotes_path,
-                    class: "text-gray-100 font-semibold no-underline block px-4 pb-4 pt-2" %>
+                    class: "text-gray-100 font-semibold no-underline py-3 px-4 lg:pb-4 lg:pt-2 lg:block" %>
       </li>
 
       <li class="fixed top-0 right-0 list-none ">
