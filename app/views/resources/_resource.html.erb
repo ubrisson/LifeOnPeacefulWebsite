@@ -1,48 +1,59 @@
 <li id="<%= resource.id %>" class="list-none">
-  <article>
+  <article class="bg-white border border-gray-400 shadow rounded-lg px-8 py-6">
+
     <div class="flex">
       <%= link_to resource.title, resource.link, title: resource.link,
-                  class: "font-semibold text-blue-900 text-lg no-underline mr-auto
-                  inline-block hover:underline hover:text-black" %>
+                  class: "font-semibold text-blue-900 text-2xl mr-auto leading-none
+                  no-underline
+                  inline-block mt-auto hover:underline hover:text-gray-900" %>
 
       <% if admin? %>
+        <div class="border border-gray-400 rounded-lg shadow flex">
+          <%= form_with model: resource do |form| %>
+            <%= form.hidden_field :public, value: !resource.public? ? 1 : 0 %>
+            <%= form.submit "#{resource.public? ? "\u{1F441}" : "\u{1F311}" }",
+                            title: "Make '#{resource.title}' #{!resource.public? ? 'public' : 'private'}",
+                            class: "text-xl leading-none py-2 px-2 bg-white
+                           rounded-l-lg opacity-50
+                           hover:opacity-100 hover:bg-gray-200 cursor-pointer " %>
+          <% end %>
 
-        <%= form_with model: resource do |form| %>
-          <%= form.hidden_field :public, value: !resource.public? ? 1 : 0 %>
-          <%= form.submit "#{resource.public? ? "\u{1F441}" : "\u{1F311}" }",
-                          title: "Make '#{resource.title}' #{!resource.public? ? 'public' : 'private'}",
-                          class: "no-underline px-1 mx-1 bg-gray-100 rounded shadow opacity-50
-         hover:opacity-100 hover:bg-gray-300 cursor-pointer " %>
-        <% end %>
-
-        <%= link_to "\u{270E}", edit_resource_path(resource), title: "Edit '#{resource.title}'",
-                    class: "no-underline px-1 mx-1 bg-gray-100 rounded shadow opacity-50
-         hover:opacity-100 hover:bg-gray-300" %>
-        <%= link_to "\u{274C}", resource, title: "Delete '#{resource.title}'", method: :delete, data: {confirm: 'Are you sure?'},
-                    class: "no-underline px-1 mx-1 bg-gray-100 rounded shadow opacity-50
-         hover:opacity-100 hover:bg-gray-300" %>
+          <%= link_to "\u{270E}", edit_resource_path(resource), title: "Edit '#{resource.title}'",
+                      class: "text-xl text-gray-500 leading-none font-bold
+                    no-underline border-r border-l border-gray-400 py-2 px-2
+                    bg-white opacity-100
+                    hover:opacity-100 hover:bg-gray-200 hover:text-blue-900" %>
+          <%= link_to "\u{1F5D1}", resource, title: "Delete '#{resource.title}'", method: :delete, data: {confirm: 'Are you sure?'},
+                      class: "text-lg leading-none
+                    no-underline py-2 px-2 bg-white rounded-r-lg opacity-50
+                    hover:opacity-100 hover:bg-gray-200" %>
+        </div>
       <% end %>
 
     </div>
-    <cite class="leading-none not-italic"> by <%= resource.author %>
+    <cite class="leading-none not-italic text-sm text-blue-900 ml-4 my-2"> by <%= resource.author %>
       <% unless resource.publication.nil? %>
         on <%= time_tag(resource.publication) %>
       <% end %>
     </cite>
 
     <% unless resource.description.blank? %>
-      <p class="text-base m-0 mt-2 font-normal text-gray-700"> <%= resource.description %> </p>
+      <p class="text-base ml-4 my-2 text-gray-700"> <%= resource.description %> </p>
     <% end %>
 
     <% unless resource.tag_list.nil? %>
-      <div class="mt-1 text-right">
+      <div class="my-1 text-right">
         <% resource.tag_list.each do |tag| %>
-          <%= link_to "##{tag}", "/resources?tag=#{tag}", title: "All #{tag.upcase} resources",
-                      class: "no-underline text-xs uppercase px-2 py-1 mt-1 bg-gray-100
-         text-gray-500 rounded shadow font-semibold
-         hover:bg-gray-300 hover:text-blue-900" %>
+          <%= link_to "##{tag}", "/resources?tag=#{tag}", title: "All #{tag} resources",
+                      class: "no-underline text-xs px-2 py-1 bg-white mt-1
+         text-gray-700 rounded shadow border border-gray-400
+         hover:bg-gray-200 hover:text-blue-900" %>
         <% end %>
       </div>
     <% end %>
+
+    <span class="text-right text-xs mt-2">
+      Posted on <%= time_tag(resource.created_at) %>.
+    </span>
   </article>
 </li>

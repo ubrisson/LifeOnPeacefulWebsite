@@ -45,7 +45,7 @@
         <% quote.tag_list.each do |tag| %>
           <%= link_to "##{tag}", "/quotes?tag=#{tag}", title: "All #{tag} quotes",
                       class: "no-underline text-xs px-2 py-1 bg-white
-         text-gray-700 rounded shadow border border-gray-400
+         text-gray-700 rounded shadow border border-gray-400 mt-1
          hover:bg-gray-200 hover:text-blue-900" %>
         <% end %>
       </div>
