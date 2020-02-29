@@ -1,61 +1,68 @@
 <li id="<%= quote.id %>" class="list-none">
-  <article>
+  <article class="bg-white border border-gray-400 shadow rounded-lg px-8 py-6">
+
     <div class="flex">
-      <h3 class="font-semibold text-blue-900 text-lg no-underline mr-auto leading-none
-      inline-block my-auto">
+      <h3 class="font-semibold text-blue-900 text-2xl mr-auto leading-none
+      inline-block mt-auto">
         <%= quote.title %>
       </h3>
 
       <% if admin? %>
-
+      <div class="border border-gray-400 rounded-lg shadow flex">
         <%= form_with model: quote do |form| %>
           <%= form.hidden_field :public, value: !quote.public? ? 1 : 0 %>
           <%= form.submit "#{quote.public? ? "\u{1F441}" : "\u{1F311}" }",
                           title: "Make '#{quote.title}' #{!quote.public? ? 'public' : 'private'}",
-                          class: "no-underline px-1 ml-1 bg-gray-100 rounded shadow opacity-50
-         hover:opacity-100 hover:bg-gray-300 cursor-pointer " %>
+                          class: "text-xl leading-none py-2 px-2 bg-white
+                           rounded-l-lg opacity-50
+                           hover:opacity-100 hover:bg-gray-200 cursor-pointer " %>
         <% end %>
 
         <%= link_to "\u{270E}", edit_quote_path(quote), title: "Edit '#{quote.title}'",
-                    class: "no-underline px-1 ml-1 bg-gray-100 rounded shadow opacity-50
-         hover:opacity-100 hover:bg-gray-300" %>
-        <%= link_to "\u{274C}", quote, title: "Delete '#{quote.title}'", method: :delete, data: {confirm: 'Are you sure?'},
-                    class: "no-underline px-1 ml-1 bg-gray-100 rounded shadow opacity-50
-         hover:opacity-100 hover:bg-gray-300" %>
+                    class: "text-xl text-gray-500 leading-none font-bold
+                    no-underline border-r border-l border-gray-400 py-2 px-2
+                    bg-white opacity-100
+                    hover:opacity-100 hover:bg-gray-200 hover:text-blue-900" %>
+        <%= link_to "\u{1F5D1}", quote, title: "Delete '#{quote.title}'", method: :delete, data: {confirm: 'Are you sure?'},
+                    class: "text-lg leading-none
+                    no-underline py-2 px-2 bg-white rounded-r-lg opacity-50
+                    hover:opacity-100 hover:bg-gray-200" %>
+      </div>
       <% end %>
 
     </div>
 
-    <blockquote>
-      <p><%= quote.body %></p>
+    <blockquote class="mx-auto mt-6 mb-2 text-center">
+      <p class="w-full max-w-sm mx-auto m-0 mb-2 bg-indigo-100 text-blue-900
+      rounded shadow-lg font-serif px-6 py-4">
+        <%= quote.body %>
+      </p>
       <footer>-<%= quote.author %>, in <cite> <%= quote.source %></cite></footer>
     </blockquote>
-
-    <% unless quote.commentary.blank? %>
-      <details>
-        <summary>Commentary</summary>
-        <p class="text-base m-0 mt-2 font-normal text-gray-700"> <%= quote.commentary %> </p>
-      </details>
-    <% end %>
 
     <% unless quote.tag_list.nil? %>
       <div class="my-1 text-right">
         <% quote.tag_list.each do |tag| %>
-          <%= link_to "##{tag}", "/quotes?tag=#{tag}", title: "All #{tag.upcase} quotes",
-                      class: "no-underline text-xs uppercase px-2 py-1 mt-1 bg-gray-100
-         text-gray-500 rounded shadow font-semibold
-         hover:bg-gray-300 hover:text-blue-900" %>
+          <%= link_to "##{tag}", "/quotes?tag=#{tag}", title: "All #{tag} quotes",
+                      class: "no-underline text-xs px-2 py-1 bg-white
+         text-gray-700 rounded shadow border border-gray-400
+         hover:bg-gray-200 hover:text-blue-900" %>
         <% end %>
       </div>
     <% end %>
 
-    <span class="text-right text-xs">
+    <span class="text-right text-xs mt-2">
       Posted on <%= time_tag(quote.created_at) %>.
     </span>
-    <% if time_tag(quote.updated_at) != time_tag(quote.created_at) %>
-    <span class="text-right text-xs">
-      Last update on <%= time_tag(quote.updated_at) %>.
-    </span>
-    <% end %>
+
+    <%# unless quote.commentary.blank? %>
+<!--      <details class="border border-gray-400 shadow rounded mt-2 max-w-xs">-->
+<!--        <summary class="text-blue-900 text-xs px-2 py-1-->
+<!--         rounded-lg cursor-pointer hover:bg-gray-200 p-2">-->
+<!--          Thoughts on this quote-->
+<!--        </summary>-->
+<!--        <p class="p-2 text-sm m-0 font-normal text-gray-700"> <%#= quote.commentary %> </p>-->
+<!--      </details>-->
+    <%# end %>
   </article>
 </li>
