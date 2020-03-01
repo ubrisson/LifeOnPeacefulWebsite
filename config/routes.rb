@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   get '/resources/export'
   post '/resources/import'
   resources :resources, except: [:new]
+  resources :posts
 end
