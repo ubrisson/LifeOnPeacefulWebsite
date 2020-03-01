@@ -8,6 +8,8 @@ require("turbolinks").start();
 require("@rails/activestorage").start();
 require("channels");
 require("css/application.css");
+require("trix/dist/trix.css");
+// require("css/actiontext.scss");
 
 // import '../css/application.css'
 

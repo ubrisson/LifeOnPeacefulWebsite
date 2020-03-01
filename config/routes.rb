@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   post '/quotes/import'
   resources :quotes
   get 'contents/new'
-  get '/posts', to: 'contents#posts'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'static_pages#home'
   get '/about', to: 'static_pages#about'
