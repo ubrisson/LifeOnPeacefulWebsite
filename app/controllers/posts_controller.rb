@@ -3,7 +3,8 @@ class PostsController < ApplicationController
 
   # GET /posts
   def index
-    @posts = Post.all
+    @post = Post.new
+    @posts = Post.all.paginate(page: params[:page], per_page:10)
   end
 
   # GET /posts/1
@@ -45,6 +46,13 @@ class PostsController < ApplicationController
     redirect_to posts_url, notice: 'Post was successfully destroyed.'
   end
 
+  def import
+
+  end
+
+  def export
+
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
