@@ -102,8 +102,6 @@ GEM
       minitest (>= 3.0)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
-    jbuilder (2.10.0)
-      activesupport (>= 5.0.0)
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -137,7 +135,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
     public_suffix (4.0.3)
-    puma (4.3.1)
+    puma (4.3.3)
       nio4r (~> 2.0)
     rack (2.2.2)
     rack-proxy (0.6.5)
@@ -257,10 +255,9 @@ DEPENDENCIES
   faker
   guard
   guard-minitest
-  jbuilder (~> 2.7)
   listen
   minitest-reporters
-  puma (~> 4.1)
+  puma (>= 4.3.2)
   rails (~> 6.0.2, >= 6.0.2.1)
   rails-controller-testing
   sass-rails (>= 6)
