@@ -5,7 +5,10 @@
   <title><%= full_title(yield(:title)) %></title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <meta name="description" content="The personal website - blog - journal of someone.
+   Running on Ruby on Rails and TailwindCSS">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: "" %>
   <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
