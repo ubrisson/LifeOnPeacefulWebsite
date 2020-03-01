@@ -1,16 +1,10 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, @post.title) %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+<main>
+  <hgroup class="pb-0">
+    <h1>Show resource</h1>
+  </hgroup>
+  <%= render @post %>
 
-<%= @post.body %>
-
-<p>
-  <strong>Public:</strong>
-  <%= @post.public %>
-</p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+  <%= link_to 'Back', posts_path %>
+</main>

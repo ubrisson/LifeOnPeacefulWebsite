@@ -1,0 +1,53 @@
+<li id="<%= post.id %>" class="list-none">
+  <article class="bg-white border border-gray-400 shadow rounded-lg px-8 py-6">
+
+    <div class="flex">
+      <%= link_to post.title, post_path(post), title: post_path(post),
+                  class: "font-semibold text-blue-900 text-2xl mr-auto leading-none
+                  no-underline
+                  inline-block mt-auto hover:underline hover:text-gray-900" %>
+
+      <% if admin? %>
+        <div class="border border-gray-400 rounded-lg shadow flex">
+          <%= form_with model: post do |form| %>
+            <%= form.hidden_field :public, value: !post.public? ? 1 : 0 %>
+            <%= form.submit "#{post.public? ? "\u{1F441}" : "\u{1F311}" }",
+                            title: "Make '#{post.title}' #{!post.public? ? 'public' : 'private'}",
+                            class: "text-xl leading-none py-2 px-2 bg-white
+                           rounded-l-lg opacity-50
+                           hover:opacity-100 hover:bg-gray-200 cursor-pointer " %>
+          <% end %>
+
+          <%= link_to "\u{270E}", edit_post_path(post), title: "Edit '#{post.title}'",
+                      class: "text-xl text-gray-500 leading-none font-bold
+                    no-underline border-r border-l border-gray-400 py-2 px-2
+                    bg-white opacity-100
+                    hover:opacity-100 hover:bg-gray-200 hover:text-blue-900" %>
+          <%= link_to "\u{1F5D1}", post, title: "Delete '#{post.title}'", method: :delete, data: {confirm: 'Are you sure?'},
+                      class: "text-lg leading-none
+                    no-underline py-2 px-2 bg-white rounded-r-lg opacity-50
+                    hover:opacity-100 hover:bg-gray-200" %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="py-4">
+    <%= post.body %>
+    </div>
+
+    <% unless post.tag_list.nil? %>
+      <div class="my-1 text-right">
+        <% post.tag_list.each do |tag| %>
+          <%= link_to "##{tag}", "/posts?tag=#{tag}", title: "All #{tag} posts",
+                      class: "no-underline text-xs px-2 py-1 bg-white mt-1
+         text-gray-700 rounded shadow border border-gray-400
+         hover:bg-gray-200 hover:text-blue-900" %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <span class="text-right text-xs mt-2">
+      Posted on <%= time_tag(post.updated_at) %>.
+    </span>
+  </article>
+</li>
