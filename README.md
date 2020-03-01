@@ -62,7 +62,7 @@ The `public/packs` files are then pushed over to the server via git or FTP.
 
 Then trust your host service to start the server.
 
-###Users
+### Users
 
 Not logged in users can only see public contents.
 Logged-in users can see public and private contents.
