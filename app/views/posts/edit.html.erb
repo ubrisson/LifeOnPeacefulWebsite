@@ -1,6 +1,14 @@
-<h1>Editing Post</h1>
+<% provide(:title, "Edit post: #{@post.title}") %>
+<% provide(:button_text, 'Edit') %>
 
-<%= render 'form', post: @post %>
-
-<%= link_to 'Show', @post %> |
-<%= link_to 'Back', posts_path %>
+<main>
+  <hgroup class="pb-0">
+    <h1>Posts</h1>
+    <h2>Edit post: <%= @post.title %></h2>
+  </hgroup>
+  <section class="max-w-2xl my-3 mx-auto bg-white border border-gray-400 shadow rounded-lg py-4">
+    <%= render 'form' %>
+  </section>
+  <%= link_to 'Show', @post %> |
+  <%= link_to 'Back', posts_path %>
+</main>
