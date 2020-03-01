@@ -1,5 +1,13 @@
-<h1>New Post</h1>
+<% provide(:title, "New post") %>
+<% provide(:button_text, 'Edit') %>
 
-<%= render 'form', post: @post %>
-
-<%= link_to 'Back', posts_path %>
+<main>
+  <hgroup class="pb-0">
+    <h1>Posts</h1>
+    <h2>New Post</h2>
+  </hgroup>
+  <section class="max-w-2xl my-3 mx-auto bg-white border border-gray-400 shadow rounded-lg py-4">
+    <%= render 'form' %>
+  </section>
+  <%= link_to 'Back', posts_path %>
+</main>
