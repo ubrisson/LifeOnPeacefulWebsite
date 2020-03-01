@@ -1,4 +1,6 @@
-# Personal website
+# Personal website 
+![Rails Tests](https://github.com/ubrisson/railsBlogTest/workflows/Rails%20Tests/badge.svg)
+
 This is my personal website repository.
 It is built with [Ruby on Rails](https://rubyonrails.org/) and [TailwindCSS](https://tailwindcss.com/).
 It is hosted on [alwaysdata.net](https://ubrisson.alwaysdata.net/).
@@ -75,3 +77,9 @@ $ rails console -e production
 $ @user = User.new(name:'example_user', password:'password', paswword_confirmation:'password')
 $ @user.save
 ```
+
+## CI
+
+Github actions is used to test push and pull-requests.
+All dependencies are installed and rails test are run.
+The current code coverage of tests is 100% (although a few tests are only here for that).
