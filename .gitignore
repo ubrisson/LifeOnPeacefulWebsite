@@ -134,3 +134,7 @@ fabric.properties
 
 # Ignore SimpleCov coverage files
 /coverage/*
+
+# Ignore deployment and webServers config
+.idea/deployment.xml
+.idea/webServers.xml
