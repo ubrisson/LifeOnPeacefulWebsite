@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="text-center text-gray-800 bg-gray-300"
+<html lang="en" class="text-center text-gray-800 bg-gray-300 text-base"
       style="font-family: Arial, sans-serif">
 <head>
   <title><%= full_title(yield(:title)) %></title>
@@ -21,6 +21,11 @@
      when 'success' then color = 'green'
      else color = 'yellow'
      end %>
+
+<!--  css classes for purgecss -->
+<!--  bg-red-100 text-red-600 border-red-300 -->
+<!--  bg-green-100 text-green-600 border-green-300 -->
+<!--  bg-yellow-100 text-yellow-600 border-yellow-300 -->
 
   <%= content_tag :div, message,
                   class: "absolute max-w-xs mx-auto border rounded-lg

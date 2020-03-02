@@ -72,6 +72,7 @@ p {
     font-family: Arial, sans-serif;
 }
 
+/* purgecss start ignore */
 .pagination {
     @apply flex rounded-lg my-4 mx-auto justify-center shadow;
     @apply border border-gray-400;
@@ -103,3 +104,4 @@ p {
 .disabled {
     @apply bg-gray-200 opacity-50;
 }
+/* purgecss end ignore */
