@@ -8,7 +8,7 @@
                   inline-block mt-auto hover:underline hover:text-gray-900" %>
 
       <% if admin? %>
-        <div class="border border-gray-400 rounded-lg shadow flex">
+        <div class="border border-gray-400 rounded-lg shadow flex flex-grow-0 mb-auto">
           <%= form_with model: resource do |form| %>
             <%= form.hidden_field :public, value: !resource.public? ? 1 : 0 %>
             <%= form.submit "#{resource.public? ? "\u{1F441}" : "\u{1F311}" }",
