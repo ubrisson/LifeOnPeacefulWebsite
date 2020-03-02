@@ -1,9 +1,6 @@
 <% provide(:title, @post.title) %>
 
-<main>
-  <hgroup class="pb-0">
-    <h1>Show resource</h1>
-  </hgroup>
+<main class="bg-gray-800 pt-16 border-0 shadow-none">
   <%= render @post %>
 
   <%= link_to 'Back', posts_path %>

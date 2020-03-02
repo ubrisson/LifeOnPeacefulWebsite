@@ -2,7 +2,7 @@
 <% provide(:button_text, 'Create') %>
 
 <main>
-  <hgroup class="pb-0"><h1>Posts</h1></hgroup>
+  <hgroup class="pb-0"><h1 class="leading-none">Posts</h1></hgroup>
 
   <%= form_with url: posts_path, method: :get, local: true,
                 class: "max-w-xs mx-auto my-4 rounded-lg
@@ -20,9 +20,9 @@
   <% end %>
 
   <%= will_paginate %>
-  <ul class="posts">
+  <ul class="posts mt-8">
     <% if admin? %>
-      <details class="max-w-xl mx-auto my-2 bg-white
+      <details class="max-w-2xl mx-auto my-2 bg-white
       border border-gray-400 rounded-lg shadow">
         <summary class="px-3 py-3 text-sm font-bold text-gray-600
          rounded-t-lg cursor-pointer text-left hover:bg-gray-200 hover:text-blue-900">
