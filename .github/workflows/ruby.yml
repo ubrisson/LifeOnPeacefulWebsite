@@ -60,6 +60,9 @@ jobs:
       run: echo "$SSHKEY" > privatekey
       env:
         SSHKEY: ${{ secrets.SSH_KEY }} 
+    - name: Save ssh private key to file
+      if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+      run: chmod 400 privatekey
     - name: Pull from alwaysdata
       if: github.event_name == 'push' && github.ref == 'refs/heads/master'
       run: ssh -i privatekey -o StrictHostKeyChecking=no ubrisson@ssh-ubrisson.alwaysdata.net "git pull"
