@@ -102,7 +102,7 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
     @quote.tag_list = 'example_tag'
     @quote.save
     get quotes_path, params: { tag: 'example_tag' }
-    assert_select 'a', text: '#example_tag'
+    assert_select 'a', text: 'example_tag', count: 2
     assert_select 'article', count: 1
   end
 
