@@ -53,7 +53,7 @@ jobs:
       if: github.event == 'push' && github.ref = 'master'
       run: echo ${{ secrets.SSH_KEY }} > privatekey
     - name: Pull from alwaysdata
-      if: github.event == 'push' && github.ref = 'master'
+      if: github.event == 'push' && github.ref == 'master'
       run: ssh -i privatekey ubrisson@ssh-ubrisson.alwaysdata.net "git pull"
       
       
