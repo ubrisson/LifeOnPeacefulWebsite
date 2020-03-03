@@ -1,12 +1,7 @@
 <li id="<%= quote.id %>" class="list-none">
-  <article class="bg-white border border-gray-400 shadow rounded-lg px-8 py-6">
+  <article class="max-w-full px-0 pt-2 pb-2 m-0 border-b border-gray-500">
 
     <div class="flex">
-      <h3 class="font-semibold text-blue-900 text-2xl mr-auto leading-none
-      inline-block mt-auto">
-        <%= quote.title %>
-      </h3>
-
       <% if admin? %>
         <div class="border border-gray-400 rounded-lg shadow flex flex-grow-0 mb-auto">
           <%= form_with model: quote do |form| %>
@@ -29,40 +24,27 @@
                     hover:opacity-100 hover:bg-gray-200" %>
         </div>
       <% end %>
-
     </div>
 
-    <blockquote class="mx-auto mt-6 mb-2 text-center">
-      <p class="w-full max-w-sm mx-auto m-0 mb-2 bg-indigo-100 text-blue-900
-      rounded shadow-lg font-serif px-6 py-4">
-        <%= quote.body %>
+    <blockquote class="p-0">
+      <p class="w-full font-serif p-0 mx-0 my-2 leading-tight">
+        "<%= quote.body %>"
       </p>
-      <footer>-<%= quote.author %>, in <cite> <%= quote.source %></cite></footer>
+      <footer class="p-0 font-bold text-sm leading-none"> &#8213; <%= quote.author %>, in <cite> <%= quote.source %></cite></footer>
     </blockquote>
 
     <% unless quote.tag_list.nil? %>
-      <div class="my-1 text-right">
+      <ul class="my-1">
+        <span class="text-xs inline">tags: </span>
         <% quote.tag_list.each do |tag| %>
-          <%= link_to "##{tag}", "/quotes?tag=#{tag}", title: "All #{tag} quotes",
-                      class: "no-underline text-xs px-2 py-1 bg-white
-         text-gray-700 rounded shadow border border-gray-400 mt-1
-         hover:bg-gray-200 hover:text-blue-900" %>
+          <li class="list-none inline ">
+          <%= link_to "#{tag}", "/quotes?tag=#{tag}", title: "All #{tag} quotes",
+                      class: "no-underline text-xs text-blue-700 mt-1
+         hover:underline hover:text-blue-800" %>,
+          </li>
         <% end %>
-      </div>
+      </ul>
     <% end %>
 
-    <span class="text-right text-xs mt-2">
-      Posted on <%= time_tag(quote.created_at) %>.
-    </span>
-
-    <%# unless quote.commentary.blank? %>
-    <!--      <details class="border border-gray-400 shadow rounded mt-2 max-w-xs">-->
-    <!--        <summary class="text-blue-900 text-xs px-2 py-1-->
-    <!--         rounded-lg cursor-pointer hover:bg-gray-200 p-2">-->
-    <!--          Thoughts on this quote-->
-    <!--        </summary>-->
-    <!--        <p class="p-2 text-sm m-0 font-normal text-gray-700"> <%#= quote.commentary %> </p>-->
-    <!--      </details>-->
-    <%# end %>
   </article>
 </li>
