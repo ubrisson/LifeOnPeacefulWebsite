@@ -48,12 +48,18 @@ jobs:
       run: bundle exec rails db:migrate RAILS_ENV=test
     - name: Run rails tests
       run: bundle exec rails test
+      
+    - name: Debug github variables
+      run: | 
+            echo ${{ github.event }}
+            echo ${{ github.event_name }}
+            echo ${{ github.ref }}
     
     - name: Save ssh private key to file
-      if: github.event == 'push'
+      if: github.event_name == 'push'
       run: echo ${{ secrets.SSH_KEY }} > privatekey
     - name: Pull from alwaysdata
-      if: github.event == 'push'
+      if: github.event_name == 'push'
       run: ssh -i privatekey ubrisson@ssh-ubrisson.alwaysdata.net "git pull"
       
       
