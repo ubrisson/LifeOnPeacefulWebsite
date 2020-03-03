@@ -50,10 +50,10 @@ jobs:
       run: bundle exec rails test
     
     - name: Save ssh private key to file
-      if: github.event == 'push' && github.ref == 'master'
+      if: github.event == 'push'
       run: echo ${{ secrets.SSH_KEY }} > privatekey
     - name: Pull from alwaysdata
-      if: github.event == 'push' && github.ref == 'master'
+      if: github.event == 'push'
       run: ssh -i privatekey ubrisson@ssh-ubrisson.alwaysdata.net "git pull"
       
       
