@@ -65,7 +65,7 @@ jobs:
       run: chmod 400 privatekey
     - name: Pull from alwaysdata
       if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-      run: ssh -i privatekey -o StrictHostKeyChecking=no ubrisson@ssh-ubrisson.alwaysdata.net "git pull"
+      run: ssh -i privatekey -o StrictHostKeyChecking=no ubrisson@ssh-ubrisson.alwaysdata.net "cd railsBlogTest/ && git pull"
       
       
 
