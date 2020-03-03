@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="text-center text-gray-800 bg-gray-300 text-base"
+<html lang="en" class="text-center text-gray-800 bg-gray-100 text-base h-full"
       style="font-family: Arial, sans-serif">
 <head>
   <title><%= full_title(yield(:title)) %></title>
@@ -12,30 +12,38 @@
   <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
-<body>
-<%= render 'layouts/header' %>
+<% if yield(:title).blank? %>
+  <%= yield %>
+<% else %>
+  <body>
+  <%= render 'layouts/header' %>
 
-<% flash.each do |message_type, message| %>
-  <% case message_type
-     when 'danger' then color = 'red'
-     when 'success' then color = 'green'
-     else color = 'yellow'
-     end %>
+  <% flash.each do |message_type, message| %>
+    <% case message_type
+       when 'danger' then
+         color = 'red'
+       when 'success' then
+         color = 'green'
+       else
+         color = 'yellow'
+       end %>
 
-<!--  css classes for purgecss -->
-<!--  bg-red-100 text-red-600 border-red-300 -->
-<!--  bg-green-100 text-green-600 border-green-300 -->
-<!--  bg-yellow-100 text-yellow-600 border-yellow-300 -->
+    <!--  css classes for purgecss -->
+    <!--  bg-red-100 text-red-600 border-red-300 -->
+    <!--  bg-green-100 text-green-600 border-green-300 -->
+    <!--  bg-yellow-100 text-yellow-600 border-yellow-300 -->
 
-  <%= content_tag :div, message,
-                  class: "absolute max-w-xs mx-auto border rounded-lg
+    <%= content_tag :div, message,
+                    class: "absolute max-w-xs mx-auto border rounded-lg
                   p-2 inset-x-0 top-0 mt-16 md:mt-4
                   bg-#{color}-100 text-#{color}-600 border-#{color}-300
                   " %>
+  <% end %>
+
+  <%= yield %>
+
+  <%= render 'layouts/footer' %>
+  </body>
 <% end %>
 
-<%= yield %>
-
-<%= render 'layouts/footer' %>
-</body>
 </html>
