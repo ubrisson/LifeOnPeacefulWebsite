@@ -1,57 +1,75 @@
 <% provide(:title, 'Resources') %>
 <% provide(:button_text, 'Create') %>
 
-<main>
-  <hgroup class="pb-0"><h1>Resources</h1></hgroup>
+<div class="flex">
+  <main class="max-w-4xl flex-grow ml-48 mr-12 bg-transparent text-left shadow-none border-0">
+    <hgroup class="pb-0"><h1>Resources</h1></hgroup>
 
-  <%= form_with url: resources_path, method: :get, local: true,
-                class: "max-w-xs mx-auto my-4 rounded-lg
-                bg-white shadow flex border border-gray-400" do |form| %>
-    <%= form.search_field :q, placeholder: 'Search resources',
-                          title: 'Input to search resources',
-                          style: "margin-right: 0.15rem;",
-                          class: "text-blue-900 flex-grow rounded-l-lg py-1 px-3
+    <%= form_with url: resources_path, method: :get, local: true,
+                  class: "mx-auto mb-4 mt-2
+                bg-white flex border border-gray-400" do |form| %>
+      <%= form.search_field :q, placeholder: 'Search resources',
+                            title: 'Input to search resources',
+                            style: "margin-right: 0.15rem;",
+                            class: "text-blue-900 flex-grow py-1 px-3
                            focus:outline-none focus:shadow-outline" %>
-    <%= form.submit "\u{1F50E}", name: nil, title: 'Search resources',
-                    class: 'cursor-pointer bg-white text-lg
-                    border-gray-400 border-l rounded-r-lg py-1 px-3
+      <%= form.submit "\u{1F50D}", name: nil, title: 'Search resources',
+                      class: 'cursor-pointer bg-white text-lg
+                    py-1 px-3
                     hover:bg-gray-200 hover:text-blue-900
                     focus:outline-none focus:shadow-outline ' %>
-  <% end %>
-
-  <%= will_paginate %>
-  <ul class="resources">
-    <% if admin? %>
-      <details class="max-w-xl mx-auto my-2 bg-white
-      border border-gray-400 rounded-lg shadow">
-        <summary class="px-3 py-3 text-sm font-bold text-gray-600
-         rounded-t-lg cursor-pointer text-left hover:bg-gray-200 hover:text-blue-900">
-          New Resource
-        </summary>
-        <%= render 'form' %>
-      </details>
     <% end %>
-    <%= render @resources %>
-  </ul>
-  <%= will_paginate %>
-  <%= page_entries_info @resources %>
-  <%= link_to "\u{2B07} Export resources \u{2B07}",
-              "resources/export?#{URI(request.original_url).query}",
-              title: "Download as JSON",
-              target: '_blank',
-              class: "block text-sm"
-  %>
-  <% if admin? %>
-    <details title="Upload as JSON">
-      <summary class="pr-5 text-sm text-gray-900 underline"> <%= "\u{2B06} Import resources \u{2B06}" %> </summary>
-      <%= form_with url: resources_import_path, method: :post, multipart: true,
-                    class: "bg-white rounded shadow max-w-sm p-2 my-2 mx-auto" do |f| %>
-        <%= f.file_field :json %>
-        <%= f.submit "import", name: nil,
-                     class: 'inline-block bg-gray-600 uppercase text-xs text-white cursor-pointer
+
+    <span class="text-sm"> <%= page_entries_info @resources, model:'resource', html:false%> </span>
+
+    <%= will_paginate %>
+    <ul class="resources">
+      <% if admin? %>
+        <details class="max-w-xl mx-auto my-2 bg-white
+      border border-gray-400 rounded-lg shadow">
+          <summary class="px-3 py-3 text-sm font-bold text-gray-600
+         rounded-t-lg cursor-pointer text-left hover:bg-gray-200 hover:text-blue-900">
+            New Resource
+          </summary>
+          <%= render 'form' %>
+        </details>
+      <% end %>
+      <%= render @resources %>
+    </ul>
+    <%= will_paginate %>
+    <%= link_to "\u{2B07} Export resources \u{2B07}",
+                "resources/export?#{URI(request.original_url).query}",
+                title: "Download as JSON",
+                target: '_blank',
+                class: "block text-sm"
+    %>
+    <% if admin? %>
+      <details title="Upload as JSON">
+        <summary class="pr-5 text-sm text-gray-900 underline"> <%= "\u{2B06} Import resources \u{2B06}" %> </summary>
+        <%= form_with url: resources_import_path, method: :post, multipart: true,
+                      class: "bg-white rounded shadow max-w-sm p-2 my-2 mx-auto" do |f| %>
+          <%= f.file_field :json %>
+          <%= f.submit "import", name: nil,
+                       class: 'inline-block bg-gray-600 uppercase text-xs text-white cursor-pointer
                     hover:bg-blue-900 font-bold py-1 px-2 rounded focus:outline-none
                     focus:shadow-outline' %>
+        <% end %>
+      </details>
+    <% end %>
+  </main>
+
+  <aside class="mt-48 max-w-sm mr-12 w-full text-left ">
+    <h1 class="text-sm font-bold uppercase
+     tracking-wide border-b border-gray-500 w-full">Browse by tag </h1>
+    <ul class="mt-4 flex flex-wrap">
+      <% @tags.each do |tag| %>
+        <li class="list-none w-1/3">
+          <%= link_to "#{tag}", "/resources?tag=#{tag}", title: "All #{tag} resources",
+                      class: "no-underline text-xs text-blue-800 mt-1
+         hover:underline hover:text-blue-900 px-1 mx-1" %>
+        </li>
       <% end %>
-    </details>
-  <% end %>
-</main>
+    </ul>
+  </aside>
+
+</div>

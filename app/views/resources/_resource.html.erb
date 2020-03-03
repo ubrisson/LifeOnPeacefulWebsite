@@ -1,11 +1,11 @@
 <li id="<%= resource.id %>" class="list-none">
-  <article class="bg-white border border-gray-400 shadow rounded-lg px-8 py-6">
+  <article class="max-w-full px-0 pt-2 pb-2 m-0 border-b border-gray-500">
 
     <div class="flex">
       <%= link_to resource.title, resource.link, title: resource.link,
-                  class: "font-semibold text-blue-900 text-2xl mr-auto leading-none
-                  no-underline
-                  inline-block mt-auto hover:underline hover:text-gray-900" %>
+                  class: "text-blue-700 text-lg mr-auto leading-tight
+                  no-underline hover:underline
+                  inline-block mt-auto hover:text-blue-800" %>
 
       <% if admin? %>
         <div class="border border-gray-400 rounded-lg shadow flex flex-grow-0 mb-auto">
@@ -31,29 +31,33 @@
       <% end %>
 
     </div>
-    <cite class="leading-none not-italic text-sm text-blue-900 ml-4 my-2"> by <%= resource.author %>
+    <cite class="p-0 font-bold text-sm leading-tight"> &#8213; <%= resource.author %>
       <% unless resource.publication.nil? %>
         on <%= time_tag(resource.publication) %>
       <% end %>
     </cite>
 
     <% unless resource.description.blank? %>
-      <p class="text-base ml-4 my-2 text-gray-700"> <%= resource.description %> </p>
+      <p class="text-base p-0 mx-0 my-1"> <%= resource.description %> </p>
     <% end %>
 
-    <% unless resource.tag_list.nil? %>
-      <div class="my-1 text-right">
+    <div class="flex">
+    <% unless resource.tag_list.blank? %>
+      <ul class="mr-auto mt-auto">
+        <span class="text-xs inline">tags: </span>
         <% resource.tag_list.each do |tag| %>
-          <%= link_to "##{tag}", "/resources?tag=#{tag}", title: "All #{tag} resources",
-                      class: "no-underline text-xs px-2 py-1 bg-white mt-1
-         text-gray-700 rounded shadow border border-gray-400
-         hover:bg-gray-200 hover:text-blue-900" %>
+          <li class="list-none inline ">
+            <%= link_to "#{tag}", "/resources?tag=#{tag}", title: "All #{tag} resources",
+                        class: "no-underline text-xs text-blue-700 mt-1
+         hover:underline hover:text-blue-800" %>,
+          </li>
         <% end %>
-      </div>
+      </ul>
     <% end %>
 
-    <span class="text-right text-xs mt-2">
+    <span class=" text-xs mb-1 w-1/3 leading-none mt-auto">
       Posted on <%= time_tag(resource.created_at) %>.
     </span>
+    </div>
   </article>
 </li>

@@ -47,7 +47,7 @@ class ResourcesControllerTest < ActionDispatch::IntegrationTest
     @resource.tag_list = 'example_tag'
     @resource.save
     get resources_path, params: { tag: 'example_tag' }
-    assert_select 'a', text: '#example_tag'
+    assert_select 'a', text: 'example_tag'
   end
 
   test 'should get searchable resource' do
@@ -162,9 +162,9 @@ class ResourcesControllerTest < ActionDispatch::IntegrationTest
     assert_select 'a', text: @resource.title, href: @resource.link
     assert_select 'p', text: @resource.description
     @resource.tag_list.each do |tag|
-      assert_select 'a', text: "##{tag}"
+      assert_select 'a', text: "#{tag}"
     end
-    assert_select 'cite', text: "by #{@resource.author}"
+    assert_select 'cite', text: "\u{2015} #{@resource.author}"
   end
 
   test 'should import resources' do

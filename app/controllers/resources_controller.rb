@@ -10,7 +10,8 @@ class ResourcesController < ApplicationController
   def index
     @resource = Resource.new
     @resources = search_and_tagged_resources(params)
-                 .paginate(page: params[:page], per_page: 10)
+                 .paginate(page: params[:page], per_page: 15)
+    @tags = ActsAsTaggableOn::Tag.most_used
   end
 
   def create
