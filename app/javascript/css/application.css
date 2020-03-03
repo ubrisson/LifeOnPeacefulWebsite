@@ -4,7 +4,6 @@
 
 article {
     @apply max-w-xl w-full flex flex-col;
-    @apply border-t-2 border-gray-300;
     @apply px-4 py-4;
     @apply mx-auto my-3;
     @apply text-left;
@@ -12,8 +11,6 @@ article {
 
 main {
     @apply mx-auto max-w-4xl;
-    @apply bg-gray-100;
-    @apply border border-gray-400 shadow-lg rounded-lg;
     @apply my-6 pb-8;
     min-height: 95vh;
 }
@@ -63,10 +60,6 @@ li {
     @apply list-disc
 }
 
-ul {
-    @apply px-4
-}
-
 p {
     @apply text-lg font-medium m-2 max-w-lg;
     font-family: Arial, sans-serif;
@@ -74,7 +67,7 @@ p {
 
 /* purgecss start ignore */
 .pagination {
-    @apply flex rounded-lg my-4 mx-auto justify-center shadow;
+    @apply flex rounded-lg my-4 mx-auto justify-center;
     @apply border border-gray-400;
     width: max-content;
 }
@@ -98,10 +91,31 @@ p {
 }
 
 .current {
-    @apply text-blue-900 bg-gray-200 opacity-75 not-italic;
+    @apply text-blue-900 bg-gray-200 opacity-75 not-italic shadow-inner;
 }
 
 .disabled {
     @apply bg-gray-200 opacity-50;
 }
 /* purgecss end ignore */
+
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+}
+.hover-underline-animation::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #F7FAFC;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+.hover-underline-animation:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
