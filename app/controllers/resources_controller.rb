@@ -11,7 +11,7 @@ class ResourcesController < ApplicationController
     @resource = Resource.new
     @resources = search_and_tagged_resources(params)
                  .paginate(page: params[:page], per_page: 15)
-    @tags = ActsAsTaggableOn::Tag.most_used
+    @tags = Resource.tag_counts_on(:tags)
   end
 
   def create
