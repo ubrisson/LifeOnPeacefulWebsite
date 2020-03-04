@@ -2,28 +2,7 @@
   <article class="max-w-full px-0 pt-2 pb-2 m-0 border-b border-gray-500">
 
     <div class="flex">
-      <% if admin? %>
-        <div class="border border-gray-400 rounded-lg shadow flex flex-grow-0 mb-auto">
-          <%= form_with model: quote do |form| %>
-            <%= form.hidden_field :public, value: !quote.public? ? 1 : 0 %>
-            <%= form.submit "#{quote.public? ? "\u{1F441}" : "\u{1F311}" }",
-                            title: "Make '#{quote.title}' #{!quote.public? ? 'public' : 'private'}",
-                            class: "text-xl leading-none py-2 px-2 bg-white
-                           rounded-l-lg opacity-50
-                           hover:opacity-100 hover:bg-gray-200 cursor-pointer " %>
-          <% end %>
-
-          <%= link_to "\u{270E}", edit_quote_path(quote), title: "Edit '#{quote.title}'",
-                      class: "text-xl text-gray-500 leading-none font-bold
-                    no-underline border-r border-l border-gray-400 py-2 px-2
-                    bg-white opacity-100
-                    hover:opacity-100 hover:bg-gray-200 hover:text-blue-900" %>
-          <%= link_to "\u{1F5D1}", quote, title: "Delete '#{quote.title}'", method: :delete, data: {confirm: 'Are you sure?'},
-                      class: "text-lg leading-none
-                    no-underline py-2 px-2 bg-white rounded-r-lg opacity-50
-                    hover:opacity-100 hover:bg-gray-200" %>
-        </div>
-      <% end %>
+        <%= render "shared/action_links", content: quote %>
     </div>
 
     <blockquote class="p-0">
@@ -39,7 +18,7 @@
         <% quote.tag_list.each do |tag| %>
           <li class="list-none inline ">
           <%= link_to "#{tag}", "/quotes?tag=#{tag}", title: "All #{tag} quotes",
-                      class: "no-underline text-xs text-blue-700 mt-1
+                      class: " text-xs text-blue-700 mt-1
          hover:underline hover:text-blue-800" %>,
           </li>
         <% end %>

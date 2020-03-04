@@ -1,0 +1,20 @@
+<% if admin? %>
+  <div class="flex flex-grow-0 mb-auto ml-auto">
+    <%= form_with model: content do |form| %>
+      <%= form.hidden_field :public, value: !content.public? ? 1 : 0 %>
+      <%= form.submit "#{content.public? ? "\u{1F441}" : "\u{1F311}" }",
+                      title: "Make '#{content.title}' #{!content.public? ? 'public' : 'private'}",
+                      class: "text-xl leading-none py-2 px-2 mr-2
+                           bg-white
+                           hover:bg-indigo-100
+                           rounded hover:border-blue-400 border border-gray-400
+                           focus:outline-none focus:shadow-outline" %>
+    <% end %>
+
+    <%= link_to "Edit", edit_path(content), title: "Edit '#{content.title}'",
+                class: "leading-none text-blue-700 py-2 px-2 my-auto" %>
+
+    <%= link_to "Delete ", content, title: "Delete '#{content.title}'", method: :delete, data: {confirm: 'Are you sure?'},
+                class: "leading-none text-blue-700 py-2 px-2 my-auto" %>
+  </div>
+<% end %>

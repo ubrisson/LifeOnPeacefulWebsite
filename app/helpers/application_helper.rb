@@ -20,4 +20,8 @@ module ApplicationHelper
     session[:referrer] = request.referrer if request.get?
   end
 
+  def edit_path(model)
+    send("edit_#{model.model_name.singular}_path", model)
+  end
+
 end
