@@ -48,20 +48,13 @@ jobs:
       run: bundle exec rails db:migrate RAILS_ENV=test
     - name: Run rails tests
       run: bundle exec rails test
-      
-    - name: Debug github variables
-      run: | 
-            echo ${{ github.event }}
-            echo ${{ github.event_name }}
-            echo ${{ github.ref }}
-            ls
     
     - name: Save ssh private key to file
       if: github.event_name == 'push' && github.ref == 'refs/heads/master'
       run: echo "$SSHKEY" > privatekey
       env:
         SSHKEY: ${{ secrets.SSH_KEY }} 
-    - name: Save ssh private key to file
+    - name: Change rights of privatekey
       if: github.event_name == 'push' && github.ref == 'refs/heads/master'
       run: chmod 400 privatekey
     - name: Pull from alwaysdata
@@ -70,10 +63,10 @@ jobs:
       
     - name: Precompile assets
       if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-      run : bundle exec rails assets:precompile RAILS_ENV = production
+      run : bundle exec rails assets:precompile RAILS_ENV=production
     - name: Copy precompiled assets to alwaysdata via sftp
       if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-      run : scp -v -r lifeonpeaceful/public/packs/* ubrisson@ssh-ubrisson.alwaysdata.net:railsBlogTest/public/packs/
+      run : scp -v -r /public/packs/* ubrisson@ssh-ubrisson.alwaysdata.net:/railsBlogTest/public/packs/
        
       
 
