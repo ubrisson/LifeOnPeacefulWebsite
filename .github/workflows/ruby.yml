@@ -68,7 +68,9 @@ jobs:
         RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
     - name: Copy precompiled assets to alwaysdata via sftp
       if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-      run : scp -v -r -i privatekey -o StrictHostKeyChecking=no /home/runner/work/LifeOnPeacefulWebsite/LifeOnPeacefulWebsite/public/packs/* ubrisson@ssh-ubrisson.alwaysdata.net:/home/ubrisson/railsBlogTest/public/packs/
+      run: scp -v -r -i privatekey -o StrictHostKeyChecking=no /home/runner/work/LifeOnPeacefulWebsite/LifeOnPeacefulWebsite/public/packs/* ubrisson@ssh-ubrisson.alwaysdata.net:/home/ubrisson/railsBlogTest/public/packs/
        
-      
+    - name: Restart always data server
+      if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+      run: curl --basic -request POST --user ulysse.brisson@gmail.com:${{ secrets.ALWAYSDATA_PASSWORD }} https://api.alwaysdata.com/v1/site/594278
 
