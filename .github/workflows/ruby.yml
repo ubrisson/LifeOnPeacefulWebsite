@@ -72,5 +72,5 @@ jobs:
        
     - name: Restart always data server
       if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-      run: curl --basic -request POST --user ulysse.brisson@gmail.com:${{ secrets.ALWAYSDATA_PASSWORD }} https://api.alwaysdata.com/v1/site/594278
+      run: curl --basic --request POST --user ulysse.brisson@gmail.com:${{ secrets.ALWAYSDATA_PASSWORD }} https://api.alwaysdata.com/v1/site/594278
 
