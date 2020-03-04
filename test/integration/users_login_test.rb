@@ -43,4 +43,16 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?]', login_path
     assert_select 'a[href=?]', logout_path, count: 0
   end
+
+  test 'successful login and logout with friendly backwarding' do
+    get '/login', headers: { 'HTTP_REFERER' => resources_path }
+    @user = users(:admin)
+    post '/login', params: { session: { name: @user.name,
+                                        password: 'password' } }
+    assert is_logged_in?
+    assert_redirected_to resources_path
+    delete logout_path, headers: { 'HTTP_REFERER' => quotes_path }
+    assert_not is_logged_in?
+    assert_redirected_to quotes_path
+  end
 end

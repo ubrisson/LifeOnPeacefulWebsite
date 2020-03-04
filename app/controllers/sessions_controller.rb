@@ -1,12 +1,13 @@
 class SessionsController < ApplicationController
   def new
+    helpers.store_referrer
   end
 
   def create
     user = User.find_by(name: params[:session][:name].downcase)
     if user&.authenticate(params[:session][:password])
       log_in user
-      redirect_to root_url
+      helpers.redirect_back_or root_url
     elsif user
       flash.now[:danger] = 'Invalid password'
       render 'new'
@@ -18,6 +19,6 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out
-    redirect_to root_url
+    redirect_to request.referrer || root_url
   end
 end
