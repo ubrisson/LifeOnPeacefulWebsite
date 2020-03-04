@@ -1,35 +1,36 @@
 <% provide(:title,'') %>
 
 <body class="h-full">
-<main class=" bg-gray-900 w-full max-w-full h-full m-0 p-0 flex flex-col justify-center">
+<main class=" w-full max-w-full h-full m-0 p-0 flex flex-col justify-center" style="background: rgb(26,32,44);
+    background: linear-gradient(90deg, rgba(26,32,44,1) 0%, rgba(190,227,248,1) 100%);">
 
   <hgroup class="mx-auto">
-    <h1 class="text-gray-100" >Life on Peaceful</h1>
-    <h2 class="text-gray-300">A personnal blog | pet-project | life experiment</h2>
+    <h1 class="text-gray-100 text-6xl leading-loose" >Life on Peaceful</h1>
+    <h2 class="text-gray-300 text-2xl leading-normal">A personal blog | pet-project | life experiment</h2>
   </hgroup>
 
-  <header class="w-full max-w-md mx-auto mb-48 text-lg">
+  <header class="w-full max-w-md mx-auto mb-24 text-lg">
     <nav class="w-full z-10 text-left">
-      <ul class="px-6 flex justify-between flex-row">
+      <ul class=" flex justify-between flex-row">
 
         <li class="py-2 list-none inline-block">
           <%= link_to "Posts", posts_path,
-                      class: "hover-underline-animation text-gray-300 hover:text-gray-100 font-semibold no-underline py-3 lg:py-2 leading-none" %>
+                      class: "text-xl hover-underline-animation text-gray-300 hover:text-gray-100 font-semibold no-underline py-3 lg:py-2 leading-none" %>
         </li>
 
         <li class="py-2 list-none inline-block">
           <%= link_to "Quotes", quotes_path,
-                      class: "hover-underline-animation text-gray-300 hover:text-gray-100 font-semibold no-underline py-3 lg:py-2 leading-none" %>
+                      class: "text-xl hover-underline-animation text-gray-300 hover:text-gray-100 font-semibold no-underline py-3 lg:py-2 leading-none" %>
         </li>
 
         <li class="py-2 list-none inline-block">
           <%= link_to "Resources", resources_path,
-                      class: "hover-underline-animation text-gray-300 hover:text-gray-100 font-semibold no-underline py-3 lg:py-2 leading-none" %>
+                      class: "text-xl hover-underline-animation text-gray-300 hover:text-gray-100 font-semibold no-underline py-3 lg:py-2 leading-none" %>
         </li>
 
         <li class="py-2 list-none inline-block">
           <%= link_to "Resume", about_path,
-                      class: "hover-underline-animation text-gray-300 hover:text-gray-100 font-semibold no-underline py-3 lg:py-2 leading-none" %>
+                      class: "text-xl hover-underline-animation text-gray-300 hover:text-gray-100 font-semibold no-underline py-3 lg:py-2 leading-none" %>
         </li>
 
         <li class="fixed top-0 right-0 list-none ">
