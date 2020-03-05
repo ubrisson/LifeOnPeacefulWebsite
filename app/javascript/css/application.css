@@ -4,23 +4,17 @@
 
 article {
     @apply max-w-xl w-full flex flex-col;
-    @apply px-4 py-4;
     @apply mx-auto my-3;
     @apply text-left;
 }
 
 main {
-    @apply mx-auto max-w-4xl;
-    @apply my-6 pb-8;
+    @apply max-w-4xl;
     min-height: 95vh;
 }
 
 input:focus {
     @apply outline-none shadow-outline;
-}
-
-footer {
-    @apply pb-2 px-2
 }
 
 hgroup {
@@ -29,10 +23,6 @@ hgroup {
 
 h1, h2, h3, h4, h5, h6 {
     @apply font-semibold leading-loose text-blue-900;
-}
-
-section {
-    @apply my-4
 }
 
 h1 {
@@ -56,12 +46,7 @@ a {
     @apply font-medium text-gray-900 underline inline-block;
 }
 
-li {
-    @apply list-disc
-}
-
 p {
-    @apply text-lg font-medium m-2 max-w-lg;
     font-family: Arial, sans-serif;
 }
 
