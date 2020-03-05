@@ -28,4 +28,8 @@ module ApplicationHelper
     send("#{model}_path")
   end
 
+  def import_path(model)
+    send("#{model}_import_path")
+  end
+
 end

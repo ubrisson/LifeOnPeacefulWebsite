@@ -15,25 +15,7 @@
       <%= render @resources %>
     </ul>
     <%= will_paginate %>
-    <%= link_to "\u{2B07} Export resources \u{2B07}",
-                "resources/export?#{URI(request.original_url).query}",
-                title: "Download as JSON",
-                target: '_blank',
-                class: "block text-sm"
-    %>
-    <% if admin? %>
-      <details title="Upload as JSON">
-        <summary class="pr-5 text-sm text-gray-900 underline"> <%= "\u{2B06} Import resources \u{2B06}" %> </summary>
-        <%= form_with url: resources_import_path, method: :post, multipart: true,
-                      class: "bg-white rounded shadow max-w-sm p-2 my-2 mx-auto" do |f| %>
-          <%= f.file_field :json %>
-          <%= f.submit "import", name: nil,
-                       class: 'inline-block bg-gray-600 uppercase text-xs text-white cursor-pointer
-                    hover:bg-blue-900 font-bold py-1 px-2 rounded focus:outline-none
-                    focus:shadow-outline' %>
-        <% end %>
-      </details>
-    <% end %>
+    <%= render 'shared/import_export', model: :resources %>
   </main>
 
   <aside class="mt-48 max-w-sm mr-12 w-full text-left ">
