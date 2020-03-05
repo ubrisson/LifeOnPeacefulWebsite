@@ -4,20 +4,7 @@
 <main>
   <hgroup class="pb-0"><h1 class="leading-none">Posts</h1></hgroup>
 
-  <%= form_with url: posts_path, method: :get, local: true,
-                class: "max-w-xs mx-auto my-4 rounded-lg
-                bg-white shadow flex border border-gray-400" do |form| %>
-    <%= form.search_field :q, placeholder: 'Search posts',
-                          title: 'Input to search posts',
-                          style: "margin-right: 0.15rem;",
-                          class: "text-blue-900 flex-grow rounded-l-lg py-1 px-3
-                           focus:outline-none focus:shadow-outline" %>
-    <%= form.submit "\u{1F50E}", name: nil, title: 'Search posts',
-                    class: 'cursor-pointer bg-white text-lg
-                    border-gray-400 border-l rounded-r-lg py-1 px-3
-                    hover:bg-gray-200 hover:text-blue-900
-                    focus:outline-none focus:shadow-outline ' %>
-  <% end %>
+  <%= render 'shared/search_bar', model: :posts %>
 
   <%= will_paginate %>
   <ul class="posts mt-8">

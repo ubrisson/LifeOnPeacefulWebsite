@@ -5,20 +5,7 @@
   <main class="max-w-4xl flex-grow ml-48 mr-12 bg-transparent text-left shadow-none border-0">
     <hgroup class="pb-0"><h1>Resources</h1></hgroup>
 
-    <%= form_with url: resources_path, method: :get, local: true,
-                  class: "mx-auto mb-4 mt-2
-                bg-white flex border border-gray-400" do |form| %>
-      <%= form.search_field :q, placeholder: 'Search resources',
-                            title: 'Input to search resources',
-                            style: "margin-right: 0.15rem;",
-                            class: "text-blue-900 flex-grow py-1 px-3
-                           focus:outline-none focus:shadow-outline" %>
-      <%= form.submit "\u{1F50D}", name: nil, title: 'Search resources',
-                      class: 'cursor-pointer bg-white text-lg
-                    py-1 px-3
-                    hover:bg-gray-200 hover:text-blue-900
-                    focus:outline-none focus:shadow-outline ' %>
-    <% end %>
+    <%= render 'shared/search_bar', model: :resources %>
 
     <span class="text-sm"> <%= page_entries_info @resources, model:'resource', html:false%> </span>
 

@@ -24,4 +24,8 @@ module ApplicationHelper
     send("edit_#{model.model_name.singular}_path", model)
   end
 
+  def path(model)
+    send("#{model}_path")
+  end
+
 end
