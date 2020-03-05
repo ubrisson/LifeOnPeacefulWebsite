@@ -2,12 +2,12 @@
   <article class="max-w-full px-0 pt-2 pb-2 m-0 border-b border-gray-500">
 
     <div class="flex">
-      <%= link_to resource.title, resource.link, title: resource.link, target:'_blank',
+      <%= link_to resource.title, resource.link, title: resource.link, target: '_blank',
                   class: "text-blue-700 text-lg mr-auto leading-tight
                   no-underline hover:underline
                   inline-block mt-auto hover:text-blue-800" %>
 
-      <%= render "shared/action_links", content: resource%>
+      <%= render "shared/action_links", content: resource %>
     </div>
     <cite class="p-0 font-bold text-sm leading-tight"> &#8213; <%= resource.author %>
       <% unless resource.publication.nil? %>
@@ -20,20 +20,9 @@
     <% end %>
 
     <div class="flex">
-    <% unless resource.tag_list.blank? %>
-      <ul class="mr-auto mt-auto">
-        <span class="text-xs inline">tags: </span>
-        <% resource.tag_list.each do |tag| %>
-          <li class="list-none inline ">
-            <%= link_to "#{tag}", "/resources?tag=#{tag}", title: "All #{tag} resources",
-                        class: "no-underline text-xs text-blue-700 mt-1
-         hover:underline hover:text-blue-800" %>,
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
+      <%= render "shared/tag_list", content: resource %>
 
-    <span class=" text-xs mb-1 w-1/3 leading-none mt-auto">
+      <span class=" text-xs mb-1 w-1/3 leading-none mt-auto">
       Posted on <%= time_tag(resource.created_at) %>.
     </span>
     </div>

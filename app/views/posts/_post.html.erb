@@ -14,16 +14,7 @@
     <%= post.body %>
     </div>
 
-    <% unless post.tag_list.nil? %>
-      <div class="my-1 text-right">
-        <% post.tag_list.each do |tag| %>
-          <%= link_to "##{tag}", "/posts?tag=#{tag}", title: "All #{tag} posts",
-                      class: "no-underline text-xs px-2 py-1 bg-white mt-1
-         text-gray-700 rounded shadow border border-gray-400
-         hover:bg-gray-200 hover:text-blue-900" %>
-        <% end %>
-      </div>
-    <% end %>
+    <%= render "shared/tag_list", content: post %>
 
     <span class="text-right text-xs mt-2">
       Posted on <%= time_tag(post.updated_at) %>.
