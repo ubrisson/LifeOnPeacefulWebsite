@@ -1,5 +1,5 @@
 <li id="<%= post.id %>" class="list-none">
-  <article class="max-w-2xl px-8 py-6">
+  <article class="w-full pt-6">
 
     <div class="flex">
       <%= link_to post.title, post_path(post), title: post_path(post),
@@ -10,7 +10,7 @@
       <%= render "shared/action_links", content: post %>
     </div>
 
-    <div class="py-4 max-w-2xl text-lg font-normal text-gray-700">
+    <div class="py-4 text-lg font-normal text-gray-700">
     <%= post.body %>
     </div>
 
