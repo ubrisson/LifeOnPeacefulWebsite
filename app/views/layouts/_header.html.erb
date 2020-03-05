@@ -1,4 +1,4 @@
-<header class="fixed w-full lg:w-auto bg-gray-900 lg:inset-y-0 top-0 lg:flex lg:justify-center flex-col ">
+<header class="fixed w-full lg:w-1/10 bg-gray-900 lg:inset-y-0 top-0 lg:flex lg:justify-center flex-col ">
   <nav class="w-full lg:rounded-r-lg z-10 text-left">
     <ul class="px-6 flex lg:flex-col justify-between flex-row">
       <li class="py-2 list-none inline-block">
@@ -26,7 +26,7 @@
                     class: "hover-underline-animation text-gray-100 font-semibold no-underline py-3 lg:py-2 leading-none" %>
       </li>
 
-      <li class="fixed top-0 right-0 list-none ">
+      <li class="fixed bottom-0 lg:top-0 right-0 list-none ">
         <% if logged_in? %>
 
           <%= link_to "Log out", logout_path, method: :delete,
