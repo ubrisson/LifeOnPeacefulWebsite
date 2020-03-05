@@ -3,9 +3,9 @@
     <span class="text-xs inline">tags: </span>
     <% content.tag_list.each do |tag| %>
       <li class="list-none inline ">
-        <%= link_to "#{tag}", "/#{content.model_name}?tag=#{tag}",
-                    title: "All #{tag} #{content.model_name}",
-                    class: "text-xs text-blue-700 mt-1" %>,
+        <%= link_to "#{tag}", "/#{controller_name}?tag=#{tag}",
+                    title: "All #{tag} #{controller_name}",
+                    class: "text-xs text-blue-600 mt-1" %>,
       </li>
     <% end %>
   </ul>
