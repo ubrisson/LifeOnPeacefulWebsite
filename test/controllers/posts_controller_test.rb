@@ -90,7 +90,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     @post.tag_list = 'example_tag'
     @post.save
     get posts_path, params: { tag: 'example_tag' }
-    assert_select 'a', text: '#example_tag'
+    assert_select 'a', text: 'example_tag'
     assert_select 'article', count: 1
   end
 
