@@ -1,12 +1,12 @@
 <li id="<%= quote.id %>" class="list-none">
-  <article class="max-w-full px-0 pt-2 pb-2 m-0 border-b border-gray-500">
+  <article class="max-w-full px-0 pt-3 pb-6 m-0 border-b border-gray-500">
 
     <div class="flex">
         <%= render "shared/action_links", content: quote %>
     </div>
 
     <blockquote class="p-0">
-      <p class="w-full font-serif p-0 mx-0 my-2 leading-tight">
+      <p class="w-full font-serif p-0 mx-0 leading-tight">
         "<%=raw quote.body %>"
       </p>
       <footer class="p-0 font-bold text-sm leading-none"> &#8213; <%= quote.author %>, in <cite> <%= quote.source %></cite></footer>
