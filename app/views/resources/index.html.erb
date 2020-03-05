@@ -2,12 +2,12 @@
 <% provide(:button_text, 'Create') %>
 
 <div class="flex">
-  <main class="max-w-4xl flex-grow ml-48 mr-12 bg-transparent text-left shadow-none border-0">
+  <main class="max-w-2xl flex-grow ml-48 mr-12 bg-transparent text-left shadow-none border-0">
     <hgroup class="pb-0"><h1>Resources</h1></hgroup>
 
     <%= render 'shared/search_bar', model: :resources %>
 
-    <span class="text-sm"> <%= page_entries_info @resources, model:'resource', html:false%> </span>
+    <span class="text-sm"> <%= page_entries_info @resources, model: 'resource', html: false %> </span>
 
     <%= will_paginate %>
     <ul class="resources">
@@ -18,18 +18,6 @@
     <%= render 'shared/import_export', model: :resources %>
   </main>
 
-  <aside class="mt-48 max-w-sm mr-12 w-full text-left ">
-    <h1 class="text-sm font-bold uppercase
-     tracking-wide border-b border-gray-500 w-full">Browse by tag </h1>
-    <ul class="mt-4 flex flex-wrap">
-      <% @tags.each do |tag| %>
-        <li class="list-none w-1/3">
-          <%= link_to "#{tag}", "/resources?tag=#{tag}", title: "All #{tag} resources",
-                      class: "no-underline text-xs text-blue-800 mt-1
-         hover:underline hover:text-blue-900 px-1 mx-1" %>
-        </li>
-      <% end %>
-    </ul>
-  </aside>
+  <%= render 'shared/tag_browsing' %>
 
 </div>

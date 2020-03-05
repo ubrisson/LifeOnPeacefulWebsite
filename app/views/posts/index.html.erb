@@ -1,13 +1,15 @@
 <% provide(:title, 'Posts') %>
 <% provide(:button_text, 'Create') %>
 
-<main>
-  <hgroup class="pb-0"><h1 class="leading-none">Posts</h1></hgroup>
+<main class="max-w-2xl">
+  <hgroup class="pb-0"><h1>Posts</h1></hgroup>
 
+  <div class="max-w-xl mx-auto">
   <%= render 'shared/search_bar', model: :posts %>
 
   <%= will_paginate %>
   <%= render 'shared/new_content', model: 'post' %>
+  </div>
   <ul class="posts mt-8">
     <%= render @posts %>
   </ul>
