@@ -2,9 +2,6 @@ class StaticPagesController < ApplicationController
   def home
   end
 
-  def about
-  end
-
-  def resources
+  def resume
   end
 end
