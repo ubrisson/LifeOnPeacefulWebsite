@@ -10,7 +10,7 @@
                            focus:outline-none focus:shadow-outline" %>
     <% end %>
 
-    <%= link_to "Edit", send("edit_#{model.model_name.singular}_path", model),
+    <%= link_to "Edit", send("edit_#{content.model_name.singular}_path", content),
                 title: "Edit '#{content.title}'",
                 class: "leading-none text-blue-700 py-2 px-2 my-auto" %>
 
