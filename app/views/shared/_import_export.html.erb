@@ -1,13 +1,13 @@
 <div>
 <%= link_to "Export as JSON",
-            "#{model}/export?#{URI(request.original_url).query}",
+            "#{controller_name}/export?#{URI(request.original_url).query}",
             target: '_blank',
             class: "block text-blue-600 text-sm mx-auto text-center max-w-xs mt-6"
 %>
 <% if admin? %>
-  <%= form_with url: import_path(model), method: :post, multipart: true,
+  <%= form_with url: send("#{controller_name}_import_path"), method: :post, multipart: true,
                 class: "text-center bg-white rounded border border-gray-400 max-w-sm px-2 pt-4 pb-6 my-3 mx-auto" do |f| %>
-    <%= f.label(:import, "Import #{model}", class: "block test-sm p-2 font-bold mb-2") %>
+    <%= f.label(:import, "Import #{controller_name}", class: "block test-sm p-2 font-bold mb-2") %>
     <%= f.file_field :json, id: 'import', required: 'required', class: 'mx-auto' %>
     <%= f.submit "Import", name: nil,
                  class: 'block mx-auto border border-gray-600 mt-4 px-2 py-1

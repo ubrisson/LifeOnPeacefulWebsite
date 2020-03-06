@@ -19,17 +19,4 @@ module ApplicationHelper
   def store_referrer
     session[:referrer] = request.referrer if request.get?
   end
-
-  def edit_path(model)
-    send("edit_#{model.model_name.singular}_path", model)
-  end
-
-  def path(model)
-    send("#{model}_path")
-  end
-
-  def import_path(model)
-    send("#{model}_import_path")
-  end
-
 end
