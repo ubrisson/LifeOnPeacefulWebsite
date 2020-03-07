@@ -2,12 +2,6 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-article {
-    @apply w-full flex flex-col;
-    @apply mx-auto my-3;
-    @apply text-left;
-}
-
 main {
     @apply max-w-4xl;
     min-height: 95vh;
@@ -18,37 +12,18 @@ input:focus {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    @apply font-semibold text-blue-900;
-}
-
-h1 {
-    @apply text-4xl
-}
-
-h2 {
-    @apply text-2xl font-medium
-}
-
-h3 {
-    @apply text-2xl;
-}
-
-h4 {
-    @apply text-xl
+    @apply font-bold text-blue-900;
 }
 
 a {
-    @apply text-gray-900 underline inline-block;
-}
-
-p {
-    font-family: Arial, sans-serif;
+    @apply text-blue-600 underline inline-block;
 }
 
 /* purgecss start ignore */
 .pagination {
     @apply my-4 bg-white border border-gray-400 rounded;
-    @apply flex justify-center w-full;
+    @apply flex mx-auto;
+    width: max-content;
 }
 
 .next_page, .current, .pagination > a:not(:first-child) {
