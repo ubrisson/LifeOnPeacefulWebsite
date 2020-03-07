@@ -1,14 +1,4 @@
 <% provide(:title, "Edit resource: #{@resource.title}") %>
 <% provide(:button_text, 'Edit') %>
 
-<main class="mt-12 lg:mt-6 pb-8 w-full max-w-2xl mx-auto w-full text-center px-4 bg-transparent shadow-none border-0">
-  <hgroup class="pb-0">
-    <h1>Resources</h1>
-    <h2>Edit resource: <%= @resource.title %></h2>
-  </hgroup>
-  <section class="my-3 mx-auto bg-white border border-gray-400 rounded py-4">
-    <%= render 'form' %>
-  </section>
-  <%= link_to 'Show', @resource %> |
-  <%= link_to 'Back', resources_path %>
-</main>
+<%= render 'shared/edit_content', content: @resource %>

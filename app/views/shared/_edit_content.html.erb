@@ -1,0 +1,14 @@
+<main
+  class="mt-12 lg:mt-6 pb-8 w-full max-w-2xl mx-auto w-full
+  px-4 bg-transparent text-center shadow-none border-0">
+
+  <h1><%= controller_name.capitalize %></h1>
+  <h2>Edit <%= controller_name.singularize %>: <%= content.title %></h2>
+
+  <section class="my-3 mx-auto bg-white border border-gray-400 rounded py-4">
+    <%= render "#{controller_name}/form" %>
+  </section>
+
+  <%= link_to 'Show', content %> |
+  <%= link_to 'Back', send("#{controller_name}_path") %>
+</main>
