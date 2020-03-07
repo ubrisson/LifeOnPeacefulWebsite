@@ -1,8 +1,9 @@
 <% provide(:title, @resource.title) %>
 
-<main>
-  <hgroup class="pb-0">
-    <h1>Show resource</h1>
-  </hgroup>
+<main
+  class="mt-12 lg:mt-6 pb-8 w-full max-w-2xl mx-auto w-full
+  px-4 bg-transparent text-center shadow-none border-0">
   <%= render @resource %>
+
+  <%= link_to 'Back', resources_path %>
 </main>

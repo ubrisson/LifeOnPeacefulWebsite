@@ -1,9 +1,10 @@
 <% provide(:title, @quote.title) %>
 
-<main>
-  <hgroup class="pb-0">
-    <h1>Quotes</h1>
-    <h2>Show quote: <%= @quote.title %></h2>
-  </hgroup>
+<main
+  class="mt-12 lg:mt-6 pb-8 w-full max-w-2xl mx-auto w-full
+  px-4 bg-transparent text-center shadow-none border-0">
+  <h1><%= @quote.title %></h1>
   <%= render @quote %>
+
+  <%= link_to 'Back', quotes_path %>
 </main>
