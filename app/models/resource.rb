@@ -8,15 +8,4 @@ class Resource < ApplicationRecord
   validates :description, presence: true, allow_blank: true
   validates :link, presence: true, allow_blank: true, length: { maximum: 120 }
   validates :public, inclusion: { in: [true, false] }
-
-  # TODO. Validate and test publication date ?
-  # TODO. Validate and test link url
-
-  def form_tags
-    str = ''
-    tag_list.each do |tag|
-      str += tag + ', '
-    end
-    str
-  end
 end

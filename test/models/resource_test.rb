@@ -29,9 +29,4 @@ class ResourceTest < ActiveSupport::TestCase
   test 'order should be most recent first' do
     assert_equal resources(:most_recent), Resource.first
   end
-
-  test 'form_tags should return tags between comas' do
-    assert_equal 'full, resource, example, tag, ', @full_resource.form_tags
-  end
-
 end

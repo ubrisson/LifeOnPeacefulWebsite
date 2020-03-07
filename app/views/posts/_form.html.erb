@@ -1,8 +1,10 @@
-<%= form_with(model: @post, local: true, class: "px-8 pt-3 pb-8 text-left text-blue-900 ") do |form| %>
+<%= form_with(model: @post, local: true,
+              class: "px-8 pt-3 pb-8 text-left text-blue-900 ") do |form| %>
+
   <% if @post.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this
+        post from being saved:</h2>
       <ul>
         <% @post.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -32,7 +34,7 @@
 
 
   <%= form.label(:tag_list, "Tags", class: "block font-bold mb-2 mt-3 leading-none") %>
-  <%= form.text_field :tag_list, value: @post.form_tags,
+  <%= form.text_field :tag_list, value: @post.tag_list.join(", "),
                       class: "w-full bg-gray-200 text-blue-900
                       focus:bg-white py-1 px-2 rounded mb-4
                       shadow-inner border-gray-400 border" %>

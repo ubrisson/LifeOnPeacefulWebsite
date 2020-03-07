@@ -9,12 +9,4 @@ class Quote < ApplicationRecord
   validates :body, presence: true
   validates :commentary, presence: true, allow_blank: true
   validates :public, inclusion: { in: [true, false] }
-
-  def form_tags
-    str = ''
-    tag_list.each do |tag|
-      str += tag + ', '
-    end
-    str
-  end
 end

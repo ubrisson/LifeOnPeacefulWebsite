@@ -1,4 +1,17 @@
-<%= form_with(model: @resource, class: "px-8 pt-4 pb-8 text-left w-10/12 mx-auto") do |form| %>
+<%= form_with(model: @resource,
+              class: "px-8 pt-4 pb-8 text-left w-10/12 mx-auto") do |form| %>
+
+  <% if @resource.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@resource.errors.count, "error") %> prohibited this
+        resource from being saved:</h2>
+      <ul>
+        <% @resource.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   <%= form.label(:title, class: "block font-bold mb-2 mt-3 leading-none") %>
   <%= form.text_field :title, required: "required",
@@ -30,7 +43,7 @@
                      shadow-inner border-gray-400 border" %>
 
   <%= form.label(:tag_list, "Tags", class: "block font-bold mb-2 mt-3 leading-none") %>
-  <%= form.text_field :tag_list, value: @resource.form_tags,
+  <%= form.text_field :tag_list, value: @resource.tag_list.join(", "),
                       class: "w-full bg-gray-200 text-blue-900
                       focus:bg-white py-1 px-2 rounded mb-4
                       shadow-inner border-gray-400 border" %>
