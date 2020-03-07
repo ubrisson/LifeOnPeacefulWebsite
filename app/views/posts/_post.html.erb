@@ -1,32 +1,35 @@
 <li id="<%= post.id %>" class="list-none">
-  <article class="w-full pt-6 border-b border-gray-400 pb-4">
+  <article class="my-3 pb-6 border-b border-gray-400 text-left">
 
-    <div class="flex">
+    <div class="flex pt-3">
       <%= link_to post.title, post_path(post), title: post_path(post),
-                  class: "font-semibold text-gray-800 text-3xl mr-auto leading-none
-                  no-underline
-                  inline-block mt-auto hover:underline hover:text-gray-900" %>
+                  class: "
+                  #{action_name == 'show' ? "text-4xl font-semibold" : "text-2xl" }
+                  mr-auto leading-tight inline-block mt-auto
+                  text-blue-700 no-underline hover:underline" %>
 
       <%= render "shared/action_links", content: post %>
     </div>
 
     <% if controller.action_name == 'show' %>
-      <div class="py-4 text-lg font-normal text-gray-700">
+      <div class="my-2 text-lg">
         <%= post.body %>
       </div>
     <% else %>
-      <p class="py-4 text-lg font-normal text-gray-700">
+      <p class="my-2">
         <%= post.summary %>
       </p>
     <% end %>
 
     <%= render "shared/tag_list", content: post %>
 
-    <span class="text-right text-xs mt-2">
+    <div class="mt-3 w-full flex justify-between">
+    <span class="text-left text-xs">
       Posted on <%= time_tag(post.created_at) %>.
     </span>
     <span class="text-right text-xs">
       Last updated on <%= time_tag(post.updated_at) %>.
     </span>
+    </div>
   </article>
 </li>

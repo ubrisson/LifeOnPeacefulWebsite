@@ -1,15 +1,21 @@
 <li id="<%= quote.id %>" class="list-none">
-  <article class="max-w-full px-0 pt-3 pb-6 m-0 border-b border-gray-500">
+  <article class="my-3 pb-6 border-b border-gray-400">
 
-    <div class="flex">
-        <%= render "shared/action_links", content: quote %>
+    <% if admin? %>
+    <div class="flex pt-3">
+        <%= tag.h1 quote.title,
+                   class: "text-xl mr-auto leading-none inline-block mt-auto" %>
+      <%= render "shared/action_links", content: quote %>
     </div>
+    <% end %>
 
-    <blockquote class="p-0">
-      <p class="w-full font-serif p-0 mx-0 leading-tight">
-        "<%=raw quote.body %>"
+    <blockquote class="my-3 pt-3">
+      <p class="font-serif leading-tight text-lg">
+        “<%= raw quote.body %>”
       </p>
-      <footer class="p-0 font-bold text-sm leading-none"> &#8213; <%= quote.author %>, in <cite> <%= quote.source %></cite></footer>
+      <footer class="mt-3 font-bold leading-none">
+        &#8213; <%= quote.author %>, in <cite> <%= quote.source %></cite>
+      </footer>
     </blockquote>
 
     <%= render "shared/tag_list", content: quote %>

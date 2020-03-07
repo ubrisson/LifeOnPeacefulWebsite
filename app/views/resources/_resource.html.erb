@@ -1,30 +1,31 @@
 <li id="<%= resource.id %>" class="list-none">
-  <article class="max-w-full px-0 pt-4 pb-4 m-0 border-b border-gray-500">
+  <article class="my-3 pb-6 border-b border-gray-400">
 
-    <div class="flex">
-      <%= link_to resource.title, resource.link, title: resource.link, target: '_blank',
-                  class: "text-blue-700 text-lg mr-auto leading-tight
-                  no-underline hover:underline
-                  inline-block mt-auto hover:text-blue-800" %>
+    <div class="flex pt-3">
+      <%= link_to resource.title, resource.link, title: resource.link,
+                  target: '_blank',
+                  class: "text-xl mr-auto leading-tight inline-block mt-auto
+                  text-blue-700 no-underline hover:underline" %>
 
       <%= render "shared/action_links", content: resource %>
     </div>
-    <cite class="p-0 font-bold text-sm leading-tight"> &#8213; <%= resource.author %>
+
+    <cite class="block my-2 font-bold leading-none"> &#8213; <%= resource.author %>
       <% unless resource.publication.nil? %>
         on <%= time_tag(resource.publication) %>
       <% end %>
     </cite>
 
     <% unless resource.description.blank? %>
-      <p class="text-base p-0 mx-0 my-1"> <%= resource.description %> </p>
+      <p class="my-3"> <%= resource.description %> </p>
     <% end %>
 
-    <div class="flex">
+    <div class="flex mt-3 justify-end">
       <%= render "shared/tag_list", content: resource %>
 
-      <span class=" text-xs text-gray-600 w-auto leading-none mt-auto">
-      Posted on <%= time_tag(resource.created_at) %>.
-    </span>
+      <span class="text-xs text-gray-600 w-auto leading-none mt-auto">
+        Read in <%= resource.created_at.year %>.
+      </span>
     </div>
   </article>
 </li>
