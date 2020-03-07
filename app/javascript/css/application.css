@@ -52,14 +52,14 @@ p {
 
 /* purgecss start ignore */
 .pagination {
-    @apply flex rounded-lg my-4 mx-auto justify-center;
+    @apply flex rounded my-4 mx-auto justify-center;
     @apply border border-gray-400;
     width: max-content;
 }
 
-.previous_page, .next_page, .current, .pagination > a {
-    @apply relative block py-2 px-3 leading-none ml-0 no-underline;
-    @apply bg-white text-gray-500 text-lg;
+.next_page, .current, .pagination > a:not(:first-child) {
+    @apply relative block py-2 px-3 leading-none no-underline;
+    @apply bg-white text-gray-600 text-lg;
     @apply border-l border-gray-400;
 }
 
@@ -68,15 +68,17 @@ p {
 }
 
 .previous_page {
-    @apply rounded-l-lg;
+    @apply relative block py-2 px-3 leading-none no-underline;
+    @apply bg-white text-gray-600 text-lg;
+    @apply rounded-l border-0;
 }
 
 .next_page {
-    @apply rounded-r-lg;
+    @apply rounded-r;
 }
 
 .current {
-    @apply text-blue-900 bg-gray-200 opacity-75 not-italic shadow-inner;
+    @apply text-blue-900 bg-gray-200 not-italic shadow-inner;
 }
 
 .disabled {
