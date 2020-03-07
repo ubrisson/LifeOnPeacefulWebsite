@@ -19,4 +19,12 @@ module ApplicationHelper
   def store_referrer
     session[:referrer] = request.referrer if request.get?
   end
+
+  def search_result_message
+    if params[:q]
+      " containing <b> \"#{params[:q]}\" </b>"
+    elsif params[:tag]
+      " tagged with <strong> \"#{params[:tag]}\" </strong>"
+    end
+  end
 end

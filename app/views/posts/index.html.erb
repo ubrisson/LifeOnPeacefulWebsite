@@ -7,13 +7,14 @@
   <div class="max-w-xl mx-auto">
     <%= render 'shared/search_bar' %>
 
+    <span class="text-sm">
+      <%= page_entries_info model: 'post' %>
+      <%= raw search_result_message %>
+    </span>
+
     <%= will_paginate %>
     <%= render 'shared/new_content' %>
   </div>
-
-  <span class="text-sm">
-      <%= page_entries_info model: 'post' %>
-  </span>
 
   <ul class="posts mt-8">
     <%= render @posts %>
