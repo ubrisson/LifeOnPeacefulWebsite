@@ -2,19 +2,24 @@
 <% provide(:button_text, 'Create') %>
 
 <main class="mt-12 lg:mt-6 pb-8 w-full max-w-2xl mx-auto w-full px-4 bg-transparent text-left shadow-none border-0">
-  <hgroup class="pb-0"><h1>Posts</h1></hgroup>
+  <h1>Posts</h1>
 
   <div class="max-w-xl mx-auto">
-  <%= render 'shared/search_bar', model: :posts %>
+    <%= render 'shared/search_bar' %>
 
-  <%= will_paginate %>
-  <%= render 'shared/new_content', model: 'post' %>
+    <%= will_paginate %>
+    <%= render 'shared/new_content' %>
   </div>
+
+  <span class="text-sm">
+      <%= page_entries_info @resources, model: 'resource' %>
+  </span>
+
   <ul class="posts mt-8">
     <%= render @posts %>
   </ul>
   <%= will_paginate %>
   <%= page_entries_info @posts %>
-  <%= render 'shared/import_export', model: :posts %>
+  <%= render 'shared/import_export' %>
 
 </main>

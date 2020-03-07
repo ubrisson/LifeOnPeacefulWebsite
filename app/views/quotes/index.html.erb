@@ -3,19 +3,21 @@
 
 <div class="flex flex-col justify-around max-w-full px-4 pb-6 mx-auto xl:flex-row">
   <main class="w-full max-w-2xl pb-8 mx-auto mt-12 text-left bg-transparent border-0 shadow-none xl:mt-6 xl:pl-20 2xl:pl-0">
-    <hgroup class="pb-0"><h1>Quotes</h1></hgroup>
+    <h1>Quotes</h1>
 
-    <%= render 'shared/search_bar', model: :quotes %>
+    <%= render 'shared/search_bar' %>
 
-    <span class="text-sm"> <%= page_entries_info @quotes, model: 'quote', html: false %> </span>
+    <span class="text-sm">
+      <%= page_entries_info @quotes, model: 'quote' %>
+    </span>
 
     <%= will_paginate %>
     <ul class="quotes">
-      <%= render 'shared/new_content', model: 'quote' %>
+      <%= render 'shared/new_content' %>
       <%= render @quotes %>
     </ul>
     <%= will_paginate %>
-    <%= render 'shared/import_export', model: :quotes %>
+    <%= render 'shared/import_export' %>
   </main>
 
   <%= render 'shared/tag_browsing' %>
