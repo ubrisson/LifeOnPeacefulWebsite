@@ -5,11 +5,7 @@
 
 require("@rails/ujs").start();
 require("turbolinks").start();
-require("@rails/activestorage").start();
-require("channels");
 require("css/application.css");
-require("css/trix.css");
-// require("css/actiontext.scss");
 
 // import '../css/application.css'
 
@@ -19,6 +15,3 @@ require("css/trix.css");
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-
-require("trix");
-require("@rails/actiontext");
