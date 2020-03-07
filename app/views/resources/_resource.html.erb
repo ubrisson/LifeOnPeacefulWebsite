@@ -24,7 +24,7 @@
       <%= render "shared/tag_list", content: resource %>
 
       <span class="text-xs text-gray-600 w-auto leading-none mt-auto">
-        Read in <%= resource.created_at.year %>.
+        Read in <%= resource.created_at.strftime("%B %Y") %>.
       </span>
     </div>
   </article>
