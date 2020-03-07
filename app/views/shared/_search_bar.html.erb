@@ -1,6 +1,5 @@
 <%= form_with url: send("#{controller_name}_path"), method: :get, local: true,
-              class: "mx-auto mb-4 mt-2 rounded
-                bg-white flex border border-gray-400" do |form| %>
+              class: "my-4 bg-white border border-gray-400 rounded flex" do |form| %>
   <%= form.search_field :q, placeholder: "Search #{controller_name}",
                         style: "margin-right: 0.15rem;",
                         class: "text-blue-900 flex-grow py-1 px-3 appearance-none rounded-l

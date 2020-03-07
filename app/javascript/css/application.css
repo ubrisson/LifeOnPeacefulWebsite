@@ -3,7 +3,7 @@
 @import "tailwindcss/utilities";
 
 article {
-    @apply max-w-xl w-full flex flex-col;
+    @apply w-full flex flex-col;
     @apply mx-auto my-3;
     @apply text-left;
 }
@@ -17,12 +17,8 @@ input:focus {
     @apply outline-none shadow-outline;
 }
 
-hgroup {
-    @apply w-full max-w-5xl py-6;
-}
-
 h1, h2, h3, h4, h5, h6 {
-    @apply font-semibold leading-loose text-blue-900;
+    @apply font-semibold text-blue-900;
 }
 
 h1 {
@@ -41,9 +37,8 @@ h4 {
     @apply text-xl
 }
 
-
 a {
-    @apply font-medium text-gray-900 underline inline-block;
+    @apply text-gray-900 underline inline-block;
 }
 
 p {
@@ -52,9 +47,8 @@ p {
 
 /* purgecss start ignore */
 .pagination {
-    @apply flex rounded my-4 mx-auto justify-center;
-    @apply border border-gray-400;
-    width: max-content;
+    @apply my-4 bg-white border border-gray-400 rounded;
+    @apply flex justify-center w-full;
 }
 
 .next_page, .current, .pagination > a:not(:first-child) {
