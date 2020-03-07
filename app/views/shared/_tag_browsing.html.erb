@@ -2,7 +2,7 @@
   <h1 class="text-sm font-bold uppercase py-2
      tracking-wide border-b border-gray-400 w-full">Browse by tag </h1>
   <ul class="mt-4 mx-4 " style="columns: 2">
-    <% @tags.each do |tag| %>
+    <% tags.each do |tag| %>
       <li class="list-none">
         <%= link_to "#{tag.to_s.capitalize}", "/#{controller_name}?tag=#{tag}",
                     title: "All #{tag.to_s.capitalize} #{controller_name}",
