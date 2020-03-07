@@ -1,5 +1,5 @@
 <li id="<%= post.id %>" class="list-none">
-  <article class="w-full pt-6">
+  <article class="w-full pt-6 border-b border-gray-400 pb-4">
 
     <div class="flex">
       <%= link_to post.title, post_path(post), title: post_path(post),
@@ -10,16 +10,22 @@
       <%= render "shared/action_links", content: post %>
     </div>
 
-    <div class="py-4 text-lg font-normal text-gray-700">
-    <%= post.body %>
-    </div>
+    <% if controller.action_name == 'show' %>
+      <div class="py-4 text-lg font-normal text-gray-700">
+        <%= post.body %>
+      </div>
+    <% else %>
+      <p class="py-4 text-lg font-normal text-gray-700">
+        <%= post.summary %>
+      </p>
+    <% end %>
 
     <%= render "shared/tag_list", content: post %>
 
     <span class="text-right text-xs mt-2">
       Posted on <%= time_tag(post.created_at) %>.
     </span>
-    <span class="text-right text-xs mt-2">
+    <span class="text-right text-xs">
       Last updated on <%= time_tag(post.updated_at) %>.
     </span>
   </article>

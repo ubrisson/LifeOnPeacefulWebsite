@@ -3,7 +3,9 @@
 one:
   title: orange
   public: true
+  summary: orange
 
 two:
   title: MyString
   public: true
+  summary: MyText

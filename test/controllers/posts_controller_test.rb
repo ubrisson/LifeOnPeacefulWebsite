@@ -29,7 +29,9 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   test 'should create post' do
     log_in_as(@admin)
     assert_difference 'Post.count', 1 do
-      post posts_url, params: { post: { title: @post.title, public: @post.public } }
+      post posts_url, params: { post: { title: @post.title,
+                                        public: @post.public,
+                                        summary: @post.summary  } }
     end
     assert_redirected_to posts_path
   end

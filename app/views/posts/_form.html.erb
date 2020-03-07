@@ -19,9 +19,17 @@
                       shadow-inner border-gray-400 border" %>
 
     <%= form.label :body, class: "block font-bold mb-2 mt-3 leading-none" %>
-    <%= form.rich_text_area :body, class: "w-full bg-gray-200 text-blue-900
-                      focus:bg-white py-1 px-2 rounded mb-4 mt-1
+    <%= form.rich_text_area :body,
+                            class: "w-full bg-gray-200 text-blue-900
+                            focus:bg-white py-1 px-2 rounded mb-4 mt-1
+                            shadow-inner border-gray-400 border" %>
+
+  <%= form.label :summary, class: "block font-bold mb-2 mt-3 leading-none" %>
+  <%= form.text_area :summary,
+                     class: "w-full bg-gray-200 text-blue-900
+                      focus:bg-white py-1 px-2 rounded mb-4
                       shadow-inner border-gray-400 border" %>
+
 
   <%= form.label(:tag_list, "Tags", class: "block font-bold mb-2 mt-3 leading-none") %>
   <%= form.text_field :tag_list, value: @post.form_tags,
