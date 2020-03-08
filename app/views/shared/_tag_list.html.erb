@@ -1,7 +1,7 @@
-<% unless content.tag_list.blank? %>
+<% unless content.tags.nil? %>
   <ul class="mr-auto mt-auto leading-none">
     <span class="text-sm inline">tags: </span>
-    <% content.tag_list.each do |tag| %>
+    <% content.tags.each do |tag| %>
       <li class="list-none inline ">
         <%= link_to "#{tag.to_s.capitalize}", "/#{controller_name}?tag=#{tag}",
                     title: "All #{tag.to_s.capitalize} #{controller_name}",

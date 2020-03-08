@@ -77,7 +77,7 @@ class PostsController < ApplicationController
   end
 
   def correct_posts
-    logged_in? ? Post.all : Post.only_public
+    logged_in? ? Post.all.with_tags : Post.only_public.with_tags
   end
 
   def search_and_tagged_posts(params)

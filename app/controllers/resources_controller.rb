@@ -70,7 +70,7 @@ class ResourcesController < ApplicationController
   end
 
   def correct_resources
-    logged_in? ? Resource.all : Resource.only_public
+    logged_in? ? Resource.all.with_tags : Resource.only_public.with_tags
   end
 
   def search_and_tagged_resources(params)

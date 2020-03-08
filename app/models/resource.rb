@@ -1,6 +1,7 @@
 class Resource < ApplicationRecord
   acts_as_taggable
   scope :only_public, -> { where(public: true) }
+  scope :with_tags, -> { preload(:tags) }
   scoped_search on: %i[title author description]
   default_scope -> { order(created_at: :desc) }
   validates :title, presence: true, length: { maximum: 144 }

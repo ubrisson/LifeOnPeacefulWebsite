@@ -79,7 +79,7 @@ class QuotesController < ApplicationController
   end
 
   def correct_quotes
-    logged_in? ? Quote.all : Quote.only_public
+    logged_in? ? Quote.all.with_tags : Quote.only_public.with_tags
   end
 
   def search_and_tagged_quotes(params)
