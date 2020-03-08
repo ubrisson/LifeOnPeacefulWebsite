@@ -3,16 +3,20 @@
 
     <div class="flex pt-3">
       <% if action_name == 'show' %>
-        <%= tag.h1 post.title, class:"mr-auto leading-tight inline-block mt-auto"%>
+        <%= tag.h1 post.title, class: "mr-auto leading-tight inline-block mt-auto" %>
       <% else %>
-      <%= link_to post.title, post_path(post), title: post_path(post),
-                  class: "text-2xl mr-auto leading-tight inline-block mt-auto
+        <%= link_to post.title, post_path(post), title: post_path(post),
+                    class: "text-2xl mr-auto leading-tight inline-block mt-auto
                   text-blue-700 no-underline hover:underline" %>
 
-        <% end %>
+      <% end %>
       <%= render "shared/action_links", content: post %>
     </div>
 
+    <span class="block text-right text-xs">
+      <%= time_tag(post.created_at, format: "%B %d, %Y") %> -
+      <%= "#{((post.body.to_s.split.count)./250.0).ceil} minutes read" %>
+    </span>
     <% if controller.action_name == 'show' %>
       <div class="my-2 text-lg">
         <%= post.body %>
@@ -23,15 +27,12 @@
       </p>
     <% end %>
 
-    <%= render "shared/tag_list", content: post %>
+    <div class="flex mt-3 justify-end">
+      <%= render "shared/tag_list", content: post %>
 
-    <div class="mt-3 w-full flex justify-between">
-    <span class="text-left text-xs">
-      Posted on <%= time_tag(post.created_at) %>.
-    </span>
-    <span class="text-right text-xs">
-      Last updated on <%= time_tag(post.updated_at) %>.
-    </span>
+      <span class="text-xs text-gray-600 w-auto leading-none mt-auto">
+        Last update on <%= time_tag(post.created_at, format: "%B %d, %Y") %>.
+      </span>
     </div>
   </article>
 </li>
