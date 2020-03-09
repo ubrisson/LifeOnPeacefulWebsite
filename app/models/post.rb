@@ -10,4 +10,5 @@ class Post < ApplicationRecord
   validates :body, presence: true, allow_blank: true
   validates :public, inclusion: { in: [true, false] }
   validates :summary, presence: true, if: -> { public? }
+  has_many :comments, dependent: :destroy
 end
