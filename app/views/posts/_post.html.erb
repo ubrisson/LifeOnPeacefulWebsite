@@ -15,7 +15,7 @@
 
     <span class="block text-right text-xs">
       <%= time_tag(post.created_at, format: "%B %d, %Y") %> -
-      <%= "#{((post.body.to_s.split.count)./250.0).ceil} minutes read" %>
+      <%= "#{((post.body.to_s.split.count)./ 250.0).ceil} minutes read" %>
     </span>
     <% if controller.action_name == 'show' %>
       <div class="my-2 text-lg">
@@ -35,4 +35,17 @@
       </span>
     </div>
   </article>
+
+  <% if action_name == 'show' %>
+    <section class="mt-12">
+      <h2 class="uppercase font-bold text-blue-900 mt-3 py-2"> Comments</h2>
+
+      <%= render "comments/form", comment: post.comments.build %>
+      <ol>
+        <% post.comments.each do |comment| %>
+          <%= render "comments/comment", comment: comment %>
+        <% end %>
+      </ol>
+    </section>
+  <% end %>
 </li>

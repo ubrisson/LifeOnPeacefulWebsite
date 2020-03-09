@@ -1,0 +1,32 @@
+<li id="<%= comment.id %>" class="list-none">
+  <article class="my-3 py-6 px-6 max-w-xl mx-auto border bg-white rounded shadow border-gray-400">
+
+      <div class="flex">
+        <%= tag.span "#{comment.name.blank? ? "Anonymous" : comment.name}:", class: "font-bold" %>
+
+        <% if admin? %>
+          <div class="flex flex-grow-0 mb-auto ml-auto">
+            <%= form_with model: comment do |form| %>
+              <%= form.hidden_field :public, value: !comment.public? ? 1 : 0 %>
+              <%= form.submit "#{comment.public? ? "\u{1F441} Hide" : "\u{1F441} Show" }",
+                              title: "Make #{!comment.public? ? 'public' : 'private'}",
+                              class: "leading-none py-2 px-2 mr-2
+                      #{comment.public? ? "bg-white hover:bg-gray-400" : "bg-gray-400 hover:bg-white"}
+                           rounded border border-gray-400
+                           focus:outline-none focus:shadow-outline" %>
+            <% end %>
+
+            <%= link_to "Delete ", comment, method: :delete, data: {confirm: 'Are you sure?'},
+                        class: "leading-none text-blue-700 py-2 px-2 my-auto" %>
+          </div>
+
+        <% end %>
+      </div>
+
+    <p class="block my-3"> <%= comment.body %> </p>
+
+    <span class="text-xs  block text-right text-gray-600 w-auto leading-none mt-auto">
+        Written on <%= comment.created_at.to_s %>.
+    </span>
+  </article>
+</li>
