@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   get '/posts/export'
   post '/posts/import'
   resources :posts
+  resources :comments, only: [:create, :update, :destroy]
 end
