@@ -6,9 +6,9 @@ class ContentPagesController < ApplicationController
   end
 
   def latest
-    @resource = correct_content(Resource).last
-    @quote = correct_content(Quote).last
-    @post = correct_content(Post).last
+    @resource = correct_content(Resource).first
+    @quote = correct_content(Quote).first
+    @post = correct_content(Post).first
   end
 
   private
