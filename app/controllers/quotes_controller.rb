@@ -7,7 +7,7 @@ class QuotesController < ApplicationController
     @quote = Quote.new
     @quotes = search_and_tagged_quotes(params)
                   .paginate(page: params[:page], per_page: 15)
-    @tags = Quote.tag_counts_on(:tags)
+    @tags = correct_quotes.tag_counts_on(:tags)
   end
 
   # GET /quotes/1

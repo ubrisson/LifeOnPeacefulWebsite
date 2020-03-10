@@ -7,6 +7,7 @@ class PostsController < ApplicationController
     @post = Post.new
     @posts = search_and_tagged_posts(params)
                   .paginate(page: params[:page], per_page: 10)
+    @tags = correct_posts.tag_counts_on(:tags)
   end
 
   # GET /posts/1
