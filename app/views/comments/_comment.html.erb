@@ -1,3 +1,4 @@
+<% if comment.public? %>
 <li id="<%= comment.id %>" class="list-none">
   <article class="my-3 py-6 px-6 max-w-xl mx-auto border bg-white rounded shadow border-gray-400">
 
@@ -30,3 +31,4 @@
     </span>
   </article>
 </li>
+<% end %>
