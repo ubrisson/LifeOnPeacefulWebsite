@@ -15,7 +15,7 @@
 
     <span class="block text-right text-xs">
       <%= time_tag(post.created_at, format: "%B %d, %Y") %> -
-      <%= "#{((post.body.to_s.split.count)./ 250.0).ceil} minutes read" %>
+      <%= "#{((post.body.to_s.split.count)./ 170.0).ceil} minutes read" %>
     </span>
     <% if controller.action_name == 'show' %>
       <div class="my-2 text-lg">
