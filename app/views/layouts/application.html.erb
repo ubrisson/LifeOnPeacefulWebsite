@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="text-center text-gray-800 bg-gray-100 text-base xl:text-xl h-full"
+<html lang="en" class="text-center text-gray-800 bg-gray-100 text-base 2xl:text-xl 3xl:text-2xl nymous:text-4xl h-full"
       style="font-family: Arial, sans-serif">
 <head>
   <title><%= full_title(yield(:title)) %></title>
@@ -21,6 +21,8 @@
   <%= yield %>
 <% else %>
   <body>
+
+  <div class="flex flex-col justify-around max-w-full pb-6 mx-auto lg:flex-row">
   <%= render 'layouts/header' %>
 
   <% flash.each do |message_type, message| %>
@@ -47,6 +49,7 @@
 
   <%= yield %>
 
+  </div>
   <%= render 'layouts/footer' %>
   </body>
 <% end %>
