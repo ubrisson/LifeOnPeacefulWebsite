@@ -1,7 +1,7 @@
-<aside class="max-w-xs w-full mx-auto text-left px-4 xl:mx-12 xl:mt-32">
-  <h1 class="text-sm font-bold uppercase py-2
-     tracking-wide border-b border-gray-400 w-full">Browse by tag </h1>
-  <ul class="mt-4 mx-4 " style="columns: 2">
+<aside class="flex-shrink w-auto lg:max-w-sm px-4 lg:mx-auto text-left xl:w-full lg:mx-4 lg:mt-32">
+  <h1 class="w-full text-sm font-bold tracking-wide uppercase border-b border-gray-400 py-2
+ ">Browse by tag </h1>
+  <ul class="px-4 mx-auto mt-4" style="columns:8rem auto">
     <% tags.each do |tag| %>
       <li class="list-none">
         <%= link_to "#{tag.to_s.capitalize}", "/#{controller_name}?tag=#{tag}",

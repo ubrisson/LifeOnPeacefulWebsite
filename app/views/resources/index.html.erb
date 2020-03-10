@@ -1,26 +1,23 @@
 <% provide(:title, 'Resources') %>
 <% provide(:button_text, 'Create') %>
 
-<div class="flex flex-col justify-around max-w-full pb-6 mx-auto xl:flex-row">
-  <main class="main-content text-left xl:pl-20 2xl:pl-0">
-    <h1>Resources</h1>
+<main class="main-content flex-shrink-0 text-left lg:pl-12">
+  <h1>Resources</h1>
 
-    <%= render 'shared/new_content' %>
-    <%= render 'shared/search_bar' %>
+  <%= render 'shared/new_content' %>
+  <%= render 'shared/search_bar' %>
 
-    <span class="text-sm">
+  <span class="text-sm">
       <%= page_entries_info model: 'resource' %>
-      <%= raw search_result_message %>
+    <%= raw search_result_message %>
     </span>
 
-    <%= will_paginate %>
-    <ul class="resources">
-      <%= render @resources %>
-    </ul>
-    <%= will_paginate %>
-    <%= render 'shared/import_export' %>
-  </main>
+  <%= will_paginate %>
+  <ul class="resources">
+    <%= render @resources %>
+  </ul>
+  <%= will_paginate %>
+  <%= render 'shared/import_export' %>
+</main>
 
-  <%= render 'shared/tag_browsing', tags: @tags %>
-
-</div>
+<%= render 'shared/tag_browsing', tags: @tags %>
