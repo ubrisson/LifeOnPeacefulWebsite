@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     else
       flash[:danger] = 'Failed to create new comment.'
     end
-    helpers.redirect_back_or comments_path
+    helpers.redirect_back_or post_path(current_post)
   end
 
   def update
@@ -20,12 +20,12 @@ class CommentsController < ApplicationController
     else
       flash[:danger] = 'Failed to edit comment.'
     end
-    helpers.redirect_back_or comments_path
+    helpers.redirect_back_or post_path(current_post)
   end
 
   def destroy
     @comment.destroy
-    flash[:success] = "Comment successfully deleted."
+    flash[:success] = 'Comment successfully deleted.'
   end
 
   private
