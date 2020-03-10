@@ -8,6 +8,7 @@
         <% if admin? %>
           <div class="flex flex-grow-0 mb-auto ml-auto">
             <%= form_with model: comment do |form| %>
+              <%= hidden_field_tag(:post_id, comment.post.id) %>
               <%= form.hidden_field :public, value: !comment.public? ? 1 : 0 %>
               <%= form.submit "#{comment.public? ? "\u{1F441} Hide" : "\u{1F441} Show" }",
                               title: "Make #{!comment.public? ? 'public' : 'private'}",

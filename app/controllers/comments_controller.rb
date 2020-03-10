@@ -24,8 +24,10 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    session[:referrer] = request.referer if session[:referrer].nil?
     @comment.destroy
     flash[:success] = 'Comment successfully deleted.'
+    helpers.redirect_back_or post_path(current_post)
   end
 
   private

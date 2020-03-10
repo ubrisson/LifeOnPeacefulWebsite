@@ -55,9 +55,10 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
   test 'should destroy comment' do
     log_in_as(@admin)
     assert_difference('Comment.count', -1) do
-      delete comment_url(@comment)
+      delete comment_url(@comment), params: { post_id: @post.id }
     end
-    assert_response :success
+    assert_not flash.empty?
+    assert_redirected_to post_path(@post)
   end
 
   test 'should redirect update when not logged in' do
@@ -75,7 +76,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should redirect destroy when not logged in' do
     assert_no_difference 'Comment.count' do
-      delete comment_path(@comment)
+      delete comment_url(@comment), params: { post_id: @post.id }
     end
     assert_not flash.empty?
     assert_redirected_to root_url
@@ -84,7 +85,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
   test 'should redirect destroy when logged in as a non-admin' do
     log_in_as(@not_admin)
     assert_no_difference 'Comment.count' do
-      delete comment_path(@comment)
+      delete comment_url(@comment), params: { post_id: @post.id }
     end
     assert_not flash.empty?
     assert_redirected_to root_url
