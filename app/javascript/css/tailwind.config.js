@@ -7,7 +7,7 @@ module.exports = {
                 '1/10': '10%',
             },
             screens: {
-                '2xl': '1920px',
+                '2xl': '1440px',
             }
         }
     }
