@@ -1,0 +1,33 @@
+<% provide(:title, 'Latest contents') %>
+
+<main class="mt-16 pb-8 w-full max-w-5xl mx-auto
+    @apply bg-transparent text-left shadow-none border-0;">
+
+  <h1> Latest contents </h1>
+
+  <h2 class="pt-12 inline-block leading-none">
+    <%= link_to 'Latest post', post_path(@post),
+                class: "no-underline text-blue-900 text-xl" %></h2>
+  <span class="text-sm mx-2 mt-auto leading-none">
+    <%= link_to 'All posts', posts_path %></span>
+
+  <%= render @post %>
+
+  <h2 class="pt-12 inline-block leading-none">
+    <%= link_to 'Latest quote', quote_path(@quote),
+                class: "no-underline text-blue-900 text-xl" %></h2>
+  <span class="text-sm mx-2 mt-auto leading-none">
+    <%= link_to 'All quotes', quotes_path %></span>
+
+  <%= render @quote %>
+
+  <h2 class="pt-12 inline-block leading-none">
+    <%= link_to 'Latest resource', resource_path(@resource),
+                class: "no-underline text-blue-900 text-xl" %></h2>
+  <span class="text-sm mx-2 mt-auto leading-none">
+    <%= link_to 'All resources', resources_path %></span>
+
+
+  <%= render @resource %>
+
+</main>
