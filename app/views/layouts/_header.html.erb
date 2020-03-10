@@ -1,27 +1,27 @@
-<header class="fixed w-full lg:w-1/10 bg-gray-900 lg:inset-y-0 top-0 lg:flex lg:justify-center flex-col ">
-  <nav class="w-full lg:rounded-r-lg z-10 text-left">
-    <ul class="px-6 flex lg:flex-col justify-between flex-row">
-      <li class="py-2 list-none inline-block">
+<header class="fixed w-full lg:min-w-1/10 lg:w-auto bg-gray-900 lg:inset-y-0 top-0 lg:flex lg:justify-center flex-col ">
+  <nav class="lg:rounded-r-lg z-10 text-left">
+    <ul class="px-6 flex flex-wrap lg:flex-col justify-between flex-row">
+      <li class="py-2 px-1 list-none">
         <%= link_to "Home", root_path,
                     class: "hover-underline-animation text-gray-100 font-semibold no-underline py-3 lg:py-2 leading-none" %>
       </li>
 
-      <li class="py-2 list-none inline-block">
+      <li class="py-2 px-1 list-none">
         <%= link_to "Posts", posts_path,
                     class: "hover-underline-animation text-gray-100 font-semibold no-underline py-3 lg:py-2 leading-none" %>
       </li>
 
-      <li class="py-2 list-none inline-block">
+      <li class="py-2 px-1 list-none">
         <%= link_to "Quotes", quotes_path,
                     class: "hover-underline-animation text-gray-100 font-semibold no-underline py-3 lg:py-2 leading-none" %>
       </li>
 
-      <li class="py-2 list-none inline-block">
+      <li class="py-2 px-1 list-none">
         <%= link_to "Resources", resources_path,
                     class: "hover-underline-animation text-gray-100 font-semibold no-underline py-3 lg:py-2 leading-none" %>
       </li>
 
-      <li class="py-2 list-none inline-block">
+      <li class="py-2 px-1 list-none">
         <%= link_to "Resume", resume_path,
                     class: "hover-underline-animation text-gray-100 font-semibold no-underline py-3 lg:py-2 leading-none" %>
       </li>
