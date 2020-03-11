@@ -8,15 +8,13 @@
   <a href="#quotes" data-turbolinks="false"> Quotes</a>
   <a href="#resources" data-turbolinks="false"> Resources</a>
 
-  <div class="pt-6 ">
-
-    <section id="posts">
-    <h2 class="leading-none text-2xl w-full my-3"> Posts </h2>
-    <ul style="columns: 2" class="mb-12">
+    <section id="posts" class="pt-8">
+    <h2 class="leading-none text-2xl w-full my-6"> Posts </h2>
+      <ul style="columns: 2; column-gap: 6rem; column-rule: solid 1px lightgray;">
       <% @posts.each do |post| %>
-        <li id="<%= post.id %>">
+        <li id="<%= post.id %>" style="break-inside: avoid">
 
-          <article class="mb-3 mr-12 pb-4 border-b border-gray-400 text-left">
+          <article class="mb-8 pb-6 border-b border-gray-400 text-left">
             <%= link_to post.title, post_path(post), title: post_path(post),
                         class: "text-2xl mr-auto leading-tight inline-block
                         mt-auto text-blue-700 no-underline hover:underline" %>
@@ -32,13 +30,13 @@
     </ul>
     </section>
 
-    <section>
-      <h2 id="resources" class="leading-none text-2xl  w-full my-3"> Resources </h2>
-      <ul style="columns: 2">
+    <section id="resources" class="pt-8">
+      <h2 class="leading-none text-2xl  w-full my-6"> Resources </h2>
+      <ul style="columns: 2; column-gap: 6rem; column-rule: solid 1px lightgray;">
       <% @resources.each do |resource| %>
-          <li id="<%= resource.id %>">
+          <li id="<%= resource.id %>" style="break-inside: avoid">
 
-            <article class="mb-3 pb-4 border-b border-gray-400">
+            <article class="mb-8 pb-6 border-b border-gray-400">
               <%= link_to resource.title, resource.link, title: resource.link,
                           target: '_blank',
                           class: "text-xl mr-auto leading-tight inline-block
@@ -55,16 +53,14 @@
         <% end %>
       </ul>
     </section>
-  </div>
 
-    <section>
-      <h2 id="quotes" class="leading-none text2-xl w-full my-3"> Quotes </h2>
-
-    <ul style="columns: 2">
+  <section id="quotes" class="pt-8">
+    <h2 class="leading-none text-2xl w-full my-6"> Quotes </h2>
+    <ul style="columns: 2; column-gap: 6rem; column-rule: solid 1px lightgray;">
       <% @quotes.each do |quote| %>
-        <li id="<%= quote.id %>">
+        <li id="<%= quote.id %>" style="break-inside: avoid">
 
-          <article class="mb-3 pb-4 border-b border-gray-400">
+          <article class="mb-8 pb-6 border-b border-gray-400">
             <blockquote class="my-3">
               <p class="font-serif leading-tight text-lg">
                 “<%= raw quote.body %>”
