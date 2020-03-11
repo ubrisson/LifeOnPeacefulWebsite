@@ -9,7 +9,7 @@
 
   <section id="posts" class="pt-8">
     <h2 class="w-full my-6 text-2xl leading-none"> Posts </h2>
-    <ul style="columns: auto 20rem; column-gap: 6rem; column-rule: solid 1px lightgray;">
+    <ul style="columns: auto 18rem; column-gap: 6rem; column-rule: solid 1px lightgray;">
       <% @posts.each do |post| %>
         <li id="<%= post.id %>" style="break-inside: avoid">
 
@@ -31,7 +31,7 @@
 
   <section id="resources" class="pt-8">
     <h2 class="w-full my-6 text-2xl leading-none "> Resources </h2>
-    <ul style="columns: 2; column-gap: 6rem; column-rule: solid 1px lightgray;">
+    <ul style="columns: auto 18rem; column-gap: 6rem; column-rule: solid 1px lightgray;">
       <% @resources.each do |resource| %>
           <li id="<%= resource.id %>" style="break-inside: avoid">
 
@@ -55,7 +55,7 @@
 
   <section id="quotes" class="pt-8">
     <h2 class="w-full my-6 text-2xl leading-none"> Quotes </h2>
-    <ul style="columns: 2; column-gap: 6rem; column-rule: solid 1px lightgray;">
+    <ul style="columns: auto 18rem; column-gap: 6rem; column-rule: solid 1px lightgray;">
       <% @quotes.each do |quote| %>
         <li id="<%= quote.id %>" style="break-inside: avoid">
 
