@@ -19,7 +19,9 @@ class QuotesController < ApplicationController
   end
 
   # GET /quotes/1/edit
-  def edit; end
+  def edit
+    helpers.store_referrer
+  end
 
   # POST /quotes
   def create
@@ -38,10 +40,11 @@ class QuotesController < ApplicationController
     session[:referrer] = request.referer if session[:referrer].nil?
     if @quote.update(quote_params)
       flash[:success] = "'#{@quote.title}' successfully updated."
+      helpers.redirect_back_or quote_path(@quote)
     else
       flash[:danger] = "Failed to edit '#{@quote.title}'."
+      render 'quotes/edit'
     end
-    helpers.redirect_back_or edit_quote_path(@quote)
   end
 
   # DELETE /quotes/1

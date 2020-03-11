@@ -53,7 +53,7 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
                                                 public: @quote.public,
                                                 source: @quote.source,
                                                 title: @quote.title } }
-    assert_redirected_to edit_quote_path(@quote)
+    assert_redirected_to quote_path(@quote)
   end
 
   test 'should destroy quote' do
@@ -92,7 +92,7 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
     log_in_as(@admin)
     assert is_logged_in?
     patch quote_url(@quote), params: { quote: { body: '' } }
-    assert_redirected_to edit_quote_path(@quote)
+    assert_template 'edit'
     assert_not flash.empty?
   end
   # endregion

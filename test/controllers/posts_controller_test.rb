@@ -45,7 +45,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   test 'should update post' do
     log_in_as(@admin)
     patch post_url(@post), params: { post: { title: @post.title, public: @post.public } }
-    assert_redirected_to edit_post_path(@post)
+    assert_redirected_to post_path(@post)
   end
 
   test 'should destroy post' do
@@ -82,7 +82,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     log_in_as(@admin)
     assert is_logged_in?
     patch post_url(@post), params: { post: { title: '' } }
-    assert_redirected_to edit_post_path(@post)
+    assert_template 'edit'
     assert_not flash.empty?
   end
   # endregion

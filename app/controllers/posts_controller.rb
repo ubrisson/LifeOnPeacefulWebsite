@@ -19,7 +19,9 @@ class PostsController < ApplicationController
   end
 
   # GET /posts/1/edit
-  def edit; end
+  def edit
+    helpers.store_referrer
+  end
 
   # POST /posts
   def create
@@ -38,10 +40,11 @@ class PostsController < ApplicationController
     session[:referrer] = request.referer if session[:referrer].nil?
     if @post.update(post_params)
       flash[:success] = "'#{@post.title}' successfully updated."
+      helpers.redirect_back_or post_path(@post)
     else
       flash[:danger] = "Failed to edit '#{@post.title}'."
+      render 'posts/edit'
     end
-    helpers.redirect_back_or edit_post_path(@post)
   end
 
   # DELETE /posts/1
