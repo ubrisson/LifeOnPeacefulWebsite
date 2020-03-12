@@ -31,6 +31,8 @@ gem 'will_paginate', '~> 3.1.0'
 # Use scope_search for the search engine
 gem 'scoped_search', '~> 4.1.7'
 
+gem 'ancestry'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

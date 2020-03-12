@@ -60,6 +60,8 @@ GEM
       activerecord (>= 5.0, < 6.1)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    ancestry (3.0.7)
+      activerecord (>= 3.2.0)
     ansi (1.5.0)
     bcrypt (3.1.13)
     bindex (0.8.1)
@@ -248,6 +250,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on (~> 6.0)
+  ancestry
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.2)
   byebug
