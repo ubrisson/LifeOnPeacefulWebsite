@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_08_155746) do
+ActiveRecord::Schema.define(version: 2020_03_12_082749) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -51,6 +51,17 @@ ActiveRecord::Schema.define(version: 2020_03_08_155746) do
     t.boolean "public"
     t.integer "post_id"
     t.index ["post_id"], name: "index_comments_on_post_id"
+  end
+
+  create_table "contents", force: :cascade do |t|
+    t.string "type"
+    t.string "title"
+    t.text "body"
+    t.string "author"
+    t.string "source"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["created_at"], name: "index_contents_on_created_at"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -108,6 +119,16 @@ ActiveRecord::Schema.define(version: 2020_03_08_155746) do
     t.datetime "updated_at"
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true
+  end
+
+  create_table "tikas", force: :cascade do |t|
+    t.string "title"
+    t.string "link"
+    t.string "year"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_tikas_on_ancestry"
   end
 
   create_table "users", force: :cascade do |t|
