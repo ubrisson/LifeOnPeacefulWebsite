@@ -36,12 +36,16 @@
                     class: "hover-underline-animation text-gray-100 font-semibold no-underline py-3 lg:py-2 leading-none" %>
       </li>
 
-      <li class="fixed bottom-0 lg:top-0 right-0 list-none ">
+      <li class="fixed bottom-0 lg:top-0 right-0 list-none flex flex-col text-center ">
         <% if logged_in? %>
 
           <%= link_to "Log out", logout_path, method: :delete,
+                      class: "text-blue-900 opacity-50 no-underline bg-gray-200
+                    pl-4 pr-3 pt-2 pb-3 font-semibold hover:opacity-100 hover:underline" %>
+
+          <%= link_to "TIKAs", tikas_path,
                       class: "text-blue-900 opacity-50 no-underline bg-gray-200 rounded-bl-lg
-                    pl-4 pr-3 pt-2 pb-3 font-semibold hover:opacity-100 hover:underline shadow" %>
+                    pl-4 pr-3 pt-2 pb-3 font-semibold hover:opacity-100 hover:underline" %>
         <% else %>
           <%= link_to "Private access", login_path,
                       class: "text-transparent no-underline hover:bg-gray-700 rounded-bl-lg
