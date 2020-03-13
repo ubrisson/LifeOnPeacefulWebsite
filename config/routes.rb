@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tikas, except: [:new]
   get '/index', to: 'content_pages#index'
   get '/latest', to: 'content_pages#latest'
   get '/quotes/export'
