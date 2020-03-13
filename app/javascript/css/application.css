@@ -86,3 +86,15 @@ a {
     transform: scaleX(1);
     transform-origin: bottom left;
 }
+
+.tika_summary::before {
+    @apply border-2 border-blue-900 border-t-0 border-r-0 w-3 absolute;
+    content: '';
+    left: -2px;
+    top: -0.5rem;
+    bottom: 60%;
+}
+
+ul > li:last-child > .tika_details {
+    @apply border-transparent;
+}

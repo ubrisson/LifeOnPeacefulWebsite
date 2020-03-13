@@ -1,0 +1,16 @@
+<% provide(:title, "Masterlist") %>
+<% provide(:button_text, 'Create') %>
+
+
+<main class="main-content">
+  <h1>Things I Know About</h1>
+
+  <%= render 'shared/new_content' %>
+
+  <h2>Masterlist</h2>
+  <ul class="tikas relative">
+    <%= render @tikas %>
+  </ul>
+
+
+</main>

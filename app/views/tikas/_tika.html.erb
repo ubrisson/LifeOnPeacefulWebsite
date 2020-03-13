@@ -1,0 +1,42 @@
+<li id="<%= tika.id %>" class="list-none ml-1">
+  <details class="tika_details ml-4 pt-2 border-l-2 border-blue-900 ">
+    <summary class="tika_summary px-1 relative flex justify-start leading-none pb-2">
+
+      <h2 class="mx-3 leading-none inline-block my-auto capitalize">
+        <% if !tika.link.blank? %>
+          <%= link_to tika.title, tika.link, title: tika.link,
+                      target: '_blank',
+                      class: "leading-none inline-block
+                  text-blue-800 no-underline hover:underline" %>
+        <% else %>
+          <%= tika.title %>
+        <% end %>
+      </h2>
+
+      <% unless tika.year.blank? %>
+      <span class="text-sm text-gray-600 leading-none  my-auto ">
+        (<%= tika.year %>)
+      </span>
+      <% end %>
+
+      <% unless tika.childless? %>
+        <div class=" hover:border-blue-400 ml-2 text-xs p-1 rounded-full border border-gray-400 bg-white hover:bg-blue-100 cursor-default leading-none">
+          <%= "\u{271A}" %>
+        </div>
+      <% end %>
+
+      <div class="flex flex-grow-0 mb-auto ml-auto">
+        <%= link_to "\u{270D}", send("edit_#{tika.model_name.singular}_path", tika),
+                    title: "Edit '#{tika.title}'",
+                    class: "leading-none text-gray-700 px-1 opacity-50 hover:opacity-100" %>
+
+        <%= link_to "\u{1F5D1}", tika, title: "Delete '#{tika.title}'", method: :delete, data: {confirm: 'Are you sure?'},
+                    class: "leading-none text-gray-700 px-1 opacity-50 hover:opacity-100" %>
+      </div>
+
+    </summary>
+    <ul class="relative ml-2">
+      <%= render tika.children %>
+    </ul>
+  </details>
+</li>

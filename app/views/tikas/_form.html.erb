@@ -1,0 +1,62 @@
+<%= form_with(model: @tika,
+              class: "px-8 pt-4 pb-4 text-left mx-auto",
+              ) do |form| %>
+
+  <div style="columns: 2 auto; column-gap: 2rem;">
+
+    <% if @tika.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@tika.errors.count, "error") %> prohibited this
+          tika from being saved:</h2>
+        <ul>
+          <% @tika.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="">
+      <%= form.label(:title, class: "block font-bold mb-1 leading-none") %>
+      <%= form.text_field :title, required: "required",
+                          class: "w-full bg-gray-200 text-blue-900
+                      focus:bg-white py-1 px-2 rounded mb-6 mt-1
+                      shadow-inner border-gray-400 border" %>
+
+    </div>
+
+    <div class="">
+      <%= form.label(:link, class: "block font-bold mb-1 leading-none") %>
+      <%= form.url_field :link,
+                         class: "w-full bg-gray-200 text-blue-900
+                     focus:bg-white py-1 px-2 rounded mb-6 mt-1
+                     shadow-inner border-gray-400 border" %>
+    </div>
+
+    <div class="">
+      <%= form.label(:year, class: "block font-bold mb-1 leading-none") %>
+      <%= form.text_field :year,
+                          class: "w-full bg-gray-200 text-blue-900
+                          focus:bg-white py-1 px-2 rounded mb-6 mt-1
+                          shadow-inner border-gray-400 border" %>
+    </div>
+
+    <div class="">
+      <%= form.label(:parent_id, class: "block font-bold mb-1 leading-none") %>
+      <%= form.text_field :parent_id,
+                          class: "w-full bg-gray-200 text-blue-900
+                          focus:bg-white py-1 px-2 rounded mb-6 mt-1
+                          shadow-inner border-gray-400 border" %>
+    </div>
+
+  </div>
+  <div class="text-center">
+    <%= form.submit yield(:button_text),
+                    class: 'text-gray-600
+                  text-sm uppercase font-bold
+                  py-2 px-4 bg-white
+                  rounded border border-gray-400 shadow
+                  hover:bg-indigo-100 hover:text-blue-600 hover:border-blue-400
+                  focus:outline-none focus:shadow-outline' %>
+  </div>
+<% end %>
