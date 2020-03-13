@@ -13,10 +13,27 @@
     <%= render 'form' %>
   </details>
 
-  <h2>Masterlist</h2>
+  <div class="flex justify-between">
+    <h2 class="mt-auto">Masterlist</h2>
+
+    <input type="button" value="Switch Folding" id="FoldBtn"
+           class="border border-gray-400 rounded bg-white px-2 py-1
+         hover:border-blue-400 hover:bg-indigo-100">
+    <script>
+        let folded = true;
+        document.getElementById("FoldBtn").onclick = function () {
+            let details = document.getElementsByClassName("tika_details");
+            for (let i = 0; i < details.length; i++) {
+                details[i].open = folded;
+            }
+            folded = !folded;
+        }
+    </script>
+
+  </div>
+
   <ul class="tikas relative">
     <%= render @tikas %>
   </ul>
-
 
 </main>
