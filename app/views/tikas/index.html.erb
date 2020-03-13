@@ -5,7 +5,13 @@
 <main class="main-content">
   <h1>Things I Know About</h1>
 
-  <%= render 'shared/new_content' %>
+  <details open class="my-4 bg-white border border-gray-400 rounded hover:border-blue-400">
+    <summary class="px-3 py-3 text-sm font-bold text-gray-600 rounded-t text-left
+          hover:bg-indigo-100 hover:text-blue-900">
+      New Tika
+    </summary>
+    <%= render 'form' %>
+  </details>
 
   <h2>Masterlist</h2>
   <ul class="tikas relative">
