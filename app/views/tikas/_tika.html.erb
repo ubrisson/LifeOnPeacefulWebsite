@@ -2,7 +2,7 @@
   <details class="tika_details ml-4 pt-2 border-l-2 border-blue-900 ">
     <summary class="tika_summary px-1 relative flex justify-start leading-none pb-2">
 
-      <h2 class="mx-3 leading-none inline-block my-auto capitalize">
+      <h3 class="mx-3 leading-none inline-block my-auto capitalize">
         <% if !tika.link.blank? %>
           <%= link_to tika.title, tika.link, title: tika.link,
                       target: '_blank',
@@ -11,7 +11,7 @@
         <% else %>
           <%= tika.title %>
         <% end %>
-      </h2>
+      </h3>
 
       <% unless tika.year.blank? %>
       <span class="text-sm text-gray-600 leading-none  my-auto ">
