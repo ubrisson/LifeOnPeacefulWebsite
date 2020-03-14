@@ -13,37 +13,32 @@
     </div>
   <% end %>
 
-  <%= form.text_field :title, placeholder: :title, required: "required",
-                      class: "form-input w-full" %>
+  <%= form.label(:title, class: "block font-bold mb-2 mt-3 leading-none") %>
+  <%= form.text_field :title, required: "required",
+                      class: "w-full form-input" %>
 
-  <div class="mx-auto mt-4 mb-2 text-center">
-    <%= form.text_area :body, placeholder: :quote, required: "required",
-                       class: "w-4/5 form-input" %>
+  <%= form.label(:body, class: "block font-bold mb-2 mt-3 leading-none") %>
+  <%= form.text_area :body, required: "required",
+                     class: "w-full form-input" %>
 
-    <div class="mx-auto flex justify-center leading-none">
-      <span class="my-auto mr-1">-</span>
-        <%= form.text_field :author, placeholder: :author, required: "required",
-                            class: "w-3/12 form-input" %>
-      <span class="mx-1 my-auto">, in </span>
-        <%= form.text_field :source, placeholder: :source,
-                            class: "w-5/12 form-input" %>
-    </div>
-  </div>
+  <%= form.label(:author, class: "block font-bold mb-2 mt-3 leading-none") %>
+  <%= form.text_field :author, placeholder: :author, required: "required",
+                      class: "w-full form-input" %>
 
-  <%= form.label(:tag_list, "Tags", class: "block text-sm text-blue-900 font-bold") %>
+  <%= form.label(:source, class: "block font-bold mb-2 mt-3 leading-none") %>
+  <%= form.text_field :source, placeholder: :source,
+                      class: "w-full form-input" %>
+
+  <%= form.label(:tag_list, "Tags", class: "block font-bold mb-2 mt-3 leading-none") %>
   <%= form.text_field :tag_list, value: @quote.tag_list.join(", "),
-                      class: " w-full form-input" %>
+                      class: "w-full form-input" %>
 
-  <details>
-    <summary class="text-sm text-blue-900 font-bold">
-      Commentary
-    </summary>
-    <%= form.text_area :commentary, class: " w-full form-input" %>
-  </details>
+  <%= form.label(:commentary, class: "block font-bold mb-2 mt-3 leading-none") %>
+  <%= form.text_area :commentary, class: " w-full form-input" %>
 
   <div class="flex mt-2">
     <%= form.label(:public,
-                   class: "inline-block text-sm text-blue-900 font-bold text-left my-auto
+                   class: "inline-block font-bold text-left my-auto
                   ") %>
     <%= form.check_box :public, class: "m-2" %>
   </div>
