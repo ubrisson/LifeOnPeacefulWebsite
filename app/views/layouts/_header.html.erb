@@ -39,19 +39,6 @@
       <li class="py-2 px-1 list-none">
         <button id="ThemeSwitchBtn"> Switch Theme </button>
       </li>
-      <script data-turbolinks-eval="false">
-        let isLight= true;
-        const light = "theme-light";
-        const dark = "theme-dark";
-        document.getElementById("ThemeSwitchBtn").onclick  = function () {
-            if(isLight) {
-                document.getElementById("html").classList.replace(light, dark);
-            } else {
-                document.getElementById("html").classList.replace(dark, light);
-            }
-            isLight = !isLight;
-        }
-      </script>
 
       <li class="fixed bottom-0 lg:top-0 right-0 list-none flex flex-col text-center ">
         <% if logged_in? %>

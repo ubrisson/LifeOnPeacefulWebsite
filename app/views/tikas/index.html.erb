@@ -13,16 +13,6 @@
     <input type="button" value="Switch Folding" id="FoldBtn"
            class="bg-primary rounded border border-primary px-2 py-1
          hover:border-secondary hover:bg-secondary">
-    <script data-turbolinks-eval="false">
-        let folded = true;
-        document.getElementById("FoldBtn").onclick = function () {
-            let details = document.getElementsByClassName("tika_details");
-            for (let i = 0; i < details.length; i++) {
-                details[i].open = folded;
-            }
-            folded = !folded;
-        }
-    </script>
 
   </div>
 

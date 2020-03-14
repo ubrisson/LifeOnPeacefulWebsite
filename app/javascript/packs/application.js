@@ -6,7 +6,7 @@
 require("@rails/ujs").start();
 require("turbolinks").start();
 require("css/application.css");
-
+require("../app.js");
 // import '../css/application.css'
 
 // Uncomment to copy all static images under ../images to the output folder and reference
