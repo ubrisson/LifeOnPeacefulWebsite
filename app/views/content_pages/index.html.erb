@@ -15,8 +15,8 @@
 
           <article class="pb-6 mb-8 text-left border-b border-gray-400 ">
             <%= link_to post.title, post_path(post), title: post_path(post),
-                        class: "text-2xl mr-auto leading-tight inline-block
-                        mt-auto text-blue-700 no-underline hover:underline" %>
+                        class: "text-2xl mr-auto leading-tight inline-block mt-auto
+                  text-default no-underline hover:underline" %>
             <span class="block my-2 text-xs">
               <%= time_tag(post.created_at, format: "%B %d, %Y") %> -
               <%= "#{((post.body.to_s.split.count)./ 170.0).ceil} minutes read" %>
@@ -38,8 +38,7 @@
             <article class="pb-6 mb-8 border-b border-gray-400">
               <%= link_to resource.title, resource.link, title: resource.link,
                           target: '_blank',
-                          class: "text-xl mr-auto leading-tight inline-block
-                        mt-auto text-blue-700 no-underline hover:underline" %>
+                          class: "text-2xl mr-auto leading-tight inline-block mt-auto" %>
               <cite class="block my-2 font-bold leading-none"> &#8213; <%= resource.author %>
                 <% unless resource.publication.nil? %>
                   on <%= time_tag(resource.publication) %>
