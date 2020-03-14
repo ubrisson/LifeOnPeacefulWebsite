@@ -51,6 +51,17 @@ main {
     @apply px-4 text-left;
 }
 
+.main-button {
+    @apply text-primary text-sm uppercase font-bold;
+    @apply mt-4 mb-4 py-2 px-4;
+    @apply bg-default rounded;
+    @apply border border-primary;
+}
+
+.main-button:hover {
+    @apply bg-secondary border-secondary;
+}
+
 input:focus {
     @apply outline-none shadow-outline;
 }
