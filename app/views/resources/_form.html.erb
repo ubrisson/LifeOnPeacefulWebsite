@@ -1,5 +1,5 @@
 <%= form_with(model: @resource,
-              class: "px-8 pt-4 pb-8 text-left w-10/12 mx-auto") do |form| %>
+              class: "px-8 pt-4 pb-4 text-left w-10/12 mx-auto") do |form| %>
 
   <% if @resource.errors.any? %>
     <div id="error_explanation">
@@ -15,44 +15,32 @@
 
   <%= form.label(:title, class: "block font-bold mb-2 mt-3 leading-none") %>
   <%= form.text_field :title, required: "required",
-                      class: "w-full bg-gray-200 text-blue-900
-                      focus:bg-white py-1 px-2 rounded mb-4 mt-1
-                      shadow-inner border-gray-400 border" %>
+                      class: "w-full form-input" %>
 
   <div class="flex justify-between">
     <div class="w-6/12">
       <%= form.label(:author, class: "block font-bold mb-2 mt-3 leading-none") %>
       <%= form.text_field :author, required: "required",
-                          class: "w-full bg-gray-200 text-blue-900
-                          focus:bg-white py-1 px-2 rounded mb-4
-                          shadow-inner border-gray-400 border" %>
+                          class: "w-full form-input" %>
     </div>
     <div class="w-5/12">
       <%= form.label(:publication, class: "block font-bold mb-2 mt-3 leading-none") %>
       <%= form.date_field :publication,
-                          class: "w-full bg-gray-200 text-blue-900
-                          focus:bg-white py-1 px-2 rounded mb-4
-                          shadow-inner border-gray-400 border" %>
+                          class: "w-full form-input" %>
     </div>
   </div>
 
   <%= form.label(:link, class: "block font-bold mb-2 mt-3 leading-none") %>
   <%= form.url_field :link,
-                     class: "w-full bg-gray-200 text-blue-900
-                     focus:bg-white py-1 px-2 rounded mb-4
-                     shadow-inner border-gray-400 border" %>
+                     class: "w-full form-input" %>
 
   <%= form.label(:tag_list, "Tags", class: "block font-bold mb-2 mt-3 leading-none") %>
   <%= form.text_field :tag_list, value: @resource.tag_list.join(", "),
-                      class: "w-full bg-gray-200 text-blue-900
-                      focus:bg-white py-1 px-2 rounded mb-4
-                      shadow-inner border-gray-400 border" %>
+                      class: "w-full form-input" %>
 
   <%= form.label(:description, class: "block font-bold mb-2 mt-3 leading-none") %>
   <%= form.text_area :description,
-                     class: "w-full bg-gray-200 text-blue-900
-                     focus:bg-white py-1 px-2 rounded mb-4
-                     shadow-inner border-gray-400 border" %>
+                     class: "w-full form-input" %>
 
   <div class="flex mt-2">
     <%= form.label(:public,

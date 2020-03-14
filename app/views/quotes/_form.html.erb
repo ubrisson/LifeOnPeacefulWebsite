@@ -1,5 +1,5 @@
 <%= form_with(model: @quote,
-              class: "px-8 pt-3 pb-8 text-left text-blue-900 ") do |form| %>
+              class: "px-8 pt-4 pb-4 text-left w-10/12 mx-auto") do |form| %>
 
   <% if @quote.errors.any? %>
     <div id="error_explanation">
@@ -14,38 +14,31 @@
   <% end %>
 
   <%= form.text_field :title, placeholder: :title, required: "required",
-                      class: "rounded bg-white -ml-2
-                      font-semibold text-blue-900 text-2xl w-full
-                       leading-none placeholder-gray-500 p-2
-                       " %>
+                      class: "form-input w-full" %>
 
   <div class="mx-auto mt-4 mb-2 text-center">
     <%= form.text_area :body, placeholder: :quote, required: "required",
-                       class: "w-4/5 mx-auto mb-2 bg-indigo-100 text-blue-900
-                       placeholder-gray-600 text-center
-                       rounded shadow font-serif p-6 text-lg h-auto" %>
+                       class: "w-4/5 form-input" %>
 
     <div class="mx-auto flex justify-center leading-none">
       <span class="my-auto mr-1">-</span>
         <%= form.text_field :author, placeholder: :author, required: "required",
-                            class: "w-3/12 bg-white text-blue-900
-                           py-1 px-2 rounded " %>
+                            class: "w-3/12 form-input" %>
       <span class="mx-1 my-auto">, in </span>
         <%= form.text_field :source, placeholder: :source,
-                            class: "w-5/12 bg-white text-blue-900
-                           py-1 px-2 rounded italic" %>
+                            class: "w-5/12 form-input" %>
     </div>
   </div>
 
   <%= form.label(:tag_list, "Tags", class: "block text-sm text-blue-900 font-bold") %>
   <%= form.text_field :tag_list, value: @quote.tag_list.join(", "),
-                      class: " w-full bg-gray-200 text-blue-900 focus:bg-white py-1 px-2 rounded mb-4 border-gray-200 border-2" %>
+                      class: " w-full form-input" %>
 
   <details>
     <summary class="text-sm text-blue-900 font-bold">
       Commentary
     </summary>
-    <%= form.text_area :commentary, class: " w-full bg-gray-200 text-blue-900 focus:bg-white py-1 px-2 rounded border-gray-200 border-2" %>
+    <%= form.text_area :commentary, class: " w-full form-input" %>
   </details>
 
   <div class="flex mt-2">
