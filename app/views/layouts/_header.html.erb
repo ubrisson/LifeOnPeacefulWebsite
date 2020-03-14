@@ -1,55 +1,72 @@
-<header class="top-0 w-full bg-gray-900 lg:min-w-1/8 lg:w-auto lg:inset-y-0 lg:block">
-  <nav class="top-0 z-10 flex flex-col justify-center w-full text-left bg-gray-900 lg:fixed lg:min-w-1/8 lg:w-auto lg:inset-y-0">
+<header class="top-0 w-full bg-inverse lg:min-w-1/8 lg:w-auto lg:inset-y-0 lg:block">
+  <nav class="top-0 z-10 flex flex-col justify-center w-full text-left bg-inverse lg:fixed lg:min-w-1/8 lg:w-auto lg:inset-y-0">
     <ul class="flex flex-row flex-wrap justify-between px-6 lg:flex-col">
       <li class="py-2 px-1 list-none">
         <%= link_to "Home", root_path,
-                    class: "hover-underline-animation text-gray-100 font-semibold no-underline py-3 lg:py-2 leading-none" %>
+                    class: "hover-underline-animation text-inverse font-semibold no-underline py-3 lg:py-2 leading-none" %>
       </li>
 
       <li class="py-2 px-1 list-none">
         <%= link_to "Latest", latest_path,
-                    class: "hover-underline-animation text-gray-100 font-semibold no-underline py-3 lg:py-2 leading-none" %>
+                    class: "hover-underline-animation text-inverse font-semibold no-underline py-3 lg:py-2 leading-none" %>
       </li>
 
       <li class="py-2 px-1 list-none">
         <%= link_to "Posts", posts_path,
-                    class: "hover-underline-animation text-gray-100 font-semibold no-underline py-3 lg:py-2 leading-none" %>
+                    class: "hover-underline-animation text-inverse font-semibold no-underline py-3 lg:py-2 leading-none" %>
       </li>
 
       <li class="py-2 px-1 list-none">
         <%= link_to "Quotes", quotes_path,
-                    class: "hover-underline-animation text-gray-100 font-semibold no-underline py-3 lg:py-2 leading-none" %>
+                    class: "hover-underline-animation text-inverse font-semibold no-underline py-3 lg:py-2 leading-none" %>
       </li>
 
       <li class="py-2 px-1 list-none">
         <%= link_to "Resources", resources_path,
-                    class: "hover-underline-animation text-gray-100 font-semibold no-underline py-3 lg:py-2 leading-none" %>
+                    class: "hover-underline-animation text-inverse font-semibold no-underline py-3 lg:py-2 leading-none" %>
       </li>
 
       <li class="py-2 px-1 list-none">
         <%= link_to "Resume", resume_path,
-                    class: "hover-underline-animation text-gray-100 font-semibold no-underline py-3 lg:py-2 leading-none" %>
+                    class: "hover-underline-animation text-inverse font-semibold no-underline py-3 lg:py-2 leading-none" %>
       </li>
 
       <li class="py-2 px-1 list-none">
         <%= link_to "Index", index_path,
-                    class: "hover-underline-animation text-gray-100 font-semibold no-underline py-3 lg:py-2 leading-none" %>
+                    class: "hover-underline-animation text-inverse font-semibold no-underline py-3 lg:py-2 leading-none" %>
       </li>
+
+      <li class="py-2 px-1 list-none">
+        <button id="ThemeSwitchBtn"> Switch Theme </button>
+      </li>
+      <script>
+        let isLight= true;
+        const light = "theme-light";
+        const dark = "theme-dark";
+        document.getElementById("ThemeSwitchBtn").onclick  = function () {
+            if(isLight) {
+                document.getElementById("html").classList.replace(light, dark);
+            } else {
+                document.getElementById("html").classList.replace(dark, light);
+            }
+            isLight = !isLight;
+        }
+      </script>
 
       <li class="fixed bottom-0 lg:top-0 right-0 list-none flex flex-col text-center ">
         <% if logged_in? %>
 
           <%= link_to "Log out", logout_path, method: :delete,
-                      class: "text-blue-900 opacity-50 no-underline bg-gray-200
+                      class: "text-primary opacity-50 no-underline bg-secondary
                     pl-4 pr-3 pt-2 pb-3 font-semibold hover:opacity-100 hover:underline" %>
 
           <%= link_to "TIKAs", tikas_path,
-                      class: "text-blue-900 opacity-50 no-underline bg-gray-200 rounded-bl-lg
+                      class: "text-primary opacity-50 no-underline bg-secondary rounded-bl-lg
                     pl-4 pr-3 pt-2 pb-3 font-semibold hover:opacity-100 hover:underline" %>
         <% else %>
           <%= link_to "Private access", login_path,
-                      class: "text-transparent no-underline hover:bg-gray-700 rounded-bl-lg
-                    pl-4 pr-3 pt-2 pb-3 hover:text-gray-100 font-semibold" %>
+                      class: "text-transparent no-underline hover:bg-inverse rounded-bl-lg
+                    pl-4 pr-3 pt-2 pb-3 hover:text-inverse font-semibold" %>
         <% end %>
       </li>
     </ul>
