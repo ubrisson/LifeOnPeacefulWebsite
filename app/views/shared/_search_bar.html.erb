@@ -1,11 +1,11 @@
 <%= form_with url: send("#{controller_name}_path"), method: :get, local: true,
-              class: "my-4 bg-white border border-gray-400 rounded flex" do |form| %>
+              class: "my-4 flex rounded bg-primary border border-primary hover:border-secondary" do |form| %>
   <%= form.search_field :q, placeholder: "Search #{controller_name}",
                         style: "margin-right: 0.15rem;",
-                        class: "text-blue-900 flex-grow py-1 px-3 appearance-none rounded-l
+                        class: "bg-primary flex-grow py-1 px-3 appearance-none rounded-l
                         focus:outline-none focus:shadow-outline" %>
   <%= form.submit "\u{1F50D}", name: nil, title: "Search #{controller_name}",
-                  class: 'bg-white text-lg py-1 px-3 rounded-r
-                  hover:bg-gray-200 hover:text-blue-900
+                  class: 'bg-primary text-lg py-1 px-3 rounded-r
+                  hover:bg-secondary
                   focus:outline-none focus:shadow-outline ' %>
 <% end %>

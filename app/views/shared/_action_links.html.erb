@@ -5,16 +5,16 @@
       <%= form.submit "#{content.public? ? "\u{1F441} Hide" : "\u{1F441} Show" }",
                       title: "Make '#{content.title}' #{!content.public? ? 'public' : 'private'}",
                       class: "leading-none py-2 px-2 mr-2
-                      #{content.public? ? "bg-white hover:bg-gray-400" : "bg-gray-400 hover:bg-white"}
-                           rounded border border-gray-400
+                      #{content.public? ? "bg-primary hover:bg-secondary" : "bg-primary hover:bg-secondary"}
+                           rounded border border-primary hover:border-secondary
                            focus:outline-none focus:shadow-outline" %>
     <% end %>
 
     <%= link_to "Edit", send("edit_#{content.model_name.singular}_path", content),
                 title: "Edit '#{content.title}'",
-                class: "leading-none text-blue-700 py-2 px-2 my-auto" %>
+                class: "leading-none py-2 px-2 my-auto" %>
 
     <%= link_to "Delete ", content, title: "Delete '#{content.title}'", method: :delete, data: {confirm: 'Are you sure?'},
-                class: "leading-none text-blue-700 py-2 px-2 my-auto" %>
+                class: "leading-none py-2 px-2 my-auto" %>
   </div>
 <% end %>

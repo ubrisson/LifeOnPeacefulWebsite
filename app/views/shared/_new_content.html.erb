@@ -1,7 +1,7 @@
 <% if admin? %>
-  <details class="my-4 bg-white border border-gray-400 rounded hover:border-blue-400">
-    <summary class="px-3 py-3 text-sm font-bold text-gray-600 rounded-t text-left
-          hover:bg-indigo-100 hover:text-blue-900">
+  <details class="my-4 rounded bg-primary border border-primary hover:border-secondary">
+    <summary class="px-3 py-3 text-sm font-bold rounded-t text-left
+           text-default-soft hover:bg-secondary">
       New <%= controller_name.singularize %>
     </summary>
     <%= render 'form' %>
