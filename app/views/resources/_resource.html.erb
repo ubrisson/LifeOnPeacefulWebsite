@@ -4,8 +4,7 @@
     <div class="flex pt-3">
       <%= link_to resource.title, resource.link, title: resource.link,
                   target: '_blank',
-                  class: "text-xl mr-auto leading-tight inline-block mt-auto
-                  text-blue-700 no-underline hover:underline" %>
+                  class: "text-2xl mr-auto leading-tight inline-block mt-auto" %>
 
       <%= render "shared/action_links", content: resource %>
     </div>
@@ -23,7 +22,7 @@
     <div class="flex mt-3 justify-end">
       <%= render "shared/tag_list", content: resource %>
 
-      <span class="text-xs text-gray-600 w-auto leading-none mt-auto">
+      <span class="text-xs text-default-soft w-auto leading-none mt-auto">
         Read in <%= resource.created_at.strftime("%B %Y") %>.
       </span>
     </div>

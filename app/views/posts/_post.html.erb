@@ -7,13 +7,13 @@
       <% else %>
         <%= link_to post.title, post_path(post), title: post_path(post),
                     class: "text-2xl mr-auto leading-tight inline-block mt-auto
-                  text-blue-700 no-underline hover:underline" %>
+                  text-default no-underline hover:underline" %>
 
       <% end %>
       <%= render "shared/action_links", content: post %>
     </div>
 
-    <span class="block text-right text-xs">
+    <span class="block text-xs">
       <%= time_tag(post.created_at, format: "%B %d, %Y") %> -
       <%= "#{((post.body.to_s.split.count)./ 170.0).ceil} minutes read" %>
     </span>
@@ -30,7 +30,7 @@
     <div class="flex mt-3 justify-end">
       <%= render "shared/tag_list", content: post %>
 
-      <span class="text-xs text-gray-600 w-auto leading-none mt-auto">
+      <span class="text-xs text-default-soft w-auto leading-none mt-auto">
         Last update on <%= time_tag(post.created_at, format: "%B %d, %Y") %>.
       </span>
     </div>
@@ -38,7 +38,7 @@
 
   <% if action_name == 'show' %>
     <section class="mt-12">
-      <h2 class="uppercase font-bold text-blue-900 mt-3 py-2"> Comments</h2>
+      <h2 class="uppercase font-bold text-primary mt-3 py-2"> Comments</h2>
 
       <%= render "comments/form", comment: post.comments.build %>
       <ol>
