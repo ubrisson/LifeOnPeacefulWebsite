@@ -6,7 +6,6 @@
 require("@rails/ujs").start();
 require("turbolinks").start();
 require("css/application.css");
-require("../app.js");
 // import '../css/application.css'
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -15,3 +14,15 @@ require("../app.js");
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+let isLight = true;
+const light = "theme-light";
+const dark = "theme-dark";
+document.getElementById("ThemeSwitchBtn").onclick = function () {
+    if (isLight) {
+        document.getElementById("html").classList.replace(light, dark);
+    } else {
+        document.getElementById("html").classList.replace(dark, light);
+    }
+    isLight = !isLight;
+};

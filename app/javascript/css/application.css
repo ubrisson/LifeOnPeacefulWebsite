@@ -1,3 +1,4 @@
+/* purgecss start ignore */
 .theme-light{
     --color-bg-primary: #FFFFFF;
     --color-bg-secondary: #EBF4FF;
@@ -35,7 +36,6 @@
     --color-border-secondary: #2D3748;
 }
 
-/* purgecss start ignore */
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 /* purgecss end ignore */
