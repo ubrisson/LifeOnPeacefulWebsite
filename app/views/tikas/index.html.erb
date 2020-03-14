@@ -5,20 +5,14 @@
 <main class="main-content">
   <h1>Things I Know About</h1>
 
-  <details open class="my-4 bg-white border border-gray-400 rounded hover:border-blue-400">
-    <summary class="px-3 py-3 text-sm font-bold text-gray-600 rounded-t text-left
-          hover:bg-indigo-100 hover:text-blue-900">
-      New Tika
-    </summary>
-    <%= render 'form' %>
-  </details>
+  <%= render 'shared/new_content' %>
 
   <div class="flex justify-between">
     <h2 class="mt-auto">Masterlist</h2>
 
     <input type="button" value="Switch Folding" id="FoldBtn"
-           class="border border-gray-400 rounded bg-white px-2 py-1
-         hover:border-blue-400 hover:bg-indigo-100">
+           class="bg-primary rounded border border-primary px-2 py-1
+         hover:border-secondary hover:bg-secondary">
     <script>
         let folded = true;
         document.getElementById("FoldBtn").onclick = function () {

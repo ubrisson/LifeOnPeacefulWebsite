@@ -19,34 +19,26 @@
     <div class="">
       <%= form.label(:title, class: "block font-bold mb-1 leading-none") %>
       <%= form.text_field :title, required: "required",
-                          class: "w-full bg-gray-200 text-blue-900
-                      focus:bg-white py-1 px-2 rounded mb-6 mt-1
-                      shadow-inner border-gray-400 border" %>
+                          class: "w-full form-input" %>
 
     </div>
 
     <div class="">
       <%= form.label(:link, class: "block font-bold mb-1 leading-none") %>
       <%= form.url_field :link,
-                         class: "w-full bg-gray-200 text-blue-900
-                     focus:bg-white py-1 px-2 rounded mb-6 mt-1
-                     shadow-inner border-gray-400 border" %>
+                         class: "w-full form-input" %>
     </div>
 
     <div class="">
       <%= form.label(:year, class: "block font-bold mb-1 leading-none") %>
       <%= form.text_field :year,
-                          class: "w-full bg-gray-200 text-blue-900
-                          focus:bg-white py-1 px-2 rounded mb-6 mt-1
-                          shadow-inner border-gray-400 border" %>
+                          class: "w-full form-input" %>
     </div>
 
     <div class="">
       <%= form.label(:parent_id, class: "block font-bold mb-1 leading-none") %>
       <%= form.text_field :parent_id, list: 'parents', autocomplete: 'off',
-                          class: "w-full bg-gray-200 text-blue-900
-                          focus:bg-white py-1 px-2 rounded mb-6 mt-1
-                          shadow-inner border-gray-400 border" %>
+                          class: "w-full form-input" %>
       <datalist id="parents">
         <%= options_from_collection_for_select(Tika.all, :id, :title) %>
       </datalist>
