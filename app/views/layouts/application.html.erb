@@ -9,11 +9,14 @@
    Running on Ruby on Rails and TailwindCSS">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <% if controller_name == 'posts' and admin? %>
-    <%= javascript_packs_with_chunks_tag 'application', params[:controller], 'trix_interface', 'data-turbolinks-track': 'reload', defer: "" %>
+    <%= javascript_packs_with_chunks_tag 'application', 'trix_interface', 'data-turbolinks-track': 'reload', defer: "" %>
     <%= stylesheet_packs_with_chunks_tag 'application', 'trix_interface', 'data-turbolinks-track': 'reload' %>
   <% else %>
-    <%= javascript_packs_with_chunks_tag 'application', params[:controller], 'data-turbolinks-track': 'reload', defer: "" %>
+    <%= javascript_packs_with_chunks_tag 'application', 'data-turbolinks-track': 'reload', defer: "" %>
     <%= stylesheet_packs_with_chunks_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <% end %>
+  <% if controller_name == 'tikas' and action_name == 'index' %>
+    <%= javascript_packs_with_chunks_tag 'tikas',  'data-turbolinks-track': 'reload', defer: ""  %>
   <% end %>
 </head>
 
