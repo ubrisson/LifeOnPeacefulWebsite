@@ -166,7 +166,7 @@ ul > li:last-child > .tika_details {
 
 .snake-border span:nth-child(1) {
     @apply top-0 left-0 h-1;
-    animation: snake-border1 4s linear infinite;
+    animation: snake-border1 3s linear infinite;
 }
 
 .snake-border span:nth-child(2) {
