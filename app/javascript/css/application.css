@@ -155,3 +155,59 @@ a {
 ul > li:last-child > .tika_details {
     @apply border-transparent;
 }
+
+.snake-border {
+    @apply relative duration-200;
+}
+
+.snake-border span {
+    @apply bg-gray-100 absolute block;
+}
+
+.snake-border span:nth-child(1) {
+    @apply top-0 left-0 h-1;
+    animation: snake-border1 4s linear infinite;
+}
+
+.snake-border span:nth-child(2) {
+    @apply top-0 right-0 w-1;
+    animation: snake-border2 3s linear infinite;
+    animation-delay: 1.5s;
+}
+
+.snake-border span:nth-child(3) {
+    @apply bottom-0 right-0 h-1;
+    animation: snake-border3 3s linear infinite;
+    animation-delay: 0s;
+}
+
+.snake-border span:nth-child(4) {
+    @apply bottom-0 left-0 w-1;
+    animation: snake-border4 3s linear infinite;
+    animation-delay: 1.5s;
+}
+
+@keyframes snake-border1 {
+    0% {width:0;}
+    50% {width:100%;}
+    100% {width:0; left:auto; right:0;}
+}
+
+@keyframes snake-border2 {
+    0% {height: 0;}
+    50% {height: 100%;}
+    100% {height:0; top:auto; bottom:0;}
+}
+
+
+@keyframes snake-border3 {
+    0% {width:0;}
+    50% {width:100%;}
+    100% {width:0; left:0;}
+}
+
+@keyframes snake-border4 {
+    0% {height:0;}
+    50%{height: 100%;}
+    100% {height:0; top:0;}
+}
