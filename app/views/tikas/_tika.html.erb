@@ -29,6 +29,7 @@
       <div class="flex flex-grow-0 mb-auto ml-auto">
         <%= link_to "\u{270D}", send("edit_#{tika.model_name.singular}_path", tika),
                     title: "Edit '#{tika.title}'",
+                    "data-turbolinks": "false",
                     class: "leading-none text-default-soft px-1 opacity-50 hover:opacity-100" %>
 
         <%= link_to "\u{1F5D1}", tika, title: "Delete '#{tika.title}'", method: :delete, data: {confirm: 'Are you sure?'},
