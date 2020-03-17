@@ -1,0 +1,20 @@
+<% provide(:title, @tika.title) %>
+
+<main class="main-content">
+  <h1><%= @tika.title %></h1>
+  <div class="flex justify-between">
+    <h2 class="mt-auto">
+      Root
+      <% @tika.path.each do |node| %>
+        > <%= node.title.capitalize %>
+      <% end %></h2>
+
+    <input type="button" value="Switch Folding" id="FoldBtn"
+           class="bg-primary rounded border border-primary px-2 py-1
+         hover:border-secondary hover:bg-secondary">
+
+  </div>
+  <%= render @tika %>
+
+  <%= link_to 'Back', tikas_path %>
+</main>

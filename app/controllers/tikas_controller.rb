@@ -1,6 +1,6 @@
 class TikasController < ApplicationController
 
-  before_action :set_tika, only: [:edit, :update, :destroy]
+  before_action :set_tika, only: [:show, :edit, :update, :destroy]
   before_action :admin_user
 
   def index
@@ -18,6 +18,8 @@ class TikasController < ApplicationController
     end
     helpers.redirect_back_or tikas_path
   end
+
+  def show; end
 
   def edit
     helpers.store_referrer
