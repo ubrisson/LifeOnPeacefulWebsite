@@ -11,7 +11,7 @@
     <h2 class="w-full my-6 text-2xl leading-none"> Posts </h2>
     <ul style="columns: auto 18rem; column-gap: 6rem; column-rule: solid 1px lightgray;">
       <% @posts.each do |post| %>
-        <li id="<%= post.id %>" style="break-inside: avoid">
+        <li style="break-inside: avoid">
 
           <article class="pb-6 mb-8 text-left border-b border-gray-400 ">
             <%= link_to post.title, post_path(post), title: post_path(post),
@@ -33,11 +33,11 @@
     <h2 class="w-full my-6 text-2xl leading-none "> Resources </h2>
     <ul style="columns: auto 18rem; column-gap: 6rem; column-rule: solid 1px lightgray;">
       <% @resources.each do |resource| %>
-          <li id="<%= resource.id %>" style="break-inside: avoid">
+          <li style="break-inside: avoid">
 
             <article class="pb-6 mb-8 border-b border-gray-400">
               <%= link_to resource.title, resource.link, title: resource.link,
-                          target: '_blank',
+                          target: '_blank', rel:'noreferrer',
                           class: "text-2xl mr-auto leading-tight inline-block mt-auto" %>
               <cite class="block my-2 font-bold leading-none"> &#8213; <%= resource.author %>
                 <% unless resource.publication.nil? %>
@@ -56,7 +56,7 @@
     <h2 class="w-full my-6 text-2xl leading-none"> Quotes </h2>
     <ul style="columns: auto 18rem; column-gap: 6rem; column-rule: solid 1px lightgray;">
       <% @quotes.each do |quote| %>
-        <li id="<%= quote.id %>" style="break-inside: avoid">
+        <li style="break-inside: avoid">
 
           <article class="pb-6 mb-8 border-b border-gray-400">
             <blockquote class="my-3">
