@@ -1,10 +1,10 @@
 <% unless content.tags.nil? %>
-  <ul class="mr-auto mt-auto leading-none">
-    <span class="text-sm inline">tags: </span>
+  <span class="text-sm">tags: </span>
+  <ul class="inline mr-auto mt-auto leading-none">
     <% content.tags.each do |tag| %>
       <li class="list-none inline ">
-        <%= link_to "#{tag.to_s.capitalize}", "/#{controller_name}?tag=#{tag}",
-                    title: "All #{tag.to_s.capitalize} #{controller_name}",
+        <%= link_to "#{tag.to_s.capitalize}", "/#{content.model_name.plural}?tag=#{tag}",
+                    title: "All #{tag.to_s.capitalize} #{content.model_name.plural}",
                     class: "text-sm mt-1" %>,
       </li>
     <% end %>
