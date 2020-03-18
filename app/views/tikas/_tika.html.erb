@@ -5,7 +5,7 @@
       <h3 class="mx-3 leading-none inline-block my-auto capitalize text-default">
         <% if !tika.link.blank? %>
           <%= link_to tika.title, tika.link, title: tika.link,
-                      target: '_blank',
+                      target: '_blank',  rel:'noreferrer',
                       class: "text-default italic no-underline hover:underline" %>
         <% else %>
           <%= tika.title %>
