@@ -36,12 +36,6 @@
                     class: "hover-underline-animation text-inverse font-semibold no-underline py-3 lg:py-2 leading-none" %>
       </li>
 
-      <li class="py-2 px-1 list-none">
-        <button id="ThemeSwitchBtn"
-                class="main-button cursor-default"
-        > Switch Theme </button>
-      </li>
-
       <li class="fixed bottom-0 lg:top-0 right-0 list-none flex flex-col text-center ">
         <% if logged_in? %>
 
@@ -60,4 +54,10 @@
       </li>
     </ul>
   </nav>
+  <button id="ThemeSwitchBtn"
+          class="relative w-full text-primary text-sm uppercase tracking-wide
+          font-bold  bg-default border py-2
+          border-transparent cursor-default z-20
+          hover:bg-secondary hover:border-secondary"
+  > Switch Theme </button>
 </header>
