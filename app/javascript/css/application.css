@@ -37,38 +37,10 @@
 }
 
 @import "tailwindcss/base";
-@import "tailwindcss/components";
-/* purgecss end ignore */
-@import "tailwindcss/utilities";
 
 main {
     @apply max-w-4xl;
     min-height: 95vh;
-}
-
-.main-content {
-    @apply mt-16 pb-8 w-full max-w-2xl mx-auto;
-    @apply px-4 text-left;
-}
-
-.main-button {
-    @apply text-primary text-sm uppercase font-bold;
-    @apply mt-4 mb-4 py-2 px-4;
-    @apply bg-default rounded;
-    @apply border border-primary;
-}
-
-.main-button:hover {
-    @apply bg-secondary border-secondary;
-}
-
-.form-input {
-    @apply bg-secondary border border-primary;
-    @apply shadow-inner py-1 px-2 rounded mb-4;
-}
-
-.form-input:hover {
-    @apply border-secondary;
 }
 
 input:focus {
@@ -87,7 +59,33 @@ a {
     @apply text-secondary underline inline-block;
 }
 
-/* purgecss start ignore */
+@import "tailwindcss/components";
+
+.main-content {
+    @apply mt-16 pb-8 w-full max-w-2xl mx-auto;
+    @apply px-4 text-left;
+}
+
+.main-button {
+    @apply text-primary text-sm uppercase font-bold;
+    @apply py-2 px-4;
+    @apply bg-primary rounded;
+    @apply border border-primary;
+}
+
+.main-button:hover {
+    @apply bg-secondary border-secondary;
+}
+
+.form-input {
+    @apply bg-secondary border border-primary;
+    @apply shadow-inner py-1 px-2 rounded mb-4;
+}
+
+.form-input:hover {
+    @apply border-secondary;
+}
+
 .pagination {
     @apply my-4 bg-primary rounded border border-primary;
     @apply flex mx-auto;
@@ -121,7 +119,6 @@ a {
 .disabled {
     @apply bg-tertiary opacity-50;
 }
-/* purgecss end ignore */
 
 .hover-underline-animation {
     display: inline-block;
@@ -211,3 +208,6 @@ ul > li:last-child > .tika_details {
     50%{height: 100%;}
     100% {height:0; top:0;}
 }
+
+@import "tailwindcss/utilities";
+/* purgecss end ignore */
