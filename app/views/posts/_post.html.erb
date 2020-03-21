@@ -38,7 +38,7 @@
 
   <% if action_name == 'show' %>
     <section class="mt-12">
-      <h2 class="uppercase font-bold text-primary mt-3 py-2"> Comments</h2>
+      <h2 class="font-bold text-xl text-primary mt-3 py-2 border-b border-gray-400"> Comments</h2>
 
       <%= render "comments/form", comment: post.comments.build %>
       <ol>
