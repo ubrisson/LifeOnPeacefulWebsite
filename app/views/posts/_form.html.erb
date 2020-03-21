@@ -1,3 +1,8 @@
+<% content_for :script do %>
+  <%= javascript_pack_tag 'trix_interface', defer: ""  %>
+  <%= stylesheet_pack_tag 'trix_interface' %>
+<% end %>
+
 <%= form_with(model: @post, local: true,
               class: "px-8 pt-4 pb-4 text-left w-10/12 mx-auto") do |form| %>
 
