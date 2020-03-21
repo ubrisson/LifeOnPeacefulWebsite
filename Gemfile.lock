@@ -104,6 +104,8 @@ GEM
       minitest (>= 3.0)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
+    jbuilder (2.10.0)
+      activesupport (>= 5.0.0)
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -216,6 +218,9 @@ GEM
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
+    turbolinks (5.2.1)
+      turbolinks-source (~> 5.2)
+    turbolinks-source (5.2.0)
     tzinfo (1.2.6)
       thread_safe (~> 0.1)
     tzinfo-data (1.2019.3)
@@ -255,6 +260,7 @@ DEPENDENCIES
   faker
   guard
   guard-minitest
+  jbuilder (~> 2.7)
   listen
   minitest-reporters
   puma (>= 4.3.2)
@@ -267,6 +273,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen
   sqlite3 (~> 1.4)
+  turbolinks (~> 5)
   tzinfo-data
   web-console (>= 3.3.0)
   webdrivers
