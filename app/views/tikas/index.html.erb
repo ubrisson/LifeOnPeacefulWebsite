@@ -1,7 +1,7 @@
 <% provide(:title, "Masterlist") %>
 <% provide(:button_text, 'Create') %>
 <% content_for :script do %>
-  <%= javascript_pack_tag 'tikas', defer: ""  %>
+  <%= javascript_pack_tag 'tikas', defer: true, 'data-turbolinks-track': 'reload'  %>
 <% end %>
 
 

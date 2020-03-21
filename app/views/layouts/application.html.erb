@@ -8,8 +8,8 @@
   <meta name="description" content="The personal website - blog - journal of someone.
    Running on Ruby on Rails and TailwindCSS">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <%= javascript_pack_tag 'application', defer: "" %>
-  <%= stylesheet_pack_tag 'application' %>
+  <%= javascript_pack_tag 'application', defer: true,'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_pack_tag 'application','data-turbolinks-track': 'reload' %>
   <%= yield :script %>
 </head>
 
