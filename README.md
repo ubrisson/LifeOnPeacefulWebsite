@@ -80,6 +80,7 @@ $ @user.save
 
 ## CI
 
-Github actions is used to test push and pull-requests.
-All dependencies are installed and rails test are run.
-The current code coverage of tests is 100% (although a few tests are only here for that).
+Github actions are used to test both push and pull-requests.
+All dependencies are installed then rails test are run.
+Finally, assets are precompiled and the passing code is deployed to my host.
+The current code coverage of tests is about 99%.
