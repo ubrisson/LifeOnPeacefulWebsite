@@ -4,7 +4,7 @@
 // that code so it'll be compiled.
 
 require("@rails/ujs").start();
-require("turbolinks").start();
+require("turbolinks");
 require("css/application.css");
 // import '../css/application.css'
 
@@ -14,15 +14,25 @@ require("css/application.css");
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+import Cookies from 'js-cookie'
 
-let isLight = true;
-const light = "theme-light";
-const dark = "theme-dark";
-document.getElementById("ThemeSwitchBtn").onclick = function () {
-    if (isLight) {
-        document.getElementById("html").classList.replace(light, dark);
+function switchTheme() {
+    const light = "theme-light";
+    const dark = "theme-dark";
+    if (Cookies.get('lightTheme?')) {
+        let isLight = Cookies.get('lightTheme?') === 'true';
+        if (isLight) {
+            document.getElementById("html").classList.replace(light, dark);
+        } else {
+            document.getElementById("html").classList.replace(dark, light);
+        }
+        Cookies.set('lightTheme?', !isLight, {expires: 1000});
+
     } else {
         document.getElementById("html").classList.replace(dark, light);
+        Cookies.set('lightTheme?', 'false', {expires: 1000});
     }
-    isLight = !isLight;
-};
+}
+
+const switchBtn = document.getElementById('ThemeSwitchBtn');
+switchBtn.addEventListener('click', switchTheme);
